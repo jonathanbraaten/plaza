@@ -42,7 +42,7 @@ export default defineType({
       type: 'array',
 
       of: [
-        defineArrayMember({ type: 'reference', to: [{ type: 'banner' }] }),
+        defineArrayMember({ type: 'banner' }),
         defineArrayMember({ type: 'featureBlock' }),
         defineArrayMember({ type: 'cateringBlock' }),
         defineArrayMember({ type: 'menuBlock' }),

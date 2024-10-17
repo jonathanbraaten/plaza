@@ -11,7 +11,7 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-      name: 'Content',
+      name: 'content',
       type: 'fullPortableText',
     }),
     defineField({
