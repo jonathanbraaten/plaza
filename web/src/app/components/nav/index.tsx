@@ -13,7 +13,7 @@ export default function Nav({ isActive, onClick }: Props) {
   return (
     <nav
       className={clsx(
-        'bg-red-500 md:bg-inherit h-full md:h-auto md:max-w-full md:w-auto max-w-[15rem] w-full py-4 flex flex-col md:flex-row gap-4  fixed  md:static right-0 top-0 md:translate-x-0',
+        'md:bg-inherit h-full md:max-w-full md:w-auto max-w-[15rem] w-full py-4 flex flex-col md:flex-row gap-4  fixed  md:static right-0 top-0 md:translate-x-0',
         {
           'translate-x-0 transition-transform 150ms ease-in-out': isActive,
           'translate-x-full ': !isActive,
