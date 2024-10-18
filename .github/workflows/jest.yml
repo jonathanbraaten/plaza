@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - develop
-      - feat/workflow
+
     paths:
       - web/src/**
 jobs:
