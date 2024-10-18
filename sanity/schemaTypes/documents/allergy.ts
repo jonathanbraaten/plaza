@@ -3,8 +3,8 @@ import { defineType } from 'sanity';
 export default defineType({
   name: 'allergy',
   type: 'array',
-  hidden: ({ document }) => !document?.title,
-
+  validation: (Rule) => Rule.required(),
+  description: 'Check the boxes to add allergies to this dish.',
   of: [
     {
       type: 'string',
@@ -28,5 +28,6 @@ export default defineType({
       { title: 'Skalldyr', name: 'crustaceans', value: 'crustaceans' },
       { title: 'Lupin', name: 'lupin', value: 'lupin' },
     ],
+    layout: 'grid',
   },
 });
