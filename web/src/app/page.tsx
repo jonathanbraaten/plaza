@@ -6,7 +6,7 @@ import { PAGE_QUERY } from '@/sanity/queries/pageQuery';
 import { PAGE_QUERYResult } from '@/sanity/lib/types/sanity.types';
 import PageHandler from './components/pageHandlers/pageHandler';
 
-export async function getData(): Promise<PAGE_QUERYResult> {
+async function fetchPageData(): Promise<PAGE_QUERYResult> {
   const data = await sanityFetch({
     query: PAGE_QUERY,
     params: { slug: 'hjem' },
@@ -17,7 +17,7 @@ export async function getData(): Promise<PAGE_QUERYResult> {
   return data;
 }
 export default async function Home() {
-  const data = await getData();
+  const data = await fetchPageData();
   return (
     <>
       <Header />
