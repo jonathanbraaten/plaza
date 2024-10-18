@@ -1,23 +1,30 @@
-import { StructureBuilder } from 'sanity/structure';
-import { PiBowlFood } from 'react-icons/pi';
+import { StructureResolver } from 'sanity/structure';
+import { PiBowlFood, PiForkKnife } from 'react-icons/pi';
 
-export const customStructure = (S: StructureBuilder) =>
+export const customStructure: StructureResolver = (S) =>
   S.list()
     .title('Documents')
     .items([
+      // Dishes folder
       ...S.documentTypeListItems().filter(
-        (listItem) => !['lunch'].includes(listItem.getId() as string),
+        (listItem) => !['lunch', 'burgers'].includes(listItem.getId() as string),
       ),
+      S.divider(),
       S.listItem()
-        .icon(PiBowlFood)
         .title('Dishes')
+        .icon(PiBowlFood)
         .child(
           S.list()
-            .title('Dish')
+            .title('Dishes')
             .items([
               S.listItem()
-                .title('Lunch')
-                .child(S.document().schemaType('lunch').documentId('lunch')),
+                .icon(PiForkKnife)
+                .title('Lunch Dishes')
+                .child(S.documentTypeList('lunch').title('Lunch Dishes')),
+              S.listItem()
+                .icon(PiForkKnife)
+                .title('Burgers')
+                .child(S.documentTypeList('burgers').title('Burgers')),
             ]),
         ),
     ]);
