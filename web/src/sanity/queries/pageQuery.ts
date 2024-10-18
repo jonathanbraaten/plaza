@@ -9,17 +9,20 @@ export const PAGE_QUERY = defineQuery(`
   body[]{
 _type,
 _type == 'banner'=>{
+  _key,
   header,
   subHeader,
   bannerImage
 },
 _type == 'featureBlock'=>{
+  _key,
   title,
   image,
   content,
   content
 },
 _type == 'cateringBlock'=> {
+  _key,
   title,
   content,
   linkEmbed{

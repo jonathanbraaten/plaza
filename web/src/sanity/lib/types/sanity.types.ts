@@ -425,7 +425,7 @@ export type AllSanitySchemaTypes =
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ../web/src/sanity/queries/pageQuery.ts
 // Variable: PAGE_QUERY
-// Query: *[_type == 'page' && slug.current == $slug][0]{  title,  "slug":slug.current,  metaDescription,  metaImage,  body[]{_type,_type == 'banner'=>{  header,  subHeader,  bannerImage},_type == 'featureBlock'=>{  title,  image,  content,  content},_type == 'cateringBlock'=> {  title,  content,  linkEmbed{  label, href    }    }}}
+// Query: *[_type == 'page' && slug.current == $slug][0]{  title,  "slug":slug.current,  metaDescription,  metaImage,  body[]{_type,_type == 'banner'=>{  _key,  header,  subHeader,  bannerImage},_type == 'featureBlock'=>{  _key,  title,  image,  content,  content},_type == 'cateringBlock'=> {  _key,  title,  content,  linkEmbed{  label, href    }    }}}
 export type PAGE_QUERYResult = {
   title: string | null;
   slug: string | null;
@@ -444,6 +444,7 @@ export type PAGE_QUERYResult = {
   body: Array<
     | {
         _type: 'banner';
+        _key: string;
         header: string | null;
         subHeader: string | null;
         bannerImage: {
@@ -461,6 +462,7 @@ export type PAGE_QUERYResult = {
       }
     | {
         _type: 'cateringBlock';
+        _key: string;
         title: string | null;
         content: FullPortableText | null;
         linkEmbed: {
@@ -470,6 +472,7 @@ export type PAGE_QUERYResult = {
       }
     | {
         _type: 'featureBlock';
+        _key: string;
         title: string | null;
         image: {
           asset?: {
@@ -495,6 +498,6 @@ export type PAGE_QUERYResult = {
 import '@sanity/client';
 declare module '@sanity/client' {
   interface SanityQueries {
-    "\n*[_type == 'page' && slug.current == $slug][0]{\n  title,\n  \"slug\":slug.current,\n  metaDescription,\n  metaImage,\n  body[]{\n_type,\n_type == 'banner'=>{\n  header,\n  subHeader,\n  bannerImage\n},\n_type == 'featureBlock'=>{\n  title,\n  image,\n  content,\n  content\n},\n_type == 'cateringBlock'=> {\n  title,\n  content,\n  linkEmbed{\n  label, href\n    }\n    }\n}}": PAGE_QUERYResult;
+    "\n*[_type == 'page' && slug.current == $slug][0]{\n  title,\n  \"slug\":slug.current,\n  metaDescription,\n  metaImage,\n  body[]{\n_type,\n_type == 'banner'=>{\n  _key,\n  header,\n  subHeader,\n  bannerImage\n},\n_type == 'featureBlock'=>{\n  _key,\n  title,\n  image,\n  content,\n  content\n},\n_type == 'cateringBlock'=> {\n  _key,\n  title,\n  content,\n  linkEmbed{\n  label, href\n    }\n    }\n}}": PAGE_QUERYResult;
   }
 }
