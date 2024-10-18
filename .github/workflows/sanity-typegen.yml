@@ -1,0 +1,21 @@
+name: Regenerate types for Sanity
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - develop
+      
+    paths:
+      - sanity/**
+jobs:
+ run-sanity-typegen:
+  runs-on: ubuntu-latest
+  steps:
+  - name: Actions
+    uses: actions/checkout@v4
+  - name: Install dependencies
+    run: cd sanity && npm install
+  - name: Generate types
+    run: cd sanity && npm run ts:generate
+
+    
