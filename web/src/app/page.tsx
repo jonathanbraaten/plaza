@@ -23,7 +23,6 @@ export default async function Home() {
       <Header />
       <main>
         <PageHandler data={data} />
-        <Wrapper>hello</Wrapper>
       </main>
       <Footer />
     </>
