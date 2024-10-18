@@ -21,6 +21,7 @@ export default defineType({
       name: 'bannerImage',
       title: 'Banner Image',
       type: 'image',
+      options: { hotspot: true },
       fields: [
         defineField({
           name: 'alt',
