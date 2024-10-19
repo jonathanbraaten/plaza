@@ -11,8 +11,19 @@ jobs:
   run-jest-tests:
     runs-on: ubuntu-latest
     steps:
-      - name: Actions
+      - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '16'
+
+      - name: Cache Node modules
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
 
       - name: Install dependencies
         run: cd web && npm install
