@@ -3,22 +3,51 @@ import { PiBowlFood, PiForkKnife } from 'react-icons/pi';
 
 export const customStructure: StructureResolver = (S) =>
   S.list()
-    .title('Documents')
+    .title('Dokumenter')
     .items([
-      // Dishes folder
+      S.listItem()
+        .title('Sider')
+        .child(
+          S.list()
+            .title('Sider')
+            .items([
+              S.listItem().title('Forside').child(S.documentTypeList('page')),
+              S.listItem().title('Meny').child(S.documentTypeList('menu')),
+            ]),
+        ),
+      S.divider(),
       ...S.documentTypeListItems().filter(
-        (listItem) => !['lunch', 'burgers'].includes(listItem.getId() as string),
+        (listItem) =>
+          !['lunch', 'burgers', 'pizza', 'kidsMenu', 'dessert', 'page', 'menu'].includes(
+            listItem.getId() as string,
+          ),
       ),
+
       S.divider(),
       S.listItem()
         .title('Matretter')
-        .icon(PiBowlFood)
+        .icon(PiForkKnife)
         .child(
           S.list()
             .title('Kategorier')
             .items([
-              S.listItem().icon(PiForkKnife).title('Lunsj').child(S.documentTypeList('lunch')),
-              S.listItem().icon(PiForkKnife).title('Burgers').child(S.documentTypeList('burgers')),
+              S.listItem().icon(PiBowlFood).title('Lunsj').child(S.documentTypeList('lunch')),
+              S.listItem().icon(PiBowlFood).title('Hamburger').child(S.documentTypeList('burgers')),
+              S.listItem()
+                .icon(PiBowlFood)
+                .title('Pizza')
+                .schemaType('pizza')
+                .child(S.documentTypeList('pizza')),
+              S.listItem()
+                .icon(PiBowlFood)
+                .title('Barnemeny')
+                .schemaType('kidsMenu')
+                .child(S.documentTypeList('kidsMenu')),
+              S.listItem()
+                .icon(PiBowlFood)
+                .title('Desserter')
+                .schemaType('dessert')
+                .child(S.documentTypeList('dessert')),
             ]),
         ),
     ]);
