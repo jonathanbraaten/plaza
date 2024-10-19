@@ -2,6 +2,7 @@ import { defineArrayMember, defineField, defineType } from 'sanity';
 
 export default defineType({
   name: 'page',
+  title: 'Forside',
   type: 'document',
   groups: [
     { name: 'seo', title: 'SEO' },
@@ -10,9 +11,10 @@ export default defineType({
   fields: [
     defineField({
       name: 'title',
+      title: 'Tittel',
       type: 'string',
       validation: (Rule) => Rule.required(),
-      description: 'The page title.',
+      description: 'Tittelen på siden.',
       group: 'seo',
     }),
     defineField({
@@ -22,25 +24,27 @@ export default defineType({
         source: 'title',
       },
       validation: (Rule) => Rule.required(),
-      description: 'The page slug. Needed for fetching correct data.',
+      description: 'Brukes for å hente riktig data.',
     }),
     defineField({
       name: 'metaDescription',
+      title: 'Meta Beskrivelse',
       type: 'text',
-      description: 'Meta description. Used for SEO.',
+
+      description: 'Meta beskrivelse. Brukes for SEO.',
       group: 'seo',
     }),
     defineField({
       name: 'metaImage',
+      title: 'Meta bilde',
       type: 'image',
-      description: 'Meta image. Used for SEO and social sharing.',
+      description: 'Meta bilde. Brukes for SEO og deling på sosiale medier.',
       group: 'seo',
     }),
 
     defineField({
       name: 'body',
       type: 'array',
-
       of: [
         defineArrayMember({ type: 'banner' }),
         defineArrayMember({ type: 'featureBlock' }),
