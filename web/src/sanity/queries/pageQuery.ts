@@ -21,6 +21,12 @@ _type == 'featureBlock'=>{
   content,
   content
 },
+_type == 'aboutBlock'=>{
+  _key,
+  aboutTitle,
+  aboutImage,
+  description,
+},
 _type == 'cateringBlock'=> {
   _key,
   title,

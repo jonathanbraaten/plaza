@@ -491,6 +491,24 @@ export type PAGE_QUERYResult = {
     | {
         _type: 'menuBlock';
       }
+    | {
+        _type: 'aboutBlock';
+        _key: string;
+        aboutTitle: string;
+        description: string;
+        aboutImage: {
+          asset?: {
+            _ref: string;
+            _type: 'reference';
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+          };
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: 'image';
+        };
+      }
   > | null;
 } | null;
 
@@ -498,6 +516,6 @@ export type PAGE_QUERYResult = {
 import '@sanity/client';
 declare module '@sanity/client' {
   interface SanityQueries {
-    "\n*[_type == 'page' && slug.current == $slug][0]{\n  title,\n  \"slug\":slug.current,\n  metaDescription,\n  metaImage,\n  body[]{\n_type,\n_type == 'banner'=>{\n  _key,\n  header,\n  subHeader,\n  bannerImage\n},\n_type == 'featureBlock'=>{\n  _key,\n  title,\n  image,\n  content,\n  content\n},\n_type == 'cateringBlock'=> {\n  _key,\n  title,\n  content,\n  linkEmbed{\n  label, href\n    }\n    }\n}}": PAGE_QUERYResult;
+    "\n*[_type == 'page' && slug.current == $slug][0]{\n  title,\n  \"slug\":slug.current,\n  metaDescription,\n  metaImage,\n  body[]{\n_type,\n_type == 'banner'=>{\n  _key,\n  header,\n  subHeader,\n  bannerImage\n},\n_type == 'featureBlock'=>{\n  _key,\n_type == 'aboutBlock'=>{\n  _key,\n  title,\n  image,\n  content,\n  content\n},\n_type == 'cateringBlock'=> {\n  _key,\n  title,\n  content,\n  linkEmbed{\n  label, href\n    }\n    }\n}}": PAGE_QUERYResult;
   }
 }
