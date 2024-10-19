@@ -11,20 +11,14 @@ export const customStructure: StructureResolver = (S) =>
       ),
       S.divider(),
       S.listItem()
-        .title('Dishes')
+        .title('Matretter')
         .icon(PiBowlFood)
         .child(
           S.list()
-            .title('Dishes')
+            .title('Kategorier')
             .items([
-              S.listItem()
-                .icon(PiForkKnife)
-                .title('Lunch Dishes')
-                .child(S.documentTypeList('lunch').title('Lunch Dishes')),
-              S.listItem()
-                .icon(PiForkKnife)
-                .title('Burgers')
-                .child(S.documentTypeList('burgers').title('Burgers')),
+              S.listItem().icon(PiForkKnife).title('Lunsj').child(S.documentTypeList('lunch')),
+              S.listItem().icon(PiForkKnife).title('Burgers').child(S.documentTypeList('burgers')),
             ]),
         ),
     ]);
