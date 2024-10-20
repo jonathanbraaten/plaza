@@ -31,7 +31,7 @@ const SANITY_STUDIO_PREVIEW_URL = process.env.SANITY_STUDIO_PREVIEW_URL || 'http
 
 const sharedConfigs = [
   {
-    name: 'production-workspace',
+    name: 'production',
     title: 'Default Workspace',
     projectId: 'aiar1864',
     dataset: 'production',
@@ -39,7 +39,7 @@ const sharedConfigs = [
     subtitle: 'production',
   },
   {
-    name: 'staging-workspace',
+    name: 'staging',
     title: 'Staging Workspace',
     projectId: 'aiar1864',
     dataset: 'staging',
