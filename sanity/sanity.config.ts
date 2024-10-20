@@ -3,17 +3,68 @@ import { structureTool } from 'sanity/structure';
 import { visionTool } from '@sanity/vision';
 import { schemaTypes } from './schemaTypes';
 import { customStructure } from './deskStructure';
+import { presentationTool } from 'sanity/presentation';
+import { resolve } from './presentation/resolve';
+const SANITY_STUDIO_PREVIEW_URL = process.env.SANITY_STUDIO_PREVIEW_URL || 'https://localhost:3010';
 
-export default defineConfig({
+/* export default defineConfig({
   name: 'default',
   title: 'plaza',
-
   projectId: 'aiar1864',
   dataset: 'production',
-
-  plugins: [structureTool({ structure: customStructure }), visionTool()],
-
+  plugins: [
+    structureTool({ structure: customStructure }),
+    visionTool(),
+    presentationTool({
+      resolve,
+      previewUrl: {
+        previewMode: {
+          enable: `${SANITY_STUDIO_PREVIEW_URL}/api/draft-mode/enable`,
+        },
+      },
+    }),
+  ],
   schema: {
     types: schemaTypes,
   },
-});
+}); */
+
+const sharedConfigs = [
+  {
+    name: 'production-workspace',
+    title: 'Default Workspace',
+    projectId: 'aiar1864',
+    dataset: 'production',
+    basePath: '/production',
+    subtitle: 'production',
+  },
+  {
+    name: 'staging-workspace',
+    title: 'Staging Workspace',
+    projectId: 'aiar1864',
+    dataset: 'staging',
+    basePath: '/staging',
+    subtitle: 'staging',
+  },
+];
+
+export default defineConfig(
+  sharedConfigs.map((config) => ({
+    ...config,
+    plugins: [
+      structureTool({ structure: customStructure }),
+      visionTool(),
+      presentationTool({
+        /*  resolve, */
+        previewUrl: {
+          previewMode: {
+            enable: `${SANITY_STUDIO_PREVIEW_URL}/api/draft-mode/enable`,
+          },
+        },
+      }),
+    ],
+    schema: {
+      types: schemaTypes,
+    },
+  })),
+);

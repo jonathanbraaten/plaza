@@ -1,5 +1,7 @@
 import { createClient, QueryParams } from 'next-sanity';
-import { dataset, projectId } from '@/sanity/lib/env';
+import { projectId } from '@/sanity/lib/env';
+
+const dataset = process.env.NODE_ENV === 'production' ? 'production' : 'staging';
 export const client = createClient({
   projectId,
   dataset,
