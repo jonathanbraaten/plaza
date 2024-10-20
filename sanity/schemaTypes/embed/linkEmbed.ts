@@ -6,13 +6,15 @@ export default defineType({
   fields: [
     defineField({
       name: 'label',
+      title: 'Tekst',
       type: 'string',
-      description: 'The label for the button.',
+      description: 'Teksten på knappen.',
     }),
     defineField({
       name: 'href',
+      title: 'Lenke',
       type: 'url',
-      description: 'Point to the url.',
+      description: 'Legg til en URL.',
       validation: (Rule) =>
         Rule.uri({
           scheme: ['http', 'https', 'mailto', 'tel'],

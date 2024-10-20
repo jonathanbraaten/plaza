@@ -8,19 +8,21 @@ export default defineType({
   fields: [
     defineField({
       name: 'title',
+      title: 'Tittel',
       type: 'string',
-      description: 'The title for the block.',
+      description: 'Tittel på seksjonen.',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'image',
+      title: 'Bilde',
       type: 'image',
       fields: [
         defineField({
           name: 'alt',
           type: 'string',
-          title: 'Alternative text',
-          description: 'Alternative text used for screen readers.',
+          title: 'Alternative tekst',
+          description: 'Alternativ tekst for skjermleser.',
           validation: (Rule) => Rule.required(),
         }),
       ],
@@ -28,6 +30,7 @@ export default defineType({
 
     defineField({
       name: 'content',
+      title: 'Innhold',
       type: 'minimalPortableText',
     }),
     defineField({ name: 'linkEmbed', type: 'linkEmbed' }),

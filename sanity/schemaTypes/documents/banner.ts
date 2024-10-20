@@ -8,27 +8,28 @@ export default defineType({
   fields: [
     defineField({
       name: 'header',
-      title: 'Banner Header',
+      title: 'Hovedtittel',
       type: 'string',
-      description: 'Optional title for the banners.',
+      description: 'Valgfri hovedtittel for bildet.',
     }),
     defineField({
       name: 'subHeader',
-      title: 'Banner Subheader',
+      title: 'Sekundærtittel',
       type: 'string',
+      description: 'Valgfri sekundærtittel for bildet.',
     }),
     defineField({
       name: 'bannerImage',
-      title: 'Banner Image',
+      title: 'Bilde',
       type: 'image',
       options: { hotspot: true },
       fields: [
         defineField({
           name: 'alt',
-          title: 'Alternative text',
+          title: 'Alternative tekst',
           type: 'string',
           validation: (Rule) => Rule.required(),
-          description: 'Alternative text for screen readers.',
+          description: 'Alernativ tekst for skjermleser.',
         }),
       ],
     }),

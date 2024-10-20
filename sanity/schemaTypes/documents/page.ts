@@ -53,7 +53,6 @@ export default defineType({
       ],
 
       options: {
-        layout: 'grid',
         insertMenu: {
           groups: [
             {
