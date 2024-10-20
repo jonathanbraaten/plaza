@@ -10,7 +10,7 @@
     "build": "sanity build",
     "deploy": "sanity deploy",
     "deploy-graphql": "sanity graphql deploy",
-    "ts:generate": "npx sanity@latest schema extract --workspace=staging && npx sanity@latest schema extract --workspace=production && npx sanity@latest typegen generate"
+    "ts:generate": "npx sanity@latest schema extract --workspace production && npx sanity@latest typegen generate"
   },
   "keywords": [
     "sanity"
