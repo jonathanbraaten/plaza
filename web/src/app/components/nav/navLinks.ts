@@ -1,17 +1,18 @@
 export const navLinks = [
-  {
-    id: 1,
-    name: 'Mat og drikke',
-    path: '/',
-  },
+  { id: 1, name: 'Hjem', path: '/' },
   {
     id: 2,
-    name: 'Catering',
-    path: '/',
+    name: 'Meny',
+    path: '/meny',
   },
   {
     id: 3,
+    name: 'Catering',
+    path: '/catering',
+  },
+  {
+    id: 4,
     name: 'Kontakt oss',
-    path: '/',
+    path: '/kontakt',
   },
 ];

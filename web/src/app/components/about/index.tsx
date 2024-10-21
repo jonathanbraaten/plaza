@@ -6,7 +6,7 @@ import {
   internalGroqTypeReferenceTo,
   SanityImageCrop,
   SanityImageHotspot,
-} from '@/sanity/lib/types/sanity.types';
+} from '@/sanity/lib/sanity.types';
 
 type Props = {
   data: {
