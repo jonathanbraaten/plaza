@@ -1,14 +1,16 @@
 import { urlFor } from '@/sanity/lib/imageUrlBuilder';
 import { SanityImageObject } from '@sanity/image-url/lib/types/types';
 import Image from 'next/image';
-import Wrapper from '../wrapper';
+import Wrapper from '@/app/components/wrapper';
 import { IMenuPageBlock } from '@/sanity/lib/types/pageBlock';
 import Link from 'next/link';
 
 type Props = {
   data: IMenuPageBlock;
 };
-export default function MenuPageBlock({ data: { title, description, image, linkEmbed } }: Props) {
+export default function MenuPageBlockComponent({
+  data: { title, description, image, linkEmbed },
+}: Props) {
   return (
     <Wrapper>
       <div className="grid grid-cols-2 gap-4 my-[15.25rem] items-center">

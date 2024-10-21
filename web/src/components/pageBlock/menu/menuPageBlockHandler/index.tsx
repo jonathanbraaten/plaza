@@ -1,9 +1,9 @@
 import { AllergyBlock, MENU_QUERYResult } from '@/sanity/lib/sanity.types';
-import AllergyBlockComponent from '@/app/meny/components/allergyPageBlock';
-import MenuBanner from '@/app/meny/components/menuBanner';
-import Dishes from '@/app/meny/components/dishesPageBlock';
+import AllergyBlockComponent from '@/components/pageBlock/menu/allergyPageBlock';
+import MenuBanner from '@/components/pageBlock/menu/menuBannerPageBlock';
+import Dishes from '@/components/pageBlock/menu/dishesPageBlock';
 
-export default function MenuHandler({ data }: { data: MENU_QUERYResult }) {
+export default function MenuPageBlockHandler({ data }: { data: MENU_QUERYResult }) {
   return (
     <>
       {data?.body?.map((block) => {
