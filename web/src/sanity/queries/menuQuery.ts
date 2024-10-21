@@ -19,7 +19,22 @@ export const MENU_QUERY = defineQuery(`
         title,
          content,
           menuAllergy
+      },
+      _type == 'lunchBlock' => {
+        title,
+        _key,
+          "dishReference":lunchReference[]->{
+        _id,
+        _type,
+        title,
+        description,
+        dineInPrice,
+        takeawayPrice,
+        allergy[]
+
       }
-    }
+      },
+    },
+
 }
   `);

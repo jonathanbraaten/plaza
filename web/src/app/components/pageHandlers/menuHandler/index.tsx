@@ -1,6 +1,7 @@
 import { AllergyBlock, MENU_QUERYResult } from '@/sanity/lib/sanity.types';
 import AllergyBlockComponent from '@/app/meny/components/allergyPageBlock';
 import MenuBanner from '@/app/meny/components/menuBanner';
+import Dishes from '@/app/meny/components/dishesPageBlock';
 
 export default function MenuHandler({ data }: { data: MENU_QUERYResult }) {
   return (
@@ -12,6 +13,8 @@ export default function MenuHandler({ data }: { data: MENU_QUERYResult }) {
 
           case 'allergyBlock':
             return <AllergyBlockComponent key={block._key} data={block as AllergyBlock} />;
+          case 'lunchBlock':
+            return <Dishes key={block._key} data={block} />;
           default:
             return null;
         }

@@ -123,12 +123,13 @@ export type MinimalPortableText = Array<{
 export type LunchBlock = {
   _type: 'lunchBlock';
   title?: string;
-  lunchReference?: {
+  lunchReference?: Array<{
     _ref: string;
     _type: 'reference';
     _weak?: boolean;
+    _key: string;
     [internalGroqTypeReferenceTo]?: 'lunch';
-  };
+  }>;
 };
 
 export type AllergyBlock = {
@@ -509,7 +510,7 @@ export type AllSanitySchemaTypes =
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ../web/src/sanity/queries/menuQuery.ts
 // Variable: MENU_QUERY
-// Query: *[_type == 'menu' && slug.current == $slug][0] {  title,  "slug":slug.current,  metaDescription,  metaImage,    body[]{      _type,      _type == 'banner'=> {        _key,          header,        subHeader,        bannerImage      },      _type == 'allergyBlock'=>{        _key,        title,         content,          menuAllergy      }    }}
+// Query: *[_type == 'menu' && slug.current == $slug][0] {  title,  "slug":slug.current,  metaDescription,  metaImage,    body[]{      _type,      _type == 'banner'=> {        _key,          header,        subHeader,        bannerImage      },      _type == 'allergyBlock'=>{        _key,        title,         content,          menuAllergy      },      _type == 'lunchBlock' => {        title,        _key,          "dishReference":lunchReference[]->{        _id,        _type,        title,        description,        dineInPrice,        takeawayPrice,        allergy[]      }      },    },}
 export type MENU_QUERYResult = {
   title: string | null;
   slug: string | null;
@@ -569,6 +570,17 @@ export type MENU_QUERYResult = {
       }
     | {
         _type: 'lunchBlock';
+        title: string | null;
+        _key: string;
+        dishReference: Array<{
+          _id: string;
+          _type: 'lunch';
+          title: string | null;
+          description: string | null;
+          dineInPrice: number | null;
+          takeawayPrice: number | null;
+          allergy: Array<string> | null;
+        }> | null;
       }
   > | null;
 } | null;
@@ -648,7 +660,7 @@ export type PAGE_QUERYResult = {
 import '@sanity/client';
 declare module '@sanity/client' {
   interface SanityQueries {
-    "\n*[_type == 'menu' && slug.current == $slug][0] {\n  title,\n  \"slug\":slug.current,\n  metaDescription,\n  metaImage,\n    body[]{\n      _type,\n      _type == 'banner'=> {\n        _key,\n          header,\n        subHeader,\n        bannerImage\n      },\n      _type == 'allergyBlock'=>{\n        _key,\n        title,\n         content,\n          menuAllergy\n      }\n    }\n}\n  ": MENU_QUERYResult;
+    "\n*[_type == 'menu' && slug.current == $slug][0] {\n  title,\n  \"slug\":slug.current,\n  metaDescription,\n  metaImage,\n    body[]{\n      _type,\n      _type == 'banner'=> {\n        _key,\n          header,\n        subHeader,\n        bannerImage\n      },\n      _type == 'allergyBlock'=>{\n        _key,\n        title,\n         content,\n          menuAllergy\n      },\n      _type == 'lunchBlock' => {\n        title,\n        _key,\n          \"dishReference\":lunchReference[]->{\n        _id,\n        _type,\n        title,\n        description,\n        dineInPrice,\n        takeawayPrice,\n        allergy[]\n\n      }\n      },\n    },\n\n}\n  ": MENU_QUERYResult;
     "\n*[_type == 'page' && slug.current == $slug][0]{\n  title,\n  \"slug\":slug.current,\n  metaDescription,\n  metaImage,\n  body[]{\n_type,\n_type == 'banner'=>{\n  _key,\n  header,\n  subHeader,\n  bannerImage\n},\n_type == 'featureBlock'=>{\n  _key,\n  title,\n  image,\n  content,\n  content\n},\n_type == 'aboutBlock'=>{\n  _key,\n  aboutTitle,\n  aboutImage,\n  description,\n},\n_type == 'cateringBlock'=> {\n  _key,\n  title,\n  content,\n  linkEmbed{\n  label, href\n    }\n    }\n}}": PAGE_QUERYResult;
   }
 }

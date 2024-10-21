@@ -27,7 +27,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/sanity/lib/token.ts"
+    "src/sanity/lib/token.ts",
+    "src/**/*"
   ],
   "exclude": ["node_modules"]
 }
