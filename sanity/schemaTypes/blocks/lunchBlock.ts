@@ -1,8 +1,9 @@
-import { defineField, defineType } from 'sanity';
+import { defineArrayMember, defineField, defineType } from 'sanity';
 import { PiLego } from 'react-icons/pi';
 
 export default defineType({
   name: 'lunchBlock',
+  title: 'Lunsj meny',
   type: 'object',
   icon: PiLego,
   fields: [
@@ -12,8 +13,8 @@ export default defineType({
     }),
     defineField({
       name: 'lunchReference',
-      type: 'reference',
-      to: { type: 'lunch' },
+      type: 'array',
+      of: [defineArrayMember({ type: 'reference', to: { type: 'lunch' } })],
     }),
   ],
 });
