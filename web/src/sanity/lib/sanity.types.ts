@@ -650,6 +650,9 @@ export type PAGE_QUERYResult = {
         } | null;
         content: MinimalPortableText | null;
       }
+    | IAboutPageBlock
+    | ICTAPageBlock
+    | IMenuPageBlock
     | {
         _type: 'menuBlock';
       }
@@ -658,6 +661,7 @@ export type PAGE_QUERYResult = {
 
 // Query TypeMap
 import '@sanity/client';
+import { IAboutPageBlock, ICTAPageBlock, IMenuPageBlock } from './types/pageBlock';
 declare module '@sanity/client' {
   interface SanityQueries {
     "\n*[_type == 'menu' && slug.current == $slug][0] {\n  title,\n  \"slug\":slug.current,\n  metaDescription,\n  metaImage,\n    body[]{\n      _type,\n      _type == 'banner'=> {\n        _key,\n          header,\n        subHeader,\n        bannerImage\n      },\n      _type == 'allergyBlock'=>{\n        _key,\n        title,\n         content,\n          menuAllergy\n      },\n      _type == 'lunchBlock' => {\n        title,\n        _key,\n          \"dishReference\":lunchReference[]->{\n        _id,\n        _type,\n        title,\n        description,\n        dineInPrice,\n        takeawayPrice,\n        allergy[]\n\n      }\n      },\n    },\n\n}\n  ": MENU_QUERYResult;
