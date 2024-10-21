@@ -8,6 +8,8 @@ import pizza from './food/pizza';
 import kidsMenu from './food/kidsMenu';
 import dessert from './food/dessert';
 import allergyIcons from './allergyIcons';
+import dish from './dish';
+import dishSection from './dishSection';
 
 export default [
   page,
@@ -20,4 +22,6 @@ export default [
   pizza,
   kidsMenu,
   dessert,
+  dish,
+  dishSection,
 ];

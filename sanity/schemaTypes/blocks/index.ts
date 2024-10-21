@@ -1,11 +1,12 @@
-import cateringBlock from './pageBlocks/cateringBlock'
-import featureBlock from './pageBlocks/featureBlock'
-import lunchBlock from './lunchBlock'
-import menuBlock from './pageBlocks/menuBlock'
-import allergyBlock from './menuPageBlocks/allergyBlock'
-import aboutPageBlock from './pageBlocks/aboutPageBlock'
-import CTAPageBlock from './pageBlocks/ctaPageBlock'
-import menuPageBlock from './pageBlocks/menuPageBlock'
+import cateringBlock from './pageBlocks/cateringBlock';
+import featureBlock from './pageBlocks/featureBlock';
+import lunchBlock from './lunchBlock';
+import menuBlock from './pageBlocks/menuBlock';
+import allergyBlock from './menuPageBlocks/allergyBlock';
+import aboutPageBlock from './pageBlocks/aboutPageBlock';
+import CTAPageBlock from './pageBlocks/ctaPageBlock';
+import menuPageBlock from './pageBlocks/menuPageBlock';
+import dishObject from './dishObject';
 
 export default [
   featureBlock,
@@ -16,4 +17,5 @@ export default [
   aboutPageBlock,
   CTAPageBlock,
   menuPageBlock,
-]
+  dishObject,
+];

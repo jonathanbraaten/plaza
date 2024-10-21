@@ -18,11 +18,11 @@ export const customStructure: StructureResolver = (S) =>
       S.divider(),
       ...S.documentTypeListItems().filter(
         (listItem) =>
-          !['lunch', 'burgers', 'pizza', 'kidsMenu', 'dessert', 'page', 'menu'].includes(
+          !['lunch', 'burgers', 'pizza', 'kidsMenu', 'dessert', 'page', 'menu', 'dish'].includes(
             listItem.getId() as string,
           ),
       ),
-
+      /*
       S.divider(),
       S.listItem()
         .title('Matretter')
@@ -49,5 +49,5 @@ export const customStructure: StructureResolver = (S) =>
                 .schemaType('dessert')
                 .child(S.documentTypeList('dessert')),
             ]),
-        ),
+        ), */
     ]);
