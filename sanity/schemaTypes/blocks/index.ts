@@ -2,6 +2,6 @@ import cateringBlock from './cateringBlock';
 import featureBlock from './featureBlock';
 import lunchBlock from './lunchBlock';
 import menuBlock from './menuBlock';
-import menuIntroductionBlock from './menuIntroductionBlock';
+import allergyBlock from './allergyBlock';
 
-export default [featureBlock, menuBlock, cateringBlock, menuIntroductionBlock, lunchBlock];
+export default [featureBlock, menuBlock, cateringBlock, allergyBlock, lunchBlock];
