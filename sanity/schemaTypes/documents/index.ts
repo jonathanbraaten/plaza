@@ -7,5 +7,17 @@ import burgers from './food/burgers';
 import pizza from './food/pizza';
 import kidsMenu from './food/kidsMenu';
 import dessert from './food/dessert';
+import allergyIcons from './allergyIcons';
 
-export default [page, banner, menu, lunch, burgers, allergy, pizza, kidsMenu, dessert];
+export default [
+  page,
+  banner,
+  menu,
+  lunch,
+  burgers,
+  allergy,
+  allergyIcons,
+  pizza,
+  kidsMenu,
+  dessert,
+];

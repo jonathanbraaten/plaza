@@ -2,7 +2,7 @@ import { sanityFetch } from '@/sanity/lib/client/client';
 import Footer from './components/footer';
 import Header from './components/header';
 import { PAGE_QUERY } from '@/sanity/queries/pageQuery';
-import { PAGE_QUERYResult } from '@/sanity/lib/types/sanity.types';
+import { PAGE_QUERYResult } from '@/sanity/lib/sanity.types';
 import PageHandler from './components/pageHandlers/pageHandler';
 
 async function fetchPageData(): Promise<PAGE_QUERYResult> {

@@ -1,11 +1,32 @@
 import { urlFor } from '@/sanity/lib/imageUrlBuilder';
-import { BannerBlock } from '@/sanity/lib/types/pageBlock';
+import {
+  internalGroqTypeReferenceTo,
+  SanityImageCrop,
+  SanityImageHotspot,
+} from '@/sanity/lib/sanity.types';
 import { SanityImageObject } from '@sanity/image-url/lib/types/types';
 import Image from 'next/image';
 type Props = {
-  data: BannerBlock;
+  data: {
+    _type: 'banner';
+    _key: string;
+    header: string | null;
+    subHeader: string | null;
+    bannerImage: {
+      asset?: {
+        _ref: string;
+        _type: 'reference';
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+      };
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: 'image';
+    } | null;
+  };
 };
-export default function HeroBanner({ data: { header, subHeader, bannerImage } }: Props) {
+export default function MenuBanner({ data: { header, subHeader, bannerImage } }: Props) {
   return (
     <section className="relative ">
       {header && (

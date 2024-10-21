@@ -43,10 +43,13 @@ export default defineType({
 
       of: [
         defineArrayMember({
-          type: 'reference',
-          to: [{ type: 'banner' }],
+          title: 'Banner bilde',
+          type: 'banner',
         }),
-        defineArrayMember({ type: 'menuIntroductionBlock' }),
+        defineArrayMember({
+          title: 'Informasjon av allergener',
+          type: 'allergyBlock',
+        }),
         defineArrayMember({ type: 'lunchBlock' }),
       ],
     }),
