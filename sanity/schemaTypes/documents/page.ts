@@ -1,12 +1,12 @@
-import { defineArrayMember, defineField, defineType } from 'sanity';
+import {defineArrayMember, defineField, defineType} from 'sanity'
 
 export default defineType({
   name: 'page',
   title: 'Forside',
   type: 'document',
   groups: [
-    { name: 'seo', title: 'SEO' },
-    { name: 'blocks', title: 'Blocks' },
+    {name: 'seo', title: 'SEO'},
+    {name: 'blocks', title: 'Blocks'},
   ],
   fields: [
     defineField({
@@ -41,15 +41,17 @@ export default defineType({
       description: 'Meta bilde. Brukes for SEO og deling på sosiale medier.',
       group: 'seo',
     }),
-
     defineField({
       name: 'body',
       type: 'array',
       of: [
-        defineArrayMember({ type: 'banner' }),
-        defineArrayMember({ type: 'featureBlock' }),
-        defineArrayMember({ type: 'cateringBlock' }),
-        defineArrayMember({ type: 'menuBlock' }),
+        defineArrayMember({type: 'banner'}),
+        defineArrayMember({type: 'featureBlock'}),
+        defineArrayMember({type: 'cateringBlock'}),
+        defineArrayMember({type: 'menuBlock'}),
+        defineArrayMember({type: 'aboutPageBlock'}),
+        defineArrayMember({type: 'CTAPageBlock'}),
+        defineArrayMember({type: 'menuPageBlock'}),
       ],
 
       options: {
@@ -58,11 +60,18 @@ export default defineType({
             {
               name: 'blocks',
               title: 'Blocks',
-              of: ['featureBlock', 'cateringBlock', 'menuBlock'],
+              of: [
+                'featureBlock',
+                'cateringBlock',
+                'menuBlock',
+                'aboutPageBlock',
+                'CTAPageBlock',
+                'menuPageBlock',
+              ],
             },
           ],
         },
       },
     }),
   ],
-});
+})
