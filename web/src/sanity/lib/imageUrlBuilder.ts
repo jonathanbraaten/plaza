@@ -1,4 +1,4 @@
-import { client } from './client/client';
+import { client } from './client';
 import imageUrlBuilder from '@sanity/image-url';
 import { SanityImageObject } from '@sanity/image-url/lib/types/types';
 import { SanityImageAsset } from './sanity.types';

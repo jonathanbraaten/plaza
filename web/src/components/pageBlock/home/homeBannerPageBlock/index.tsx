@@ -5,7 +5,9 @@ import Image from 'next/image';
 type Props = {
   data: BannerBlock;
 };
-export default function HeroBanner({ data: { header, subHeader, bannerImage } }: Props) {
+export default function HomeBannerPageBlockComponent({
+  data: { header, subHeader, bannerImage },
+}: Props) {
   return (
     <section className="relative ">
       {header && (

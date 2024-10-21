@@ -1,13 +1,12 @@
 import { urlFor } from '@/sanity/lib/imageUrlBuilder';
 import { SanityImageObject } from '@sanity/image-url/lib/types/types';
 import Image from 'next/image';
-import Wrapper from '../wrapper';
 import { IAboutPageBlock } from '@/sanity/lib/types/pageBlock';
-
+import Wrapper from '@/app/components/wrapper';
 type Props = {
   data: IAboutPageBlock;
 };
-export default function AboutPageBlock({ data: { title, description, image } }: Props) {
+export default function AboutPageBlockComponent({ data: { title, description, image } }: Props) {
   return (
     <Wrapper>
       <div className="grid grid-cols-2 gap-4 my-[15.25rem] items-center">

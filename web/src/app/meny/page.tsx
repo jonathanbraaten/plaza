@@ -1,9 +1,8 @@
-import { sanityFetch } from '@/sanity/lib/client/client';
-
-import { MENU_QUERYResult } from '@/sanity/lib/sanity.types';
+import { sanityFetch } from '@/sanity/lib/client';
 import Header from '../components/header';
 import Footer from '../components/footer';
-import MenuHandler from '../components/pageHandlers/menuHandler';
+import MenuHandler from '@/components/pageBlock/menu/menuPageBlockHandler';
+import { MENU_QUERYResult } from '@/sanity/lib/sanity.types';
 import { MENU_QUERY } from '@/sanity/queries/menuQuery';
 
 async function fetchPageData(): Promise<MENU_QUERYResult> {
