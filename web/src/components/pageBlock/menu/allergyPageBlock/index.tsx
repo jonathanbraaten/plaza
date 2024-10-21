@@ -13,13 +13,13 @@ type Props = {
 };
 export default function AllergyBlockComponent({ data }: Props) {
   return (
-    <section>
+    <section className="bg-green-200">
       <Wrapper optionalStyle="flex flex-col">
-        <article className="max-w-[70ch]">
+        <article className="mx-auto">
           <h2> {data.title}</h2>
           <PortableText value={data.content as MinimalPortableText} />
         </article>
-        <div className={clsx(styles.grid, 'bg-[#1D6698]/90  rounded-md p-10')}>
+        <div className={clsx(styles.grid, '  rounded-md p-10')}>
           {data.menuAllergy?.map(({ _key, image, allergyName }) => (
             <article className="flex flex-col items-center " key={_key}>
               <Image
