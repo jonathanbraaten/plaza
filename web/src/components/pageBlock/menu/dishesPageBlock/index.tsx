@@ -2,11 +2,13 @@ import clsx from 'clsx';
 import Grid from './grid';
 import Wrapper from '@/app/components/wrapper';
 import styles from './styles.module.css';
-
+import Image from 'next/image';
+import { urlFor } from '@/sanity/lib/imageUrlBuilder';
 import { IoMdInformationCircleOutline } from 'react-icons/io';
 import { DISH_QUERYResult, internalGroqTypeReferenceTo } from '@/sanity/lib/sanity.types';
-
+import { SanityImageHotspot, SanityImageCrop } from '@/sanity/lib/sanity.types';
 import { SanityImageObject } from '@sanity/image-url/lib/types/types';
+import { DishObject, Dish, DishSection } from '@/sanity/lib/sanity.types';
 
 type Props = {
   data: DISH_QUERYResult;
@@ -15,7 +17,7 @@ type Props = {
 export default function Dishes({ data }: Props) {
   return (
     <section className="mt-10">
-      {data.map(
+      {/*    {data.map(
         ({
           _key,
           title,
@@ -25,7 +27,7 @@ export default function Dishes({ data }: Props) {
           _key: string;
           title: string;
           image: SanityImageObject;
-          dishes: Dish[];
+          dishes: Dish;
         }) => (
           <div key={_key}>
             <Wrapper optionalStyle="flex  flex-col gap-4 my-10">
@@ -69,7 +71,7 @@ export default function Dishes({ data }: Props) {
             </Wrapper>
           </div>
         ),
-      )}
+      )} */}
     </section>
   );
 }

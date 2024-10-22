@@ -19,7 +19,7 @@ export default defineType({
       { title: 'Melk', name: 'milk', value: 'melk' },
       { title: 'Nøtter', name: 'nuts', value: 'nøtter' },
       { title: 'Peanøtt', name: 'peanut', value: 'peanøtter' },
-      { title: 'Selleri', name: 'celery', value: 'seleri' },
+      { title: 'Selleri', name: 'celery', value: 'selleri' },
       { title: 'Sennep', name: 'mustard', value: 'sennep' },
       { title: 'Sesamfrø', name: 'sesame', value: 'sesamfrø' },
       { title: 'Bløtdyr', name: 'shellfish', value: 'bløtdyr' },
