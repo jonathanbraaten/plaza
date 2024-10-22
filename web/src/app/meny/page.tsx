@@ -2,12 +2,11 @@ import { sanityFetch } from '@/sanity/lib/client';
 import Header from '../components/header';
 import Footer from '../components/footer';
 import MenuHandler from '@/components/pageBlock/menu/menuPageBlockHandler';
-import { MENU_QUERYResult } from '@/sanity/lib/sanity.types';
 import { MENU_QUERY } from '@/sanity/queries/menuQuery';
 import { DISH_QUERY } from '@/sanity/queries/dishQuery';
 import Dishes from '@/components/pageBlock/menu/dishesPageBlock';
 
-async function fetchPageData(): Promise<MENU_QUERYResult> {
+async function fetchPageData() {
   const data = await sanityFetch({
     query: MENU_QUERY,
     params: { slug: 'meny' },
@@ -28,12 +27,12 @@ async function fetchDishData() {
 export default async function Page() {
   const data = await fetchPageData();
   const dish = await fetchDishData();
-  console.log(dish);
+
   return (
     <>
       <Header />
       <main>
-        {/*       <MenuHandler data={data} /> */}
+        <MenuHandler data={data} />
 
         {dish.length !== 0 && <Dishes data={dish} />}
       </main>
