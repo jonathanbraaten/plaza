@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+/* import clsx from 'clsx';
 import Grid from './grid';
 import Wrapper from '@/app/components/wrapper';
 import styles from './styles.module.css';
@@ -8,21 +8,12 @@ import { IoMdInformationCircleOutline } from 'react-icons/io';
 import { DISH_QUERYResult, internalGroqTypeReferenceTo } from '@/sanity/lib/sanity.types';
 import { SanityImageHotspot, SanityImageCrop } from '@/sanity/lib/sanity.types';
 import { SanityImageObject } from '@sanity/image-url/lib/types/types';
-import { DishObject, Dish, DishSection } from '@/sanity/lib/sanity.types';
+import { DishObject, Dish, DishSection } from '@/sanity/lib/sanity.types'; */
 
-/* type Props = {
-  data: DISH_QUERYResult;
-}; */
-type Props = {
-  data: DISH_QUERYResult;
-};
-type OmitDish = Omit<Dish, '_type' | '_createdAt' | '_updatedAt' | '_rev'>;
-
-export default function Dishes({ data }) {
-  console.log(data);
+export default function Dishes(/* { data } */) {
   return (
     <section className="mt-10">
-      {data.map(({ _key, title, dishes }) => (
+      {/* {data.map(({ _key, title, dishes }) => (
         <div key={_key}>
           <Wrapper optionalStyle="flex  flex-col gap-4 my-10">
             <h2 className=" text-4xl self-center">{title}</h2>
@@ -64,7 +55,7 @@ export default function Dishes({ data }) {
             </Grid>
           </Wrapper>
         </div>
-      ))}
+      ))} */}
     </section>
   );
 }

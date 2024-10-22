@@ -1,13 +1,9 @@
 import { urlFor } from '@/sanity/lib/imageUrlBuilder';
-import { BannerBlock } from '@/sanity/lib/types/pageBlock';
 import { SanityImageObject } from '@sanity/image-url/lib/types/types';
 import Image from 'next/image';
-type Props = {
-  data: BannerBlock;
-};
-export default function HomeBannerPageBlockComponent({
-  data: { header, subHeader, bannerImage },
-}: Props) {
+import { Banner } from '@/sanity/lib/types/types';
+
+export default function HomeBannerPageBlockComponent({ header, subHeader, bannerImage }: Banner) {
   return (
     <section className="relative ">
       {header && (
