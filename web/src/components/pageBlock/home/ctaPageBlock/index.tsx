@@ -1,11 +1,8 @@
-import { ICTAPageBlock } from '@/sanity/lib/types/pageBlock';
 import Wrapper from '@/app/components/wrapper';
 import Link from 'next/link';
+import { CTA } from '@/sanity/lib/types/types';
 
-type Props = {
-  data: ICTAPageBlock;
-};
-export default function CtaPageBlockComponent({ data: { title, subtitle, linkEmbed } }: Props) {
+export default function CtaPageBlockComponent({ title, subtitle, linkEmbed }: CTA) {
   return (
     <>
       <div className="bg-primary py-32 text-center text-white">

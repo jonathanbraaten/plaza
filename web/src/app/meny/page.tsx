@@ -1,7 +1,7 @@
 import { sanityFetch } from '@/sanity/lib/client';
 import Header from '../components/header';
 import Footer from '../components/footer';
-import MenuHandler from '@/components/pageBlock/menu/menuPageBlockHandler';
+import MenuHandler from '@/components/pageBlock/menu';
 import { MENU_QUERY } from '@/sanity/queries/menuQuery';
 import { DISH_QUERY } from '@/sanity/queries/dishQuery';
 import Dishes from '@/components/pageBlock/menu/dishesPageBlock';

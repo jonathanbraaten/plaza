@@ -3,7 +3,7 @@ import Header from './components/header';
 import Footer from './components/footer';
 import { PAGE_QUERY } from '@/sanity/queries/pageQuery';
 import { PAGE_QUERYResult } from '@/sanity/lib/sanity.types';
-import PageHandler from '@/components/pageBlock/home/homePageHandler';
+import PageHandler from '@/components/pageBlock/home';
 
 async function fetchPageData(): Promise<PAGE_QUERYResult> {
   const data = await sanityFetch({
