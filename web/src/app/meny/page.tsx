@@ -5,6 +5,7 @@ import MenuHandler from '@/components/pageBlock/menu/menuPageBlockHandler';
 import { MENU_QUERY } from '@/sanity/queries/menuQuery';
 import { DISH_QUERY } from '@/sanity/queries/dishQuery';
 import Dishes from '@/components/pageBlock/menu/dishesPageBlock';
+import { DISH_QUERYResult } from '@/sanity/lib/sanity.types';
 
 async function fetchPageData() {
   const data = await sanityFetch({
@@ -16,7 +17,7 @@ async function fetchPageData() {
   return data;
 }
 
-async function fetchDishData() {
+async function fetchDishData(): Promise<DISH_QUERYResult> {
   const data = await sanityFetch({
     query: DISH_QUERY,
     revalidate: 0,
