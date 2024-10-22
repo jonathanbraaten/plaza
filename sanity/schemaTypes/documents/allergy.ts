@@ -23,7 +23,7 @@ export default defineType({
       { title: 'Sennep', name: 'mustard', value: 'sennep' },
       { title: 'Sesamfrø', name: 'sesame', value: 'sesamfrø' },
       { title: 'Bløtdyr', name: 'shellfish', value: 'bløtdyr' },
-      { title: 'Soya', name: 'soy', value: 'soy' },
+      { title: 'Soya', name: 'soy', value: 'soya' },
       { title: 'Sulfitter', name: 'sulfites', value: 'sulfitter' },
       { title: 'Skalldyr', name: 'crustaceans', value: 'skalldyr' },
       { title: 'Lupin', name: 'lupin', value: 'lupin' },
