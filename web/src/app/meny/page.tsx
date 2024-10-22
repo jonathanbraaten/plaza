@@ -16,14 +16,6 @@ async function fetchPageData() {
   return data;
 }
 
-/* async function fetchDishData(): Promise<DISH_QUERYResult> {
-  const data = await sanityFetch({
-    query: DISH_QUERY,
-    revalidate: 0,
-    tags: [],
-  });
-  return data;
-} */
 export default async function Page() {
   const data = await fetchPageData();
 

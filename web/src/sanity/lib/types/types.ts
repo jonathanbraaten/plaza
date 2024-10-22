@@ -1,4 +1,3 @@
-import { Dish } from '../sanity.types';
 import { SanityImage, SanityLinkEmbed } from './reusableType';
 
 /* ======= Frontpage types ======= */
