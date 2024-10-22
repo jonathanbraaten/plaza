@@ -73,5 +73,40 @@ export default defineType({
         },
       },
     }),
+    defineField({
+      name: 'footer',
+      type: 'array',
+      of: [
+        defineArrayMember({type: 'addressFooterBlock'}),
+        defineArrayMember({type: 'openingHoursFooterBlock'}),
+        defineArrayMember({type: 'contactFooterBlock'}),
+        defineArrayMember({type: 'socialMediaFooterBlock'}),
+        defineArrayMember({type: 'termsOfUseFooterBlock'}),
+        defineArrayMember({type: 'licenseFooterBlock'}),
+        defineArrayMember({type: 'copyrightFooterBlock'}),
+        defineArrayMember({type: 'privacyFooterBlock'}),
+      ],
+
+      options: {
+        insertMenu: {
+          groups: [
+            {
+              name: 'blocks',
+              title: 'Blocks',
+              of: [
+                'addressFooterBlock',
+                'openingHoursFooterBlock',
+                'contactFooterBlock',
+                'socialMediaFooterBlock',
+                'termsOfUseFooterBlock',
+                'licenseFooterBlock',
+                'copyrightFooterBlock',
+                'privacyFooterBlock',
+              ],
+            },
+          ],
+        },
+      },
+    }),
   ],
 })

@@ -1,11 +1,20 @@
-import Wrapper from '../wrapper';
+import { PAGE_QUERYResult } from '@/sanity/lib/sanity.types';
+import FooterComponentBlock from './FooterComponentBlock';
+import { sanityFetch } from '@/sanity/lib/client';
+import { FOOTER_QUERY } from '@/sanity/queries/footerQuery';
 
-export default function Footer() {
-  return (
-    <footer>
-      <Wrapper>
-        <h1>footer</h1>
-      </Wrapper>
-    </footer>
-  );
+async function fetchPageData(): Promise<PAGE_QUERYResult> {
+  const data = await sanityFetch({
+    query: FOOTER_QUERY,
+    params: { slug: 'hjem' },
+    revalidate: 0,
+    tags: ['page', 'hjem'],
+  });
+  return data;
+}
+
+export default async function Footer() {
+  const data = await fetchPageData();
+
+  return <FooterComponentBlock data={data} />;
 }

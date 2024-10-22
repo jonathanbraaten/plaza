@@ -622,25 +622,32 @@ export type AllSanitySchemaTypes =
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ../web/src/sanity/queries/dishQuery.ts
 // Variable: DISH_QUERY
-// Query: *[_type == 'dishSection']{   _key,     image,     title,     dish[]{     _key,     title,     dishes   }}
+// Query: *[_type == 'dishSection'].dish[]{  _key,  dishes,image,  title,}
 export type DISH_QUERYResult = Array<{
-  _key: null;
-  image: null;
-  title: string | null;
-  dish: Array<{
-    _key: string;
+  _key: string;
+  dishes: Array<{
     title: string;
-    dishes: Array<{
-      title: string;
-      allergy: Array<string>;
-      description?: string;
-      dineInPrice?: number;
-      takeAwayPrice?: number;
-      _type: 'dish';
-      _key: string;
-    }> | null;
+    allergy: Array<string>;
+    description?: string;
+    dineInPrice?: number;
+    takeAwayPrice?: number;
+    _type: 'dish';
+    _key: string;
   }> | null;
-}>;
+  image: {
+    asset?: {
+      _ref: string;
+      _type: 'reference';
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: string;
+    _type: 'image';
+  } | null;
+  title: string;
+} | null>;
 
 // Source: ../web/src/sanity/queries/menuQuery.ts
 // Variable: MENU_QUERY
@@ -721,7 +728,7 @@ export type MENU_QUERYResult = {
 
 // Source: ../web/src/sanity/queries/pageQuery.ts
 // Variable: PAGE_QUERY
-// Query: *[_type == 'page' && slug.current == $slug][0]{  title,  "slug": slug.current,  metaDescription,  metaImage,  body[]{    _type,    _type == 'banner' => {      _key,      header,      subHeader,      bannerImage    },    _type == 'featureBlock' => {      _key,      title,      image,      content    },    _type == 'CTAPageBlock' => {      _key,      title,      subtitle,      linkEmbed {        label,        href      }    },    _type == 'aboutPageBlock' => {      _key,      title,      description,      image    },     _type == 'menuPageBlock' => {      _key,      title,      description,      image,       linkEmbed {        label,        href      }    },    _type == 'cateringBlock' => {      _key,      title,      content,      linkEmbed {        label,        href      }    }  }}
+// Query: *[_type == 'page' && slug.current == $slug][0]{  title,  "slug": slug.current,  metaDescription,  metaImage,  body[] {    _type,    _type == 'banner' => {      _key,      header,      subHeader,      bannerImage    },    _type == 'featureBlock' => {      _key,      title,      image,      content    },    _type == 'CTAPageBlock' => {      _key,      title,      subtitle,      linkEmbed {        label,        href      }    },    _type == 'aboutPageBlock' => {      _key,      title,      description,      image    },    _type == 'menuPageBlock' => {      _key,      title,      description,      image,      linkEmbed {        label,        href      }    },    _type == 'cateringBlock' => {      _key,      title,      content,      linkEmbed {        label,        href      }    }  },  footer[] {    _type,    _type == 'addressFooterBlock' => {      _key,      streetName,      streetNumber,      postalCode,      town    },      _type == 'openingHoursFooterBlock' => {      _key,      monday,      tuesdayThursday,      fridaySaturday,      sunday    },      _type == 'contactFooterBlock' => {      _key,      telephone,      email    },     _type == 'socialMediaFooterBlock' => {      _key,      facebook,      instagram    },  }}
 export type PAGE_QUERYResult = {
   title: string;
   slug: string;
@@ -838,14 +845,44 @@ export type PAGE_QUERYResult = {
         _type: 'menuBlock';
       }
   > | null;
+  footer: Array<
+    | {
+        _type: 'addressFooterBlock';
+        _key: string;
+        streetName: string;
+        streetNumber: number;
+        postalCode: number;
+        town: string;
+      }
+    | {
+        _type: 'openingHoursFooterBlock';
+        _key: string;
+        sunday: string;
+        monday: number;
+        tuesdayThursday: number;
+        fridaySaturday: string;
+      }
+    | {
+        _type: 'contactFooterBlock';
+        _key: string;
+        email: string;
+        telephone: string;
+      }
+    | {
+        _type: 'socialMediaFooterBlock';
+        _key: string;
+        facebook: string;
+        instagram: string;
+      }
+  > | null;
 } | null;
 
 // Query TypeMap
 import '@sanity/client';
 declare module '@sanity/client' {
   interface SanityQueries {
-    "\n *[_type == 'dishSection']{\n   _key,\n     image,\n     title,\n     dish[]{\n     _key,\n     title,\n     dishes\n   }\n\n}\n   ": DISH_QUERYResult;
+    "\n *[_type == 'dishSection'].dish[]{\n  _key,\n  dishes,\nimage,\n  title,\n\n}\n  ": DISH_QUERYResult;
     "\n*[_type == 'menu' && slug.current == $slug][0] {\n  title,\n  \"slug\":slug.current,\n  metaDescription,\n  metaImage,\n    body[]{\n      _type,\n      _type == 'banner'=> {\n        _key,\n          header,\n        subHeader,\n        bannerImage\n      },\n      _type == 'allergyBlock'=>{\n        _key,\n        title,\n         content,\n          menuAllergy\n      },\n      _type == 'lunchBlock' => {\n        title,\n        _key,\n          \"dishReference\":lunchReference[]->{\n        _id,\n        _type,\n        title,\n        description,\n        dineInPrice,\n        takeawayPrice,\n        allergy[]\n\n      }\n      },\n    },\n\n}\n  ": MENU_QUERYResult;
-    "\n*[_type == 'page' && slug.current == $slug][0]{\n  title,\n  \"slug\": slug.current,\n  metaDescription,\n  metaImage,\n  body[]{\n    _type,\n    _type == 'banner' => {\n      _key,\n      header,\n      subHeader,\n      bannerImage\n    },\n    _type == 'featureBlock' => {\n      _key,\n      title,\n      image,\n      content\n    },\n    _type == 'CTAPageBlock' => {\n      _key,\n      title,\n      subtitle,\n      linkEmbed {\n        label,\n        href\n      }\n    },\n    _type == 'aboutPageBlock' => {\n      _key,\n      title,\n      description,\n      image\n    },\n     _type == 'menuPageBlock' => {\n      _key,\n      title,\n      description,\n      image,\n       linkEmbed {\n        label,\n        href\n      }\n    },\n    _type == 'cateringBlock' => {\n      _key,\n      title,\n      content,\n      linkEmbed {\n        label,\n        href\n      }\n    }\n  }\n}\n": PAGE_QUERYResult;
+    "\n*[_type == 'page' && slug.current == $slug][0]{\n  title,\n  \"slug\": slug.current,\n  metaDescription,\n  metaImage,\n  body[] {\n    _type,\n    _type == 'banner' => {\n      _key,\n      header,\n      subHeader,\n      bannerImage\n    },\n    _type == 'featureBlock' => {\n      _key,\n      title,\n      image,\n      content\n    },\n    _type == 'CTAPageBlock' => {\n      _key,\n      title,\n      subtitle,\n      linkEmbed {\n        label,\n        href\n      }\n    },\n    _type == 'aboutPageBlock' => {\n      _key,\n      title,\n      description,\n      image\n    },\n    _type == 'menuPageBlock' => {\n      _key,\n      title,\n      description,\n      image,\n      linkEmbed {\n        label,\n        href\n      }\n    },\n    _type == 'cateringBlock' => {\n      _key,\n      title,\n      content,\n      linkEmbed {\n        label,\n        href\n      }\n    }\n  },\n  footer[] {\n    _type,\n    _type == 'addressFooterBlock' => {\n      _key,\n      streetName,\n      streetNumber,\n      postalCode,\n      town\n    },\n      _type == 'openingHoursFooterBlock' => {\n      _key,\n      monday,\n      tuesdayThursday,\n      fridaySaturday,\n      sunday\n    },\n      _type == 'contactFooterBlock' => {\n      _key,\n      telephone,\n      email\n    },\n     _type == 'socialMediaFooterBlock' => {\n      _key,\n      facebook,\n      instagram\n    },\n  }\n}\n": PAGE_QUERYResult;
   }
 }

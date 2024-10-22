@@ -28,6 +28,34 @@ export type Menu = {
 };
 /* ======= Frontpage types ======= */
 
+/* ======= Footer types ======= */
+
+export type IAddressFooter = {
+  streetName: string;
+  streetNumber: number;
+  postalCode: number;
+  town: string;
+};
+
+export type IOpeningHoursFooter = {
+  sunday: string;
+  monday: number;
+  tuesdayThursday: number;
+  fridaySaturday: string;
+};
+
+export type IContactFooter = {
+  telephone: string;
+  email: string;
+};
+
+export type ISocialMediaFooterBlock = {
+  facebook: string;
+  instagram: string;
+};
+
+/* ======= Footer types ======= */
+
 /* export type DISH_QUERYResult = Array<{
   _key: null;
   image: null;
