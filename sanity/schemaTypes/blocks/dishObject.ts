@@ -18,6 +18,7 @@ export default defineType({
       title: 'Seksjons bilde.',
       type: 'image',
       description: 'Bilde som vises under teksten på seksjonen.',
+      validation: (Rule) => Rule.required(),
       fields: [
         defineField({
           name: 'alt',

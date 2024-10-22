@@ -33,7 +33,7 @@ export default defineConfig(
     plugins: [
       structureTool({ structure: customStructure }),
       visionTool(),
-      unsplashImageAsset(),
+
       presentationTool({
         /*  resolve, */
         previewUrl: {
