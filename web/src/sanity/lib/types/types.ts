@@ -1,3 +1,4 @@
+import { Dish } from '../sanity.types';
 import { SanityImage, SanityLinkEmbed } from './reusableType';
 
 /* ======= Frontpage types ======= */
@@ -26,6 +27,32 @@ export type Menu = {
   image: SanityImage;
   linkEmbed: SanityLinkEmbed;
 };
+
+export type Dishes = Array<{
+  _key: string;
+  title: string;
+  dishes: Array<{
+    title: string;
+    allergy: Array<string>;
+    description: string; //
+    dineInPrice: number; //
+    takeAwayPrice: number;
+    _key: string;
+    image: SanityImage;
+  }>;
+}>;
+
+export type ArrOfDishes = Array<{
+  dishes: Array<{
+    title: string;
+    allergy: Array<string>;
+    description: string; //
+    dineInPrice: number; //
+    takeAwayPrice: number;
+    _key: string;
+    image: SanityImage;
+  }> | null;
+}>;
 /* ======= Frontpage types ======= */
 
 /* export type DISH_QUERYResult = Array<{
