@@ -28,13 +28,14 @@ async function fetchDishData() {
 export default async function Page() {
   const data = await fetchPageData();
   const dish = await fetchDishData();
-
+  console.log(dish);
   return (
     <>
       <Header />
       <main>
-        <MenuHandler data={data} />
-        <Dishes data={dish} />
+        {/*       <MenuHandler data={data} /> */}
+
+        {dish.length !== 0 && <Dishes data={dish} />}
       </main>
       <Footer />
     </>

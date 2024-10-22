@@ -4,6 +4,7 @@ import Wrapper from '@/app/components/wrapper';
 import styles from './styles.module.css';
 import Image from 'next/image';
 import { urlFor } from '@/sanity/lib/imageUrlBuilder';
+import { IoMdInformationCircleOutline } from 'react-icons/io';
 
 type Props = {
   data: {
@@ -24,31 +25,14 @@ type Props = {
 
 export default function Dishes({ data }: Props) {
   return (
-    <section>
+    <section className="mt-10">
       {data.map(({ _key, title, image, dishes }) => (
-        <section key={_key}>
-          <div>
-            <div className=" z-[2]absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[2]">
-              <h2 className="text-4xl  self-center">{title}</h2>
-            </div>
-
-            <div className="relative">
-              {image && (
-                <Image
-                  className="max-h-[500px] w-full object-cover aspect-auto"
-                  src={urlFor(image).url()}
-                  alt={image.alt}
-                  width={1400}
-                  height={1200}
-                />
-              )}
-              <div className="absolute inset-0 bg-black/50"></div>
-            </div>
-          </div>
-          <Wrapper optionalStyle="flex  flex-col gap-[10rem] ">
+        <div key={_key}>
+          <Wrapper optionalStyle="flex  flex-col gap-4 my-10">
+            <h2 className=" text-4xl self-center">{title}</h2>
             <Grid>
               {dishes.map(({ _type, title, dineInPrice, takeAwayPrice, description, allergy }) => (
-                <li className={clsx(styles.subgrid, 'border rounded-md p-4  gap-2')} key={_type}>
+                <li className={clsx(styles.subgrid, 'rounded-md p-4  gap-2')} key={_type}>
                   <div className="flex flex-col gap-2">
                     <p className="font-bold">{title}</p>
                     <p className="max-w-[55ch]">{description}</p>
@@ -66,7 +50,8 @@ export default function Dishes({ data }: Props) {
                   </div>
 
                   <div>
-                    <p className=" inline-block">
+                    <p className=" inline-flex items-center gap-2 py-1 px-2 rounded-md bg-[#E5F1FA] ">
+                      <IoMdInformationCircleOutline size={22} />
                       <span className="font-medium">Allergener:</span> {''}
                       {allergy?.map((ele, index) => (
                         <span key={index}>
@@ -80,7 +65,7 @@ export default function Dishes({ data }: Props) {
               ))}
             </Grid>
           </Wrapper>
-        </section>
+        </div>
       ))}
     </section>
   );

@@ -8,5 +8,5 @@
 .subgrid {
   display: grid;
   grid-template-rows: subgrid;
-  grid-row: 1 / 4;
+  grid-row: span 4;
 }

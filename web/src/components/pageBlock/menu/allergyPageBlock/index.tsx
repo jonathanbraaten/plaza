@@ -13,7 +13,7 @@ type Props = {
 };
 export default function AllergyBlockComponent({ data }: Props) {
   return (
-    <section className="bg-green-200">
+    <section>
       <Wrapper optionalStyle="flex flex-col">
         <article className="mx-auto">
           <h2> {data.title}</h2>
