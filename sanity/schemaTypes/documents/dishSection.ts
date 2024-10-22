@@ -7,17 +7,17 @@ export default defineType({
   fields: [
     defineField({
       name: 'title',
-      title: 'Tittel',
+      title: 'Meny',
       type: 'string',
-      validation: (Rule) => Rule.required(),
-      description: 'Tittelen på seksjonen. "Lunsj, Hamburger".',
+      hidden: true,
+      initialValue: 'Meny',
     }),
     defineField({
-      name: 'dishes',
+      name: 'dish',
       title: 'Matretter',
-      description: '',
+      description: 'Holder dataen av alle matrettene.',
       type: 'array',
-      of: [{ type: 'dish' }],
+      of: [{ type: 'dishObject' }],
     }),
   ],
 });

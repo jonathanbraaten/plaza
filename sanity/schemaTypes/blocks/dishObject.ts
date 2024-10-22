@@ -8,12 +8,30 @@ export default defineType({
   fields: [
     defineField({
       name: 'title',
+      title: 'Tittel',
+      description: 'Tittelen på seksjonen som vises på siden. For eksempel: "Lunsj"',
       type: 'string',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'lunchReference',
+      name: 'image',
+      title: 'Seksjons bilde.',
+      type: 'image',
+      description: 'Bilde som vises under teksten på seksjonen.',
+      fields: [
+        defineField({
+          name: 'alt',
+          title: 'Alternativ tekst',
+          type: 'string',
+          validation: (Rule) => Rule.required(),
+        }),
+      ],
+    }),
+    defineField({
+      name: 'dishes',
+      title: 'Matrett',
       type: 'array',
-      of: [defineArrayMember({ type: 'reference', to: { type: 'dish' } })],
+      of: [defineArrayMember({ type: 'dish' })],
     }),
   ],
 });

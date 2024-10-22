@@ -5,29 +5,8 @@ import { schemaTypes } from './schemaTypes';
 import { customStructure } from './deskStructure';
 import { presentationTool } from 'sanity/presentation';
 import { resolve } from './presentation/resolve';
+import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash';
 const SANITY_STUDIO_PREVIEW_URL = process.env.SANITY_STUDIO_PREVIEW_URL || 'https://localhost:3010';
-
-/* export default defineConfig({
-  name: 'default',
-  title: 'plaza',
-  projectId: 'aiar1864',
-  dataset: 'production',
-  plugins: [
-    structureTool({ structure: customStructure }),
-    visionTool(),
-    presentationTool({
-      resolve,
-      previewUrl: {
-        previewMode: {
-          enable: `${SANITY_STUDIO_PREVIEW_URL}/api/draft-mode/enable`,
-        },
-      },
-    }),
-  ],
-  schema: {
-    types: schemaTypes,
-  },
-}); */
 
 const sharedConfigs = [
   {
@@ -54,6 +33,7 @@ export default defineConfig(
     plugins: [
       structureTool({ structure: customStructure }),
       visionTool(),
+      unsplashImageAsset(),
       presentationTool({
         /*  resolve, */
         previewUrl: {

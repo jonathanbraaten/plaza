@@ -44,14 +44,14 @@ export default defineType({
     select: {
       title: 'title',
       dineInPrice: 'dineInPrice',
-      takeawayPrice: 'takeawayPrice',
+      takeAwayPrice: 'takeAwayPrice',
     },
     prepare(selection) {
-      const { title, dineInPrice, takeawayPrice } = selection;
+      const { title, dineInPrice, takeAwayPrice } = selection;
       return {
         title: title,
         media: PiBowlFood,
-        subtitle: `Spise inne: ${dineInPrice}kr | Ta med: ${takeawayPrice}kr`,
+        subtitle: `Spise inne: ${dineInPrice}kr | Ta med: ${takeAwayPrice}kr`,
       };
     },
   },
