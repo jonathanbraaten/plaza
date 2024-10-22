@@ -27,3 +27,22 @@ export type Menu = {
   linkEmbed: SanityLinkEmbed;
 };
 /* ======= Frontpage types ======= */
+
+/* export type DISH_QUERYResult = Array<{
+  _key: null;
+  image: null;
+  title: string | null;
+  dish: Array<{
+    _key: string;
+    title: string;
+    dishes: Array<{
+      title: string;
+      allergy: Array<string>;
+      description?: string;
+      dineInPrice?: number;
+      takeAwayPrice?: number;
+      _type: 'dish';
+      _key: string;
+    }> | null;
+  }> | null;
+}>;*/
