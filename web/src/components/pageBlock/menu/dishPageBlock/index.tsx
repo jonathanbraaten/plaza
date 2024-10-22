@@ -8,6 +8,7 @@ import clsx from 'clsx';
 import styles from './styles.module.css';
 import { IoMdInformationCircleOutline } from 'react-icons/io';
 import React from 'react';
+import { montserrat } from '@/ui/fonts';
 async function fetchDishData() {
   const data = await sanityFetch({
     query: DISH_QUERY,
@@ -24,8 +25,8 @@ export default async function DishPageBlockComponent() {
       {(data as Dishes).map(
         ({ _key, title, dishes }: { _key: string; title: string; dishes: unknown }) => {
           return (
-            <React.Fragment key={_key}>
-              <h2>{title}</h2>
+            <article className="flex flex-col" key={_key}>
+              <h2 className={clsx(montserrat.className, 'self-center')}>{title}</h2>
               <div>
                 <Wrapper optionalStyle="flex flex-col gap-4 my-10">
                   <Grid>
@@ -38,7 +39,10 @@ export default async function DishPageBlockComponent() {
                         description,
                         allergy,
                       }: Dish) => (
-                        <li className={clsx(styles.subgrid, 'rounded-md p-4  gap-2')} key={_type}>
+                        <li
+                          className={clsx(styles.subgrid, 'rounded-md p-4  gap-2 bg-slate-50/40')}
+                          key={_type}
+                        >
                           <div className="flex flex-col gap-2">
                             <p>{title}</p>
                             <p className="max-w-[55ch]">{description}</p>
@@ -56,13 +60,13 @@ export default async function DishPageBlockComponent() {
                           </div>
 
                           <div>
-                            <p className=" inline-flex items-center gap-2 py-1 px-2 rounded-md bg-[#E5F1FA] ">
+                            <p className=" inline-flex items-center gap-2 py-1 px-2 rounded-md bg-slate-200/40 ">
                               <IoMdInformationCircleOutline size={22} />
-                              <span className="font-medium">Allergener:</span> {''}
+                              <span className="font-bold">Allergener:</span>
                               {allergy?.map((ele, index) => (
                                 <span key={index}>
                                   {ele}
-                                  {index < allergy.length - 1 && ', '}
+                                  {index < allergy.length - 1 && ','}
                                 </span>
                               ))}
                             </p>
@@ -73,7 +77,7 @@ export default async function DishPageBlockComponent() {
                   </Grid>
                 </Wrapper>
               </div>
-            </React.Fragment>
+            </article>
           );
         },
       )}
