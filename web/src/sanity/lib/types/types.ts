@@ -30,6 +30,7 @@ export type Menu = {
 export type Dishes = Array<{
   _key: string;
   title: string;
+  image: SanityImage;
   dishes: Array<{
     title: string;
     allergy: Array<string>;
