@@ -8,6 +8,7 @@ import React from 'react';
 
 import { AllergyBlock, MinimalPortableText } from '@/sanity/lib/sanity.types';
 import { SanityImageObject } from '@sanity/image-url/lib/types/types';
+import { montserrat } from '@/ui/fonts';
 type Props = {
   data: AllergyBlock;
 };
@@ -16,7 +17,7 @@ export default function AllergyBlockComponent({ data }: Props) {
     <section>
       <Wrapper optionalStyle="flex flex-col">
         <article className="mx-auto">
-          <h2> {data.title}</h2>
+          <h2 className={clsx(montserrat.className)}> {data.title}</h2>
           <PortableText value={data.content as MinimalPortableText} />
         </article>
         <div className={clsx(styles.grid, '  rounded-md p-10')}>
