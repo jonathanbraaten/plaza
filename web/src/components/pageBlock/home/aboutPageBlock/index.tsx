@@ -18,7 +18,7 @@ export default function AboutPageBlockComponent({ title, description, image }: A
           />
         </div>
         <div>
-          <h1 className="text-[2.875rem] font-medium mb-[1.875rem]">{title}</h1>
+          <h2 className="text-[2.875rem] font-medium mb-[1.875rem]">{title}</h2>
           <p>{description}</p>
         </div>
       </div>

@@ -2,14 +2,15 @@ import { urlFor } from '@/sanity/lib/imageUrlBuilder';
 import { SanityImageObject } from '@sanity/image-url/lib/types/types';
 import Image from 'next/image';
 import { Banner } from '@/sanity/lib/types/types';
-
+import { montserrat } from '@/ui/fonts';
+import clsx from 'clsx';
 export default function HomeBannerPageBlockComponent({ header, subHeader, bannerImage }: Banner) {
   return (
     <section className="relative ">
       {header && (
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[2]">
-          <h1 className="text-white text-4xl">{header}</h1>
-          {subHeader && <h2>{subHeader}</h2>}
+          <h1 className={clsx(montserrat.className, 'text-white text-4xl')}>{header}</h1>
+          {subHeader && <h2 className={clsx(montserrat.className)}>{subHeader}</h2>}
         </div>
       )}
       <div className="relative">

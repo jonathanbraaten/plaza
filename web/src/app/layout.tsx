@@ -1,7 +1,6 @@
-import { draftMode } from 'next/headers';
+import clsx from 'clsx';
 import './globals.css';
-import { VisualEditing } from 'next-sanity';
-
+import { abeezee } from '@/ui/fonts';
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -16,19 +15,7 @@ export default function RootLayout({
       <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
       <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
       <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
-      <body>
-        {draftMode().isEnabled && (
-          <a
-            className="fixed right-0 bottom-0 bg-blue-500 text-white p-4 m-4"
-            href="/api/draft-mode/disable"
-          >
-            Disable preview mode
-          </a>
-        )}
-
-        {children}
-        {draftMode().isEnabled && <VisualEditing />}
-      </body>
+      <body className={clsx(abeezee.className, 'antialiased')}>{children}</body>
     </html>
   );
 }

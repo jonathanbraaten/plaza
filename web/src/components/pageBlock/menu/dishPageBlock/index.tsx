@@ -40,7 +40,7 @@ export default async function DishPageBlockComponent() {
                       }: Dish) => (
                         <li className={clsx(styles.subgrid, 'rounded-md p-4  gap-2')} key={_type}>
                           <div className="flex flex-col gap-2">
-                            <p className="font-bold">{title}</p>
+                            <p>{title}</p>
                             <p className="max-w-[55ch]">{description}</p>
                           </div>
                           <div className=" self-start">
