@@ -20,7 +20,7 @@ export default async function Home() {
   return (
     <>
       <Header />
-      <main>
+      <main className="flex flex-col gap-[10rem]">
         <PageHandler data={data} />
       </main>
       <Footer />
