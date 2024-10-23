@@ -9,9 +9,29 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: 'var(--background)',
-        foreground: 'var(--foreground)',
-        primary: '#133956',
+        primary: 'hsl(205,65%,20%)',
+        'text-strong': 'hsl(226, 64%, 14%)',
+        'text-weak': 'hsl(226,43%, 18%)',
+        'stroke-strong': 'hsl(216,65%, 72%)',
+        'stroke-weak': 'hsl(221,65%, 84%)',
+        fill: 'hsl(227,66%,93%)',
+      },
+      fontSize: {
+        // Web/Desktop Values
+        'desktop-h1': '3.25rem', // 52px
+        'desktop-h2': '2.5rem', // 40px
+        'desktop-h3': '2rem', // 32px
+        'desktop-h4': '1.5625rem', // 25px
+        'desktop-h5': '1.125rem', // 18px
+
+        // Mobile Values
+        'mobile-h1': ' 2.375rem', // 38px
+        'mobile-h2': '2rem', // 32px
+        'mobile-h3': '1.625rem', // 26px
+        'mobile-h4': '1.3125rem', // 21px
+        'mobile-h5': '1rem', // 16px
+        body: '1.125rem',
+        subtext: '0.875rem',
       },
     },
   },

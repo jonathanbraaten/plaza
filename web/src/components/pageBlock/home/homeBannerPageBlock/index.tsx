@@ -9,7 +9,14 @@ export default function HomeBannerPageBlockComponent({ header, subHeader, banner
     <section className="relative ">
       {header && (
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[2]">
-          <h1 className={clsx(montserrat.className, 'text-white text-4xl')}>{header}</h1>
+          <h1
+            className={clsx(
+              montserrat.className,
+              'text-white   text-mobile-h1 lg:text-desktop-h1 ',
+            )}
+          >
+            {header}
+          </h1>
           {subHeader && <h2 className={clsx(montserrat.className)}>{subHeader}</h2>}
         </div>
       )}
