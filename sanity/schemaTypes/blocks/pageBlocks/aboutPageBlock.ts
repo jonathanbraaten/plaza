@@ -25,6 +25,9 @@ export default defineType({
       title: 'Image',
       type: 'image',
       description: 'Image for about section',
+      options: {
+        hotspot: true,
+      },
       fields: [
         defineField({
           name: 'alt',
