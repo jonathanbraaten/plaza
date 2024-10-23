@@ -55,6 +55,34 @@ export type ArrOfDishes = Array<{
 }>;
 /* ======= Frontpage types ======= */
 
+/* ======= Footer types ======= */
+export type IAddressFooter = {
+  _key?: string;
+  streetName: string;
+  streetNumber: number;
+  postalCode: number;
+  town: string;
+};
+
+export type IOpeningHourFooter = Array<{
+  _key?: string;
+  day: string;
+  hours: string;
+}>;
+
+export type IContactFooter = {
+  _key?: string;
+  phone: string;
+  email: string;
+};
+
+export type ISocialMediaFooter = Array<{
+  _key?: string;
+  platform: string;
+  url: string;
+}>;
+/* ======= Footer types ======= */
+
 /* export type DISH_QUERYResult = Array<{
   _key: null;
   image: null;

@@ -847,6 +847,37 @@ export type PAGE_QUERYResult = {
   > | null;
 } | null;
 
+export type FOOTER_QUERYResult = {
+  _key: string;
+  _type: 'footer';
+  address: {
+    _type: 'adddress';
+    _key: string;
+    streetName: string;
+    streetNumber: number;
+    postalCode: number;
+    town: string;
+  };
+  openingHours: Array<{
+    _type: 'openingHours';
+    _key: string;
+    day: string;
+    hours: string;
+  }>;
+  contact: {
+    _type: 'contact';
+    _key: string;
+    phone: string;
+    email: string;
+  };
+  socialMedia: Array<{
+    _type: 'socialMedia';
+    _key: string;
+    platform: string;
+    url: string;
+  }>;
+};
+
 // Query TypeMap
 import '@sanity/client';
 declare module '@sanity/client' {
