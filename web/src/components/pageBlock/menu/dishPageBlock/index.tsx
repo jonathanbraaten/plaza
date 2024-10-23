@@ -64,17 +64,10 @@ export default async function DishPageBlockComponent() {
                 <Wrapper optionalStyle="flex flex-col gap-4 my-10">
                   <Grid>
                     {(dishes as Dish[])?.map(
-                      ({
-                        _type,
-                        title,
-                        dineInPrice,
-                        takeAwayPrice,
-                        description,
-                        allergy,
-                      }: Dish) => (
+                      ({ _key, title, dineInPrice, takeAwayPrice, description, allergy }: Dish) => (
                         <li
                           className={clsx(styles.subgrid, ' p-4  gap-2 bg-slate-50/40 mb-40')}
-                          key={_type}
+                          key={_key}
                         >
                           <div className="flex flex-col gap-2">
                             <p>{title}</p>

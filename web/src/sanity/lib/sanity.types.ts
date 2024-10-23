@@ -290,8 +290,8 @@ export type DishSection = {
 };
 
 export type Dish = {
+  _key: string;
   _id: string;
-  _type: 'dish';
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
