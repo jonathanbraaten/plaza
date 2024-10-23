@@ -1,5 +1,5 @@
-import { defineField, defineType } from 'sanity';
-import { PiLego } from 'react-icons/pi';
+import {defineField, defineType} from 'sanity'
+import {PiLego} from 'react-icons/pi'
 
 export default defineType({
   name: 'menuBlock',
@@ -17,6 +17,9 @@ export default defineType({
       name: 'image',
       title: 'Bilde',
       type: 'image',
+      options: {
+        hotspot: true,
+      },
       fields: [
         defineField({
           name: 'alt',
@@ -33,6 +36,6 @@ export default defineType({
       title: 'Innhold',
       type: 'minimalPortableText',
     }),
-    defineField({ name: 'linkEmbed', type: 'linkEmbed' }),
+    defineField({name: 'linkEmbed', type: 'linkEmbed'}),
   ],
-});
+})

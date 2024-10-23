@@ -1,5 +1,5 @@
-import { defineField, defineType } from 'sanity';
-import { PiLego } from 'react-icons/pi';
+import {defineField, defineType} from 'sanity'
+import {PiLego} from 'react-icons/pi'
 
 export default defineType({
   name: 'featureBlock',
@@ -17,6 +17,9 @@ export default defineType({
       name: 'image',
       title: 'Bilde',
       type: 'image',
+      options: {
+        hotspot: true,
+      },
       fields: [
         defineField({
           name: 'alt',
@@ -35,4 +38,4 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
   ],
-});
+})

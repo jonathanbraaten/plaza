@@ -1,5 +1,5 @@
-import { defineArrayMember, defineField, defineType } from 'sanity';
-import { PiLego } from 'react-icons/pi';
+import {defineArrayMember, defineField, defineType} from 'sanity'
+import {PiLego} from 'react-icons/pi'
 
 export default defineType({
   name: 'dishObject',
@@ -18,6 +18,9 @@ export default defineType({
       title: 'Seksjons bilde.',
       type: 'image',
       description: 'Bilde som vises under teksten på seksjonen.',
+      options: {
+        hotspot: true,
+      },
       validation: (Rule) => Rule.required(),
       fields: [
         defineField({
@@ -32,7 +35,7 @@ export default defineType({
       name: 'dishes',
       title: 'Matrett',
       type: 'array',
-      of: [defineArrayMember({ type: 'dish' })],
+      of: [defineArrayMember({type: 'dish'})],
     }),
   ],
-});
+})
