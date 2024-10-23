@@ -1,5 +1,4 @@
 import Wrapper from '@/app/components/wrapper';
-import Link from 'next/link';
 import { CTA } from '@/sanity/lib/types/types';
 import clsx from 'clsx';
 import { montserrat } from '@/ui/fonts';
