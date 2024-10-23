@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import Nav from '../nav';
 import Wrapper from '../wrapper';
-import Image from 'next/image';
+/* import Image from 'next/image'; */
 import { RxHamburgerMenu } from 'react-icons/rx';
 export default function Header() {
   const [isActive, setIsActive] = useState(false);
