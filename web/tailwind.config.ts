@@ -19,15 +19,15 @@ const config: Config = {
       fontSize: {
         // Web/Desktop Values
         'desktop-h1': '3.25rem', // 52px
-        'desktop-h2': '2.5rem', // 40px
-        'desktop-h3': '2rem', // 32px
+        'desktop-h2': '2.3rem', // 40px
+        'desktop-h3': '1.6rem', // 32px
         'desktop-h4': '1.5625rem', // 25px
         'desktop-h5': '1.125rem', // 18px
 
         // Mobile Values
         'mobile-h1': ' 2.375rem', // 38px
-        'mobile-h2': '2rem', // 32px
-        'mobile-h3': '1.625rem', // 26px
+        'mobile-h2': '1.8rem', // 32px
+        'mobile-h3': '1.5rem', // 26px
         'mobile-h4': '1.3125rem', // 21px
         'mobile-h5': '1rem', // 16px
         body: '1.125rem',

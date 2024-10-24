@@ -123,7 +123,7 @@ export type MinimalPortableText = Array<{
 export type DishObject = {
   _type: 'dishObject';
   title: string;
-  image?: {
+  image: {
     asset?: {
       _ref: string;
       _type: 'reference';
@@ -290,8 +290,8 @@ export type DishSection = {
 };
 
 export type Dish = {
-  _key: string;
   _id: string;
+  _type: 'dish';
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
@@ -412,9 +412,9 @@ export type Menu = {
   };
   body?: Array<
     | {
-        header?: string;
+        header: string;
         subHeader?: string;
-        bannerImage?: {
+        bannerImage: {
           asset?: {
             _ref: string;
             _type: 'reference';
@@ -444,9 +444,9 @@ export type Banner = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  header?: string;
+  header: string;
   subHeader?: string;
-  bannerImage?: {
+  bannerImage: {
     asset?: {
       _ref: string;
       _type: 'reference';
@@ -482,9 +482,9 @@ export type Page = {
   };
   body?: Array<
     | {
-        header?: string;
+        header: string;
         subHeader?: string;
-        bannerImage?: {
+        bannerImage: {
           asset?: {
             _ref: string;
             _type: 'reference';
@@ -645,7 +645,7 @@ export type DISH_QUERYResult = Array<{
     crop?: SanityImageCrop;
     alt: string;
     _type: 'image';
-  } | null;
+  };
   title: string;
 } | null>;
 
@@ -694,7 +694,7 @@ export type MENU_QUERYResult = {
     | {
         _type: 'banner';
         _key: string;
-        header: string | null;
+        header: string;
         subHeader: string | null;
         bannerImage: {
           asset?: {
@@ -707,7 +707,7 @@ export type MENU_QUERYResult = {
           crop?: SanityImageCrop;
           alt: string;
           _type: 'image';
-        } | null;
+        };
       }
     | {
         _type: 'lunchBlock';
@@ -766,7 +766,7 @@ export type PAGE_QUERYResult = {
     | {
         _type: 'banner';
         _key: string;
-        header: string | null;
+        header: string;
         subHeader: string | null;
         bannerImage: {
           asset?: {
@@ -779,7 +779,7 @@ export type PAGE_QUERYResult = {
           crop?: SanityImageCrop;
           alt: string;
           _type: 'image';
-        } | null;
+        };
       }
     | {
         _type: 'cateringBlock';
