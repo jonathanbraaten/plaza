@@ -4,18 +4,19 @@ import { visionTool } from '@sanity/vision';
 import { schemaTypes } from './schemaTypes';
 import { customStructure } from './deskStructure';
 import { presentationTool } from 'sanity/presentation';
-import { resolve } from './presentation/resolve';
+import { IoMdHammer, IoMdRocket } from 'react-icons/io';
 import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash';
 const SANITY_STUDIO_PREVIEW_URL = process.env.SANITY_STUDIO_PREVIEW_URL || 'https://localhost:3010';
 
 const sharedConfigs = [
   {
     name: 'production',
-    title: 'Default Workspace',
+    title: 'Production Workspace',
     projectId: 'aiar1864',
     dataset: 'production',
     basePath: '/production',
-    subtitle: 'production',
+    subtitle: 'Production (for the deployed page)',
+    icon: IoMdRocket,
   },
   {
     name: 'staging',
@@ -23,7 +24,8 @@ const sharedConfigs = [
     projectId: 'aiar1864',
     dataset: 'staging',
     basePath: '/staging',
-    subtitle: 'staging',
+    subtitle: 'Staging (for developing and testing)',
+    icon: IoMdHammer,
   },
 ];
 
@@ -31,7 +33,7 @@ export default defineConfig(
   sharedConfigs.map((config) => ({
     ...config,
     plugins: [
-      structureTool(/* { structure: customStructure } */),
+      structureTool({ structure: customStructure }),
       visionTool(),
 
       presentationTool({

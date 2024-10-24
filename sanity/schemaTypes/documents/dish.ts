@@ -1,21 +1,21 @@
+import { MdFastfood } from 'react-icons/md';
 import { defineField, defineType } from 'sanity';
 
 export default defineType({
   name: 'dish',
-  title: 'Meny liste',
   type: 'document',
+  icon: MdFastfood,
   fields: [
     defineField({
       name: 'title',
-      title: 'Matretter',
+      title: 'Tittel på dokumentet. Ferdig utfylt (kan ikke forandres).',
       type: 'string',
       hidden: true,
       initialValue: 'Meny',
     }),
     defineField({
       name: 'dish',
-      title: 'Matretter',
-      description: 'Holder dataen av alle matrettene.',
+      title: 'Tabell av matretter',
       type: 'array',
       of: [{ type: 'dishHandler' }],
     }),

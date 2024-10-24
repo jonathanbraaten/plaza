@@ -1,10 +1,10 @@
 import { defineArrayMember, defineField, defineType } from 'sanity';
-import { PiLego } from 'react-icons/pi';
+import { MdFastfood } from 'react-icons/md';
 
 export default defineType({
   name: 'dishHandler',
   type: 'object',
-  icon: PiLego,
+  icon: MdFastfood,
   fields: [
     defineField({
       name: 'title',
