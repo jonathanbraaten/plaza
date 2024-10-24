@@ -2,12 +2,12 @@ import { defineField, defineType } from 'sanity';
 
 export default defineType({
   name: 'dish',
-  title: 'Matrett Seksjon',
+  title: 'Meny liste',
   type: 'document',
   fields: [
     defineField({
       name: 'title',
-      title: 'Meny',
+      title: 'Matretter',
       type: 'string',
       hidden: true,
       initialValue: 'Meny',
@@ -17,7 +17,7 @@ export default defineType({
       title: 'Matretter',
       description: 'Holder dataen av alle matrettene.',
       type: 'array',
-      of: [{ type: 'dishObject' }],
+      of: [{ type: 'dishHandler' }],
     }),
   ],
 });

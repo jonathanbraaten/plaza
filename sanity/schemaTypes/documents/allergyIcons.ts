@@ -6,20 +6,24 @@ export default defineType({
   fields: [
     defineField({
       name: 'allergyName',
-      title: 'Navn på allergen.',
+      title: 'Allergen merking. (påkrevd)',
       type: 'string',
-      description: 'Navnet på allergenen. "Egg", "Melk"',
+      description: 'Navnet på allergenen. "Egg", "Melk", "Gluten".',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       type: 'image',
       name: 'image',
-      title: 'Bilde av allergen.',
+      title: 'Allergen ikon. (påkrevd)',
+      description: 'Ikon for visuell visning av allergen.',
+      validation: (Rule) => Rule.required(),
       fields: [
         defineField({
           name: 'alt',
           type: 'string',
           title: 'Alternativ tekst',
-          description: 'Alternativ tekst for skjermleser.',
+          description: 'Alternativ tekst for skjermleser. (påkrevd)',
+          validation: (Rule) => Rule.required(),
         }),
       ],
     }),

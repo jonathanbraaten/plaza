@@ -2,10 +2,10 @@ import { defineField, defineType } from 'sanity';
 import { PiLego } from 'react-icons/pi';
 
 export default defineType({
-  name: 'aboutPageBlock',
+  name: 'introPageBlock',
   type: 'object',
   icon: PiLego,
-  title: 'denne rendres',
+  title: 'Introduksjons seksjon',
   fields: [
     defineField({
       name: 'title',

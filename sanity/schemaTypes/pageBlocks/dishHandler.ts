@@ -2,7 +2,7 @@ import { defineArrayMember, defineField, defineType } from 'sanity';
 import { PiLego } from 'react-icons/pi';
 
 export default defineType({
-  name: 'dishObject',
+  name: 'dishHandler',
   type: 'object',
   icon: PiLego,
   fields: [
@@ -38,7 +38,7 @@ export default defineType({
       type: 'array',
       validation: (Rule) => Rule.required(),
       description: 'Her legger du inn nye matretter som tilhører seksjonen. (påkrevd)',
-      of: [defineArrayMember({ type: 'dish' })],
+      of: [defineArrayMember({ type: 'dishes' })],
     }),
   ],
 });
