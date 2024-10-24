@@ -2,11 +2,11 @@ import { urlFor } from '@/sanity/lib/imageUrlBuilder';
 import { SanityImageObject } from '@sanity/image-url/lib/types/types';
 import Image from 'next/image';
 import Wrapper from '@/app/components/wrapper';
-import { About } from '@/sanity/lib/types/types';
+import { Intro } from '@/sanity/lib/types/types';
 import { montserrat } from '@/ui/fonts';
 import clsx from 'clsx';
 
-export default function AboutPageBlockComponent({ title, description, image }: About) {
+export default function IntroPageBlockComponent({ title, description, image }: Intro) {
   return (
     <section>
       <Wrapper optionalStyle="flex flex-col md:flex-row md:justify-between  gap-5">

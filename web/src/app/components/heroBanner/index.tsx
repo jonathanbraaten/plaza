@@ -8,9 +8,17 @@ import clsx from 'clsx';
 export default function HeroBanner({ header, subHeader, bannerImage }: Banner) {
   return (
     <section className="relative">
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[2] text-mobile-h1 md:text-desktop-h1">
-        <h1 className={clsx(montserrat.className, 'text-white')}>{header}</h1>
-        {subHeader && <h2 className={clsx(montserrat.className)}>{subHeader}</h2>}
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[2] text-mobile-h1 md:text-desktop-h1 text-center">
+        <h1 className={clsx(montserrat.className, 'text-white text-mobile-h1 md:text-desktop-h1')}>
+          {header}
+        </h1>
+        {subHeader && (
+          <h2
+            className={clsx(montserrat.className, 'text-white text-mobile-h2 md:text-desktop-h2')}
+          >
+            {subHeader}
+          </h2>
+        )}
       </div>
 
       <div className="relative">

@@ -8,11 +8,11 @@ export type Banner = {
 
 export type CTA = {
   title: string;
-  subtitle: string;
+  subtitle?: string;
   linkEmbed: SanityLinkEmbed;
 };
 
-export type About = {
+export type Intro = {
   title: string;
   description: string;
   image: SanityImage;
