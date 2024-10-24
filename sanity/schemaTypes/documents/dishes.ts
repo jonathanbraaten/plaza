@@ -5,6 +5,7 @@ export default defineType({
   name: 'dishes',
   title: 'Dish',
   type: 'document',
+
   fields: [
     defineField({
       name: 'title',
