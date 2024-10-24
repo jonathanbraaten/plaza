@@ -1,10 +1,11 @@
-import {defineField, defineType} from 'sanity'
-import {PiLego} from 'react-icons/pi'
+import { defineField, defineType } from 'sanity';
+import { PiLego } from 'react-icons/pi';
 
 export default defineType({
   name: 'aboutPageBlock',
   type: 'object',
   icon: PiLego,
+  title: 'denne rendres',
   fields: [
     defineField({
       name: 'title',
@@ -39,4 +40,17 @@ export default defineType({
       ],
     }),
   ],
-})
+  preview: {
+    select: {
+      title: 'title',
+      media: 'image',
+    },
+    prepare(selection) {
+      const { title, media } = selection;
+      return {
+        title,
+        media,
+      };
+    },
+  },
+});

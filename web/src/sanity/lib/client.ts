@@ -5,6 +5,7 @@ const dataset = process.env.NODE_ENV === 'production' ? 'production' : 'staging'
 export const client = createClient({
   projectId,
   dataset,
+
   apiVersion: '2024-10-11',
   useCdn: false, // Set to false if statically generating pages, using ISR or tag-based revalidation
 });

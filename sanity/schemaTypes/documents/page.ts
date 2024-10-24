@@ -1,12 +1,12 @@
-import {defineArrayMember, defineField, defineType} from 'sanity'
+import { defineArrayMember, defineField, defineType } from 'sanity';
 
 export default defineType({
   name: 'page',
   title: 'Forside',
   type: 'document',
   groups: [
-    {name: 'seo', title: 'SEO'},
-    {name: 'blocks', title: 'Blocks'},
+    { name: 'seo', title: 'SEO' },
+    { name: 'blocks', title: 'Blocks' },
   ],
   fields: [
     defineField({
@@ -45,13 +45,11 @@ export default defineType({
       name: 'body',
       type: 'array',
       of: [
-        defineArrayMember({type: 'banner'}),
-        defineArrayMember({type: 'featureBlock'}),
-        defineArrayMember({type: 'cateringBlock'}),
-        defineArrayMember({type: 'menuBlock'}),
-        defineArrayMember({type: 'aboutPageBlock'}),
-        defineArrayMember({type: 'CTAPageBlock'}),
-        defineArrayMember({type: 'menuPageBlock'}),
+        defineArrayMember({ type: 'banner' }),
+        defineArrayMember({ type: 'menuBlock' }),
+        defineArrayMember({ type: 'aboutPageBlock' }),
+        defineArrayMember({ type: 'CTAPageBlock' }),
+        defineArrayMember({ type: 'menuPageBlock' }),
       ],
 
       options: {
@@ -74,4 +72,4 @@ export default defineType({
       },
     }),
   ],
-})
+});

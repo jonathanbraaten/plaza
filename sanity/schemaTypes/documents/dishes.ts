@@ -2,8 +2,8 @@ import { PiBowlFood } from 'react-icons/pi';
 import { defineField, defineType } from 'sanity';
 
 export default defineType({
-  name: 'lunch',
-  title: 'Lunsj',
+  name: 'dishes',
+  title: 'Dish',
   type: 'document',
   fields: [
     defineField({
@@ -33,7 +33,7 @@ export default defineType({
       validation: (Rule) => Rule.positive(),
     },
     {
-      name: 'takeawayPrice',
+      name: 'takeAwayPrice',
       title: 'Ta med pris',
       description: 'Prisen for å spise på Plaza Kafe.',
       type: 'number',
@@ -44,14 +44,14 @@ export default defineType({
     select: {
       title: 'title',
       dineInPrice: 'dineInPrice',
-      takeawayPrice: 'takeawayPrice',
+      takeAwayPrice: 'takeAwayPrice',
     },
     prepare(selection) {
-      const { title, dineInPrice, takeawayPrice } = selection;
+      const { title, dineInPrice, takeAwayPrice } = selection;
       return {
         title: title,
         media: PiBowlFood,
-        subtitle: `Spise inne: ${dineInPrice}kr | Ta med: ${takeawayPrice}kr`,
+        subtitle: `Spise inne: ${dineInPrice}kr | Ta med: ${takeAwayPrice}kr`,
       };
     },
   },
