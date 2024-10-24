@@ -50,7 +50,6 @@ export default defineType({
           title: 'Informasjon av allergener',
           type: 'allergyBlock',
         }),
-        defineArrayMember({ type: 'lunchBlock' }),
       ],
     }),
   ],
