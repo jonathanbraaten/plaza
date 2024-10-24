@@ -5,6 +5,7 @@ import MenuHandler from '@/components/pageBlock/menu';
 import { MENU_QUERY } from '@/sanity/queries/menuQuery';
 
 import DishPageBlockComponent from '@/components/pageBlock/menu/dishPageBlock';
+import { notFound } from 'next/navigation';
 
 async function fetchPageData() {
   const data = await sanityFetch({
@@ -13,12 +14,13 @@ async function fetchPageData() {
     revalidate: 0,
     tags: ['page', 'meny'],
   });
+
   return data;
 }
 
 export default async function Page() {
   const data = await fetchPageData();
-
+  if (!data) notFound(); //TODO FIX THIS
   return (
     <>
       <Header />

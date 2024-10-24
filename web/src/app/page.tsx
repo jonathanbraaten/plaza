@@ -4,6 +4,7 @@ import Footer from './components/footer';
 import { PAGE_QUERY } from '@/sanity/queries/pageQuery';
 import { PAGE_QUERYResult } from '@/sanity/lib/sanity.types';
 import PageHandler from '@/components/pageBlock/home';
+import { notFound } from 'next/navigation';
 
 async function fetchPageData(): Promise<PAGE_QUERYResult> {
   const data = await sanityFetch({
@@ -17,6 +18,7 @@ async function fetchPageData(): Promise<PAGE_QUERYResult> {
 }
 export default async function Home() {
   const data = await fetchPageData();
+  if (!data) notFound();
   return (
     <>
       <Header />
