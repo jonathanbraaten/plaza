@@ -1,8 +1,8 @@
 import { PAGE_QUERYResult } from '@/sanity/lib/sanity.types';
 import HomeBannerPageBlockComponent from '@/components/pageBlock/home/homeBannerPageBlock';
 import CtaPageBlockComponent from '@/components/pageBlock/home/ctaPageBlock';
-import AboutPageBlockComponent from '@/components/pageBlock/home/aboutPageBlock';
 import MenuPageBlockComponent from '@/components/pageBlock/home/menuPageBlock';
+import IntroPageBlockComponent from '@/components/pageBlock/home/introPageBlock';
 export default function homePageHandler({ data }: { data: PAGE_QUERYResult }) {
   return (
     <>
@@ -17,9 +17,9 @@ export default function homePageHandler({ data }: { data: PAGE_QUERYResult }) {
                 bannerImage={block.bannerImage}
               />
             );
-          case 'aboutPageBlock':
+          case 'introPageBlock':
             return (
-              <AboutPageBlockComponent
+              <IntroPageBlockComponent
                 key={block._key}
                 title={block.title}
                 description={block.description}
@@ -31,7 +31,7 @@ export default function homePageHandler({ data }: { data: PAGE_QUERYResult }) {
               <CtaPageBlockComponent
                 key={block._key}
                 title={block.title}
-                subtitle={block.subtitle}
+                subtitle={block.subtitle || undefined}
                 linkEmbed={block.linkEmbed}
               />
             );

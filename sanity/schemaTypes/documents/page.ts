@@ -46,26 +46,18 @@ export default defineType({
       type: 'array',
       of: [
         defineArrayMember({ type: 'banner' }),
-        defineArrayMember({ type: 'menuBlock' }),
-        defineArrayMember({ type: 'aboutPageBlock' }),
-        defineArrayMember({ type: 'CTAPageBlock' }),
         defineArrayMember({ type: 'menuPageBlock' }),
+        defineArrayMember({ type: 'CTAPageBlock' }),
+        defineArrayMember({ type: 'introPageBlock' }),
       ],
 
       options: {
         insertMenu: {
           groups: [
             {
-              name: 'blocks',
-              title: 'Blocks',
-              of: [
-                'featureBlock',
-                'cateringBlock',
-                'menuBlock',
-                'aboutPageBlock',
-                'CTAPageBlock',
-                'menuPageBlock',
-              ],
+              name: 'seksjoner',
+              title: 'Seksjoner',
+              of: ['banner', 'menuPageBlock', 'ctaPageBlock'],
             },
           ],
         },

@@ -15,6 +15,7 @@ export default defineType({
       title: 'Lenke',
       type: 'url',
       description: 'Legg til en URL.',
+
       validation: (Rule) =>
         Rule.uri({
           scheme: ['http', 'https', 'mailto', 'tel'],

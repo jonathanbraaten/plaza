@@ -10,7 +10,7 @@ export default defineType({
       name: 'title',
       title: 'Tittel',
       type: 'string',
-      description: 'Tittel for seksjonen.',
+      description: 'Hovedtittel for seksjonen. (påkrevd)',
       validation: (Rule) => Rule.required(),
     }),
 
@@ -18,16 +18,35 @@ export default defineType({
       name: 'content',
       title: 'Innhold',
       type: 'minimalPortableText',
-      description: 'Generell informasjon av allergener.',
+      description: 'Informasjon. (valgfri)',
     }),
     defineField({
       name: 'menuAllergy',
+      title: 'Allergener',
       type: 'array',
-      of: [defineArrayMember({ type: 'allergyIcons', validation: (Rule) => Rule.required() })],
+      description: 'Array av allergener med ikon og navn. (14 påkrevd)',
+      of: [
+        defineArrayMember({
+          type: 'allergyIcons',
+          validation: (Rule) => Rule.required(),
+        }),
+      ],
 
       options: {
-        layout: 'grid',
+        layout: 'list',
       },
     }),
   ],
+  preview: {
+    select: {
+      title: 'title',
+    },
+
+    prepare(selection) {
+      const { title } = selection;
+      return {
+        title: title,
+      };
+    },
+  },
 });

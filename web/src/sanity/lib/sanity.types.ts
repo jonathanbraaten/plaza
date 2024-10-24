@@ -135,12 +135,13 @@ export type DishObject = {
     alt: string;
     _type: 'image';
   };
-  dishes?: Array<{
-    title: string;
-    allergy: Array<string>;
-    description?: string;
-    dineInPrice?: number;
-    takeAwayPrice?: number;
+  dishes: Array<{
+    title?: string;
+    dish?: Array<
+      {
+        _key: string;
+      } & DishObject
+    >;
     _type: 'dish';
     _key: string;
   }>;
@@ -149,8 +150,7 @@ export type DishObject = {
 export type MenuPageBlock = {
   _type: 'menuPageBlock';
   title: string;
-  description: string;
-  image?: {
+  image: {
     asset?: {
       _ref: string;
       _type: 'reference';
@@ -162,18 +162,25 @@ export type MenuPageBlock = {
     alt: string;
     _type: 'image';
   };
+  description: string;
   linkEmbed?: LinkEmbed;
 };
 
 export type CTAPageBlock = {
   _type: 'CTAPageBlock';
   title: string;
-  subtitle: string;
+  subtitle?: string;
   linkEmbed?: LinkEmbed;
 };
 
-export type AboutPageBlock = {
-  _type: 'aboutPageBlock';
+export type LinkEmbed = {
+  _type: 'linkEmbed';
+  label?: string;
+  href?: string;
+};
+
+export type IntroPageBlock = {
+  _type: 'introPageBlock';
   title: string;
   description: string;
   image?: {
@@ -188,18 +195,6 @@ export type AboutPageBlock = {
     alt: string;
     _type: 'image';
   };
-};
-
-export type LunchBlock = {
-  _type: 'lunchBlock';
-  title?: string;
-  lunchReference?: Array<{
-    _ref: string;
-    _type: 'reference';
-    _weak?: boolean;
-    _key: string;
-    [internalGroqTypeReferenceTo]?: 'lunch';
-  }>;
 };
 
 export type AllergyBlock = {
@@ -225,73 +220,9 @@ export type AllergyBlock = {
   }>;
 };
 
-export type CateringBlock = {
-  _type: 'cateringBlock';
-  title: string;
-  content: MinimalPortableText;
-  linkEmbed: LinkEmbed;
-};
-
-export type MenuBlock = {
-  _type: 'menuBlock';
-  title: string;
-  image?: {
-    asset?: {
-      _ref: string;
-      _type: 'reference';
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt: string;
-    _type: 'image';
-  };
-  content?: MinimalPortableText;
-  linkEmbed?: LinkEmbed;
-};
-
-export type LinkEmbed = {
-  _type: 'linkEmbed';
-  label?: string;
-  href?: string;
-};
-
-export type FeatureBlock = {
-  _type: 'featureBlock';
-  title: string;
-  image?: {
-    asset?: {
-      _ref: string;
-      _type: 'reference';
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt: string;
-    _type: 'image';
-  };
-  content: MinimalPortableText;
-};
-
-export type DishSection = {
+export type Dishes = {
   _id: string;
-  _type: 'dishSection';
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  title?: string;
-  dish?: Array<
-    {
-      _key: string;
-    } & DishObject
-  >;
-};
-
-export type Dish = {
-  _id: string;
-  _type: 'dish';
+  _type: 'dishes';
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
@@ -302,43 +233,18 @@ export type Dish = {
   takeAwayPrice?: number;
 };
 
-export type Dessert = {
+export type Dish = {
   _id: string;
-  _type: 'dessert';
+  _type: 'dish';
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  title: string;
-  allergy: Array<string>;
-  description?: string;
-  dineInPrice?: number;
-  takeawayPrice?: number;
-};
-
-export type KidsMenu = {
-  _id: string;
-  _type: 'kidsMenu';
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  title: string;
-  allergy: Array<string>;
-  description?: string;
-  dineInPrice?: number;
-  takeawayPrice?: number;
-};
-
-export type Pizza = {
-  _id: string;
-  _type: 'pizza';
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  title: string;
-  allergy: Array<string>;
-  description?: string;
-  dineInPrice?: number;
-  takeawayPrice?: number;
+  title?: string;
+  dish?: Array<
+    {
+      _key: string;
+    } & DishObject
+  >;
 };
 
 export type AllergyIcons = {
@@ -363,32 +269,6 @@ export type AllergyIcons = {
 };
 
 export type Allergy = Array<string>;
-
-export type Burgers = {
-  _id: string;
-  _type: 'burgers';
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  title: string;
-  allergy: Allergy;
-  description?: string;
-  dineInPrice?: number;
-  takeawayPrice?: number;
-};
-
-export type Lunch = {
-  _id: string;
-  _type: 'lunch';
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  title: string;
-  allergy: Allergy;
-  description?: string;
-  dineInPrice?: number;
-  takeawayPrice?: number;
-};
 
 export type Menu = {
   _id: string;
@@ -432,9 +312,6 @@ export type Menu = {
     | ({
         _key: string;
       } & AllergyBlock)
-    | ({
-        _key: string;
-      } & LunchBlock)
   >;
 };
 
@@ -501,22 +378,13 @@ export type Page = {
       }
     | ({
         _key: string;
-      } & FeatureBlock)
-    | ({
-        _key: string;
-      } & CateringBlock)
-    | ({
-        _key: string;
-      } & MenuBlock)
-    | ({
-        _key: string;
-      } & AboutPageBlock)
+      } & MenuPageBlock)
     | ({
         _key: string;
       } & CTAPageBlock)
     | ({
         _key: string;
-      } & MenuPageBlock)
+      } & IntroPageBlock)
   >;
 };
 
@@ -594,22 +462,13 @@ export type AllSanitySchemaTypes =
   | DishObject
   | MenuPageBlock
   | CTAPageBlock
-  | AboutPageBlock
-  | LunchBlock
-  | AllergyBlock
-  | CateringBlock
-  | MenuBlock
   | LinkEmbed
-  | FeatureBlock
-  | DishSection
+  | IntroPageBlock
+  | AllergyBlock
+  | Dishes
   | Dish
-  | Dessert
-  | KidsMenu
-  | Pizza
   | AllergyIcons
   | Allergy
-  | Burgers
-  | Lunch
   | Menu
   | Banner
   | Page
@@ -623,31 +482,7 @@ export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ../web/src/sanity/queries/dishQuery.ts
 // Variable: DISH_QUERY
 // Query: *[_type == 'dishSection'].dish[]{  _key,  dishes,  image,  title,}
-export type DISH_QUERYResult = Array<{
-  _key: string;
-  dishes: Array<{
-    title: string;
-    allergy: Array<string>;
-    description?: string;
-    dineInPrice?: number;
-    takeAwayPrice?: number;
-    _type: 'dish';
-    _key: string;
-  }> | null;
-  image: {
-    asset?: {
-      _ref: string;
-      _type: 'reference';
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt: string;
-    _type: 'image';
-  };
-  title: string;
-} | null>;
+export type DISH_QUERYResult = Array<never>;
 
 // Source: ../web/src/sanity/queries/menuQuery.ts
 // Variable: MENU_QUERY
@@ -709,26 +544,12 @@ export type MENU_QUERYResult = {
           _type: 'image';
         };
       }
-    | {
-        _type: 'lunchBlock';
-        title: string | null;
-        _key: string;
-        dishReference: Array<{
-          _id: string;
-          _type: 'lunch';
-          title: string;
-          description: string | null;
-          dineInPrice: number | null;
-          takeawayPrice: number | null;
-          allergy: Array<string>;
-        }> | null;
-      }
   > | null;
 } | null;
 
 // Source: ../web/src/sanity/queries/pageQuery.ts
 // Variable: PAGE_QUERY
-// Query: *[_type == 'page' && slug.current == $slug][0]{  title,  "slug": slug.current,  metaDescription,  metaImage,  body[]{    _type,    _type == 'banner' => {      _key,      header,      subHeader,      bannerImage    },    _type == 'featureBlock' => {      _key,      title,      image,      content    },    _type == 'CTAPageBlock' => {      _key,      title,      subtitle,      linkEmbed {        label,        href      }    },    _type == 'aboutPageBlock' => {      _key,      title,      description,      image    },     _type == 'menuPageBlock' => {      _key,      title,      description,      image,       linkEmbed {        label,        href      }    },    _type == 'cateringBlock' => {      _key,      title,      content,      linkEmbed {        label,        href      }    }  }}
+// Query: *[_type == 'page' && slug.current == $slug][0]{  title,  "slug": slug.current,  metaDescription,  metaImage,  body[]{    _type,    _type == 'banner' => {      _key,      header,      subHeader,      bannerImage    },    _type == 'featureBlock' => {      _key,      title,      image,      content    },    _type == 'CTAPageBlock' => {      _key,      title,      subtitle,      linkEmbed {        label,        href      }    },    _type == 'introPageBlock' => {      _key,      title,      description,      image    },     _type == 'menuPageBlock' => {      _key,      title,      description,      image,       linkEmbed {        label,        href      }    },    _type == 'cateringBlock' => {      _key,      title,      content,      linkEmbed {        label,        href      }    }  }}
 export type PAGE_QUERYResult = {
   title: string;
   slug: string;
@@ -745,24 +566,6 @@ export type PAGE_QUERYResult = {
     _type: 'image';
   } | null;
   body: Array<
-    | {
-        _type: 'aboutPageBlock';
-        _key: string;
-        title: string;
-        description: string;
-        image: {
-          asset?: {
-            _ref: string;
-            _type: 'reference';
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
-          };
-          hotspot?: SanityImageHotspot;
-          crop?: SanityImageCrop;
-          alt: string;
-          _type: 'image';
-        } | null;
-      }
     | {
         _type: 'banner';
         _key: string;
@@ -782,29 +585,20 @@ export type PAGE_QUERYResult = {
         };
       }
     | {
-        _type: 'cateringBlock';
-        _key: string;
-        title: string;
-        content: MinimalPortableText;
-        linkEmbed: {
-          label: string | null;
-          href: string | null;
-        };
-      }
-    | {
         _type: 'CTAPageBlock';
         _key: string;
         title: string;
-        subtitle: string;
+        subtitle: string | null;
         linkEmbed: {
           label: string | null;
           href: string | null;
         } | null;
       }
     | {
-        _type: 'featureBlock';
+        _type: 'introPageBlock';
         _key: string;
         title: string;
+        description: string;
         image: {
           asset?: {
             _ref: string;
@@ -817,7 +611,6 @@ export type PAGE_QUERYResult = {
           alt: string;
           _type: 'image';
         } | null;
-        content: MinimalPortableText;
       }
     | {
         _type: 'menuPageBlock';
@@ -835,14 +628,11 @@ export type PAGE_QUERYResult = {
           crop?: SanityImageCrop;
           alt: string;
           _type: 'image';
-        } | null;
+        };
         linkEmbed: {
           label: string | null;
           href: string | null;
         } | null;
-      }
-    | {
-        _type: 'menuBlock';
       }
   > | null;
 } | null;
@@ -853,6 +643,6 @@ declare module '@sanity/client' {
   interface SanityQueries {
     "\n *[_type == 'dishSection'].dish[]{\n  _key,\n  dishes,\n  image,\n  title,\n\n}\n  ": DISH_QUERYResult;
     "\n*[_type == 'menu' && slug.current == $slug][0] {\n  title,\n  \"slug\":slug.current,\n  metaDescription,\n  metaImage,\n    body[]{\n      _type,\n      _type == 'banner'=> {\n        _key,\n          header,\n        subHeader,\n        bannerImage\n      },\n      _type == 'allergyBlock'=>{\n        _key,\n        title,\n         content,\n          menuAllergy\n      },\n      _type == 'lunchBlock' => {\n        title,\n        _key,\n          \"dishReference\":lunchReference[]->{\n        _id,\n        _type,\n        title,\n        description,\n        dineInPrice,\n        takeawayPrice,\n        allergy[]\n\n      }\n      },\n    },\n\n}\n  ": MENU_QUERYResult;
-    "\n*[_type == 'page' && slug.current == $slug][0]{\n  title,\n  \"slug\": slug.current,\n  metaDescription,\n  metaImage,\n  body[]{\n    _type,\n    _type == 'banner' => {\n      _key,\n      header,\n      subHeader,\n      bannerImage\n    },\n    _type == 'featureBlock' => {\n      _key,\n      title,\n      image,\n      content\n    },\n    _type == 'CTAPageBlock' => {\n      _key,\n      title,\n      subtitle,\n      linkEmbed {\n        label,\n        href\n      }\n    },\n    _type == 'aboutPageBlock' => {\n      _key,\n      title,\n      description,\n      image\n    },\n     _type == 'menuPageBlock' => {\n      _key,\n      title,\n      description,\n      image,\n       linkEmbed {\n        label,\n        href\n      }\n    },\n    _type == 'cateringBlock' => {\n      _key,\n      title,\n      content,\n      linkEmbed {\n        label,\n        href\n      }\n    }\n  }\n}\n": PAGE_QUERYResult;
+    "\n*[_type == 'page' && slug.current == $slug][0]{\n  title,\n  \"slug\": slug.current,\n  metaDescription,\n  metaImage,\n  body[]{\n    _type,\n    _type == 'banner' => {\n      _key,\n      header,\n      subHeader,\n      bannerImage\n    },\n    _type == 'featureBlock' => {\n      _key,\n      title,\n      image,\n      content\n    },\n    _type == 'CTAPageBlock' => {\n      _key,\n      title,\n      subtitle,\n      linkEmbed {\n        label,\n        href\n      }\n    },\n    _type == 'introPageBlock' => {\n      _key,\n      title,\n      description,\n      image\n    },\n     _type == 'menuPageBlock' => {\n      _key,\n      title,\n      description,\n      image,\n       linkEmbed {\n        label,\n        href\n      }\n    },\n    _type == 'cateringBlock' => {\n      _key,\n      title,\n      content,\n      linkEmbed {\n        label,\n        href\n      }\n    }\n  }\n}\n": PAGE_QUERYResult;
   }
 }

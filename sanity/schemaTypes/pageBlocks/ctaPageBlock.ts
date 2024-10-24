@@ -1,25 +1,32 @@
 import { defineField, defineType } from 'sanity';
-import { PiLego } from 'react-icons/pi';
+import { IoMdStar } from 'react-icons/io';
 
 export default defineType({
   name: 'CTAPageBlock',
   type: 'object',
-  icon: PiLego,
-  title: 'Call to action',
+  title: 'CTA seksjon',
+  icon: IoMdStar,
+
   fields: [
     defineField({
       name: 'title',
       title: 'Tittel',
       type: 'string',
-      description: 'Tittel for Call To Action seksjon. (påkrevd)',
+      description: 'Hovedtittel for CTA seksjon. (påkrevd)',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'subtitle',
       title: 'Subtitle',
       type: 'text',
+      description: 'Sekundærtittel for CTA seksjon. (valgfri)',
     }),
-    defineField({ name: 'linkEmbed', type: 'linkEmbed' }),
+
+    defineField({
+      name: 'linkEmbed',
+      type: 'linkEmbed',
+      title: 'Navigasjonshåndtering. NB! Fyll ut begge feltene, eller ingen (valgfri)',
+    }),
   ],
   preview: {
     select: {

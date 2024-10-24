@@ -29,7 +29,7 @@ export const PAGE_QUERY = defineQuery(`
         href
       }
     },
-    _type == 'aboutPageBlock' => {
+    _type == 'introPageBlock' => {
       _key,
       title,
       description,

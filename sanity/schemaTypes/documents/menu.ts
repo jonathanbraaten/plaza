@@ -47,10 +47,21 @@ export default defineType({
           type: 'banner',
         }),
         defineArrayMember({
-          title: 'Informasjon av allergener',
+          title: 'Informasjon om allergener',
           type: 'allergyBlock',
         }),
       ],
+      options: {
+        insertMenu: {
+          groups: [
+            {
+              name: 'seksjoner',
+              title: 'Seksjoner',
+              of: ['banner', 'allergyBlock'],
+            },
+          ],
+        },
+      },
     }),
   ],
 });
