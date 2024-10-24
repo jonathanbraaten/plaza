@@ -26,7 +26,7 @@ export default function Nav({ isActive, onClick }: Props) {
         },
       )}
     >
-      <button onClick={onClick} className="md:hidden self-end px-2 lg:px-0">
+      <button data-testid="nav-close" onClick={onClick} className="md:hidden self-end px-2 lg:px-0">
         <IoMdClose size={30} />
       </button>
       <ul className="flex flex-col md:flex-row gap-6 h-full pt-10 pl-10 md:pt-0 md:pl-0 text-xl md:text-base">
