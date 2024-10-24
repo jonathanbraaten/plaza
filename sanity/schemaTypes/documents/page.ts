@@ -46,7 +46,6 @@ export default defineType({
       type: 'array',
       of: [
         defineArrayMember({ type: 'banner' }),
-        defineArrayMember({ type: 'featureBlock' }),
         defineArrayMember({ type: 'menuBlock' }),
         defineArrayMember({ type: 'aboutPageBlock' }),
         defineArrayMember({ type: 'CTAPageBlock' }),
