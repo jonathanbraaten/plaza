@@ -811,7 +811,7 @@
               }
             }
           },
-          "optional": true
+          "optional": false
         },
         "dishes": {
           "type": "objectAttribute",
@@ -2378,7 +2378,7 @@
                     "value": {
                       "type": "string"
                     },
-                    "optional": true
+                    "optional": false
                   },
                   "subHeader": {
                     "type": "objectAttribute",
@@ -2454,7 +2454,7 @@
                         }
                       }
                     },
-                    "optional": true
+                    "optional": false
                   },
                   "_type": {
                     "type": "objectAttribute",
@@ -2553,7 +2553,7 @@
         "value": {
           "type": "string"
         },
-        "optional": true
+        "optional": false
       },
       "subHeader": {
         "type": "objectAttribute",
@@ -2629,7 +2629,7 @@
             }
           }
         },
-        "optional": true
+        "optional": false
       }
     }
   },
@@ -2767,7 +2767,7 @@
                     "value": {
                       "type": "string"
                     },
-                    "optional": true
+                    "optional": false
                   },
                   "subHeader": {
                     "type": "objectAttribute",
@@ -2843,7 +2843,7 @@
                         }
                       }
                     },
-                    "optional": true
+                    "optional": false
                   },
                   "_type": {
                     "type": "objectAttribute",

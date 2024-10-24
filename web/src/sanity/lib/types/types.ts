@@ -1,6 +1,5 @@
 import { SanityImage, SanityLinkEmbed } from './reusableType';
 
-/* ======= Frontpage types ======= */
 export type Banner = {
   header: string | null;
   subHeader: string | null;
@@ -31,45 +30,19 @@ export type Dishes = Array<{
   _key: string;
   title: string;
   image: SanityImage;
-  dishes: Array<{
-    title: string;
-    allergy: Array<string>;
-    description: string; //
-    dineInPrice: number; //
-    takeAwayPrice: number;
-    _key: string;
-    image: SanityImage;
-  }>;
+  dishes: Dish;
 }>;
 
-export type ArrOfDishes = Array<{
-  dishes: Array<{
-    title: string;
-    allergy: Array<string>;
-    description: string; //
-    dineInPrice: number; //
-    takeAwayPrice: number;
-    _key: string;
-    image: SanityImage;
-  }> | null;
-}>;
-/* ======= Frontpage types ======= */
-
-/* export type DISH_QUERYResult = Array<{
-  _key: null;
-  image: null;
-  title: string | null;
-  dish: Array<{
-    _key: string;
-    title: string;
-    dishes: Array<{
-      title: string;
-      allergy: Array<string>;
-      description?: string;
-      dineInPrice?: number;
-      takeAwayPrice?: number;
-      _type: 'dish';
-      _key: string;
-    }> | null;
-  }> | null;
-}>;*/
+export type Dish = {
+  _key: string;
+  _id: string;
+  _type: 'dish';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title: string;
+  allergy: Array<string>;
+  description?: string;
+  dineInPrice?: number;
+  takeAwayPrice?: number;
+};

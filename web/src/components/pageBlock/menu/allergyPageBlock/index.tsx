@@ -15,12 +15,15 @@ type Props = {
 export default function AllergyBlockComponent({ data }: Props) {
   return (
     <section>
-      <Wrapper optionalStyle="flex flex-col">
+      <Wrapper optionalStyle="flex flex-col ">
         <article className="mx-auto">
-          <h2 className={clsx(montserrat.className)}> {data.title}</h2>
+          <h2 className={clsx(montserrat.className, 'text-mobile-h2 md:text-desktop-h2')}>
+            {' '}
+            {data.title}
+          </h2>
           <PortableText value={data.content as MinimalPortableText} />
         </article>
-        <div className={clsx(styles.grid, '  rounded-md p-10')}>
+        <div className={clsx(styles.grid, '  rounded-md p-10 ')}>
           {data.menuAllergy?.map(({ _key, image, allergyName }) => (
             <article className="flex flex-col items-center " key={_key}>
               <Image
@@ -30,7 +33,7 @@ export default function AllergyBlockComponent({ data }: Props) {
                 height={100}
                 className="object-cover aspect-auto"
               />
-              <p>{allergyName}</p>
+              <p className="font-light">{allergyName}</p>
             </article>
           ))}
         </div>

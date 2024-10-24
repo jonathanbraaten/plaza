@@ -1,18 +1,16 @@
-import { Dish } from '@/sanity/lib/sanity.types';
+import { Dish } from '@/sanity/lib/types/types';
 import { Dishes } from '@/sanity/lib/types/types';
 import { DISH_QUERY } from '@/sanity/queries/dishQuery';
 import { sanityFetch } from '@/sanity/lib/client';
-import Image from 'next/image';
 import Wrapper from '@/app/components/wrapper';
 import Grid from './Grid';
 import clsx from 'clsx';
 import styles from './styles.module.css';
 import { IoMdInformationCircleOutline } from 'react-icons/io';
 import React from 'react';
-import { montserrat } from '@/ui/fonts';
 import { SanityImage } from '@/sanity/lib/types/reusableType';
-import { urlFor } from '@/sanity/lib/imageUrlBuilder';
-import { SanityImageObject } from '@sanity/image-url/lib/types/types';
+import MenuBanner from '@/app/components/menuBanner';
+import { montserrat } from '@/ui/fonts';
 
 async function fetchDishData() {
   const data = await sanityFetch({
@@ -41,36 +39,25 @@ export default async function DishPageBlockComponent() {
         }) => {
           return (
             <article className="flex flex-col" key={_key}>
-              <div className="relative my-10">
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[2]">
-                  <h2 className={clsx(montserrat.className, 'self-center text-white')}>{title}</h2>
-                </div>
-                <div className="relative">
-                  <div className="absolute inset-0 bg-black/60"></div>
-                  <Image
-                    priority
-                    width={1500}
-                    height={1200}
-                    quality={80}
-                    className="max-w-full w-full  object-cover aspect-square max-h-[500px]"
-                    sizes="(max-width:768px) 100vw, (max-width:1068px), 50vw, 33vw"
-                    alt={image?.alt as string}
-                    src={urlFor(image as SanityImageObject).url()}
-                  />
-                </div>
-              </div>
-
+              <MenuBanner title={title} image={image} />
               <div>
                 <Wrapper optionalStyle="flex flex-col gap-4 my-10">
                   <Grid>
                     {(dishes as Dish[])?.map(
                       ({ _key, title, dineInPrice, takeAwayPrice, description, allergy }: Dish) => (
                         <li
-                          className={clsx(styles.subgrid, ' p-4  gap-2 bg-slate-50/40 mb-40')}
+                          className={clsx(styles.subgrid, ' p-4  gap-2 bg-fill/10 mb-40 ')}
                           key={_key}
                         >
                           <div className="flex flex-col gap-2">
-                            <p>{title}</p>
+                            <h3
+                              className={clsx(
+                                montserrat.className,
+                                'text-mobile-h3 md:text-desktop-h3',
+                              )}
+                            >
+                              {title}
+                            </h3>
                             <p className="max-w-[55ch]">{description}</p>
                           </div>
                           <div className=" self-start">
@@ -86,11 +73,11 @@ export default async function DishPageBlockComponent() {
                           </div>
 
                           <div>
-                            <p className=" inline-flex items-center gap-2 py-1 px-2 rounded-md bg-slate-200/40 ">
-                              <IoMdInformationCircleOutline size={22} />
-                              <span className="font-bold">Allergener:</span>
+                            <p className=" inline-flex  items-center  py-1 px-2 rounded-md bg-fill/30 ">
+                              <IoMdInformationCircleOutline className="mr-1" size={25} />
+                              <span className="font-bold mr-2">Inneholder:</span>
                               {allergy?.map((ele, index) => (
-                                <span key={index}>
+                                <span className="mr-1" key={index}>
                                   {ele}
                                   {index < allergy.length - 1 && ','}
                                 </span>
