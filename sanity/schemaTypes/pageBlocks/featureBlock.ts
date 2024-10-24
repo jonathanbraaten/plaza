@@ -1,10 +1,12 @@
-import {defineField, defineType} from 'sanity'
-import {PiLego} from 'react-icons/pi'
+import { defineField, defineType } from 'sanity';
+import { PiLego } from 'react-icons/pi';
 
 export default defineType({
   name: 'featureBlock',
   type: 'object',
   icon: PiLego,
+  title: 'Introduksjons seksjon (feature)',
+  description: 'hey',
   fields: [
     defineField({
       name: 'title',
@@ -38,4 +40,17 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
   ],
-})
+  preview: {
+    select: {
+      title: 'title',
+      media: 'image',
+    },
+    prepare(selection) {
+      const { title, media } = selection;
+      return {
+        title: title,
+        media: media,
+      };
+    },
+  },
+});

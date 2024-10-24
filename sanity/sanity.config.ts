@@ -31,7 +31,7 @@ export default defineConfig(
   sharedConfigs.map((config) => ({
     ...config,
     plugins: [
-      structureTool({ structure: customStructure }),
+      structureTool(/* { structure: customStructure } */),
       visionTool(),
 
       presentationTool({

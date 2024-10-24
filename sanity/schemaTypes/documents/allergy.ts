@@ -4,7 +4,7 @@ export default defineType({
   name: 'allergy',
   type: 'array',
   validation: (Rule) => Rule.required(),
-  description: 'Check the boxes to add allergies to this dish.',
+  description: 'Trykk på boksene for å legge til allergener.',
   of: [
     {
       type: 'string',
