@@ -46,7 +46,7 @@ export default async function DishPageBlockComponent() {
                     {(dishes as Dish[])?.map(
                       ({ _key, title, dineInPrice, takeAwayPrice, description, allergy }: Dish) => (
                         <li
-                          className={clsx(styles.subgrid, ' p-4  gap-2 bg-accent/10  ')}
+                          className={clsx(styles.subgrid, ' p-4  gap-2 bg-accent/5  ')}
                           key={_key}
                         >
                           <div className="flex flex-col gap-2">
