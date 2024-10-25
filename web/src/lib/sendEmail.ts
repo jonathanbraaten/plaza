@@ -3,7 +3,6 @@ import { Inputs } from '../app/kontakt/components/contactForm';
 const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '';
 const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '';
 const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '';
-console.log(SERVICE_ID, TEMPLATE_ID, PUBLIC_KEY);
 const data = {
   service_id: SERVICE_ID, //req
   template_id: TEMPLATE_ID, //req
