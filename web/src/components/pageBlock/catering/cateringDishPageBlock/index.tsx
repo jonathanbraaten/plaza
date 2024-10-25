@@ -41,14 +41,14 @@ export default async function CateringDishPageBlockComponent() {
             }) => (
               <article key={_id} className={(clsx(styles.subgrid), 'bg-fill/15 p-5')}>
                 <div className="flex flex-col gap-2 mb-4">
-                  <h3 className="text-mobile-h3 md:text-mobile-h3">{title}</h3>
+                  <h2 className="text-mobile-h3 md:text-mobile-h3">{title}</h2>
                   <div className="max-w-[65ch]">
                     <CateringPortableText value={description} />
                   </div>
                 </div>
                 <div className="flex flex-col">
-                  <div className="flex flex-col gap-1 self-start p-2">
-                    <p className=" inline-flex  items-center flex-wrap  py-1 px-2 rounded-md  ">
+                  <div className="flex flex-col gap-1 self-start ">
+                    <p className=" inline-flex  items-center flex-wrap  py-1 rounded-md">
                       <span className="flex items-center gap-2">
                         <MdGroups size={25} />
                         <span className="font-bold"> Pris per person:</span>
@@ -56,7 +56,7 @@ export default async function CateringDishPageBlockComponent() {
                       ..........
                       {pricePerPerson}kr
                     </p>
-                    <p className=" inline-flex  items-center flex-wrap  py-1 px-2 rounded-md  ">
+                    <p className=" inline-flex  items-center flex-wrap  py-1  rounded-md  ">
                       <span className="flex items-center gap-1 mr-1">
                         <IoMdInformationCircleOutline className="mr-1" size={25} />
                         <span className="font-bold"> Inneholder:</span>
