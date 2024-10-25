@@ -16,6 +16,7 @@ const config: Config = {
         'stroke-weak': 'hsl(221,65%, 84%)',
         accent: 'hsl(30, 25%, 52%)',
         fill: 'hsl(227,66%,93%)',
+        fillFaded: 'hsl(227,66%,93%,0.1)',
       },
       fontSize: {
         // Web/Desktop Values

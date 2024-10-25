@@ -39,7 +39,7 @@ export default async function CateringDishPageBlockComponent() {
               pricePerPerson: number;
               description: FullPortableText;
             }) => (
-              <article key={_id} className={(clsx(styles.subgrid), 'bg-fill/15 p-5')}>
+              <article key={_id} className={(clsx(styles.subgrid), 'bg-fillFaded p-5')}>
                 <div className="flex flex-col gap-2 mb-4">
                   <h2 className="text-mobile-h3 md:text-mobile-h3">{title}</h2>
                   <div className="max-w-[65ch]">
