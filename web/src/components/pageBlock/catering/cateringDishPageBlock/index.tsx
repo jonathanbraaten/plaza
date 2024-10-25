@@ -1,16 +1,17 @@
 import { sanityFetch } from '@/sanity/lib/client';
 import { CATERING_DISH_QUERY } from '@/sanity/queries/cateringDishQuery';
 import CateringGrid from './cateringGrid';
-import { PortableText } from 'next-sanity';
 import { MdGroups } from 'react-icons/md';
 import Wrapper from '@/app/components/wrapper';
-/* import { CateringPortableText } from '../portableTextComponent';
- */ import clsx from 'clsx';
+import clsx from 'clsx';
 import styles from './styles.module.css';
+import { CateringPortableText } from '../portableTextComponent';
+import { CateringDish } from '@/sanity/lib/types/types';
+import { Allergy, FullPortableText } from '@/sanity/lib/sanity.types';
+import { IoMdInformationCircleOutline } from 'react-icons/io';
 async function fetchDishData() {
   const data = await sanityFetch({
     query: CATERING_DISH_QUERY,
-
     revalidate: 0,
     tags: [],
   });
@@ -19,39 +20,59 @@ async function fetchDishData() {
 
 export default async function CateringDishPageBlockComponent() {
   const data: unknown = await fetchDishData();
-  console.log(data);
+
   return (
     <section>
       <Wrapper>
         <CateringGrid>
-          {data.map(({ _id, title, allergy, pricePerPerson, description }) => (
-            <article
-              key={_id}
-              /* className="bg-accent/5 p-4 flex flex-col gap-4 " */ className={clsx(
-                styles.subgrid,
-              )}
-            >
-              <div>
-                <h2 className="text-mobile-h2 md:text-mobile-h2">{title}</h2>
-                <div /*  className="pl-4" */>
-                  <PortableText value={description} />
-                  {/* <CateringPortableText value={description} /> */}
+          {(data as CateringDish[]).map(
+            ({
+              _id,
+              title,
+              allergy,
+              pricePerPerson,
+              description,
+            }: {
+              _id: string;
+              title: string;
+              allergy: Allergy;
+              pricePerPerson: number;
+              description: FullPortableText;
+            }) => (
+              <article key={_id} className={(clsx(styles.subgrid), 'bg-fill/15 p-5')}>
+                <div className="flex flex-col gap-2 mb-4">
+                  <h3 className="text-mobile-h3 md:text-mobile-h3">{title}</h3>
+                  <div className="max-w-[65ch]">
+                    <CateringPortableText value={description} />
+                  </div>
                 </div>
-              </div>
-              <div className="flex flex-col">
-                <div className="bg-fill/30 self-start p-2">
-                  <p className="flex items-center">
-                    <span className="flex items-center gap-2">
-                      <MdGroups size={30} />
-                      Pris per person:
-                    </span>
-                    ..........
-                    {pricePerPerson}kr
-                  </p>
+                <div className="flex flex-col">
+                  <div className="flex flex-col gap-1 self-start p-2">
+                    <p className=" inline-flex  items-center flex-wrap  py-1 px-2 rounded-md  ">
+                      <span className="flex items-center gap-2">
+                        <MdGroups size={25} />
+                        <span className="font-bold"> Pris per person:</span>
+                      </span>
+                      ..........
+                      {pricePerPerson}kr
+                    </p>
+                    <p className=" inline-flex  items-center flex-wrap  py-1 px-2 rounded-md  ">
+                      <span className="flex items-center gap-1 mr-1">
+                        <IoMdInformationCircleOutline className="mr-1" size={25} />
+                        <span className="font-bold"> Inneholder:</span>
+                      </span>
+                      {allergy.map((ele, index) => (
+                        <span className="mr-1" key={index}>
+                          {ele}
+                          {index < allergy.length - 1 && ','}
+                        </span>
+                      ))}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </article>
-          ))}
+              </article>
+            ),
+          )}
         </CateringGrid>
       </Wrapper>
     </section>

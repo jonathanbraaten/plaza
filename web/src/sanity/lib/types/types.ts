@@ -1,4 +1,4 @@
-import { FullPortableText, MinimalPortableText } from '../sanity.types';
+import { Allergy, FullPortableText, MinimalPortableText } from '../sanity.types';
 import { SanityImage, SanityLinkEmbed } from './reusableType';
 
 export type Banner = {
@@ -31,6 +31,17 @@ export type Catering = {
   title: string;
   content?: MinimalPortableText | null;
   cateringInfo: FullPortableText;
+};
+export type CateringDish = {
+  _id: string;
+  _type: 'cateringDishes';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title: string;
+  allergy: Allergy;
+  description: FullPortableText;
+  pricePerPerson: number;
 };
 
 export type Dishes = Array<{
