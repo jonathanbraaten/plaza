@@ -3,7 +3,6 @@ import { CATERING_PAGE_QUERYResult } from '@/sanity/lib/sanity.types';
 import CateringPageBlockComponent from './cateringPageBlock';
 
 export default function CateringPageHandler({ data }: { data: CATERING_PAGE_QUERYResult }) {
-  console.log(data);
   return (
     <>
       {data?.body?.map((block) => {

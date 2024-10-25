@@ -5,6 +5,7 @@ import CateringPageHandler from '@/components/pageBlock/catering';
 import { sanityFetch } from '@/sanity/lib/client';
 import { CATERING_PAGE_QUERY } from '@/sanity/queries/cateringPageQuery';
 import { notFound } from 'next/navigation';
+import CateringDishPageBlockComponent from '@/components/pageBlock/catering/cateringDishPageBlock';
 
 async function fetchPageData() {
   const data = await sanityFetch({
@@ -25,6 +26,7 @@ export default async function Page() {
       <Header />
       <main>
         <CateringPageHandler data={data} />
+        <CateringDishPageBlockComponent />
       </main>
       <Footer />
     </>
