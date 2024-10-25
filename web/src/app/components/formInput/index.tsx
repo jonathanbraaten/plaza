@@ -1,3 +1,4 @@
+'use client';
 import { FieldErrors, UseFormRegister } from 'react-hook-form';
 import { Inputs } from '@/app/kontakt/components/contactForm';
 import clsx from 'clsx';

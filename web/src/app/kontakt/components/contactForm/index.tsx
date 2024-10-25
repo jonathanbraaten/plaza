@@ -3,6 +3,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import FormInput from '@/app/components/formInput';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { contactSchema } from './contactSchema';
+import sendEmail from '@/lib/sendEmail';
 export type Inputs = {
   name: string;
   email: string;
@@ -14,6 +15,7 @@ export default function ContactForm() {
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors },
   } = useForm<Inputs>({
     resolver: zodResolver(contactSchema),
@@ -21,9 +23,9 @@ export default function ContactForm() {
   });
   const message = watch('message');
   const messageCount = message?.length || 0;
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log('clicked');
-    console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    sendEmail(data);
+    reset();
   };
 
   return (
