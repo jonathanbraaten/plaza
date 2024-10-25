@@ -10,7 +10,7 @@ type Props = {
 };
 export default function MenuBanner({ title, image }: Props) {
   return (
-    <div className="relative my-10">
+    <div className="relative">
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[2]">
         <h2
           className={clsx(

@@ -14,8 +14,8 @@ type Props = {
 };
 export default function AllergyBlockComponent({ data }: Props) {
   return (
-    <section>
-      <Wrapper optionalStyle="flex flex-col ">
+    <section className="my-20">
+      <Wrapper optionalStyle="flex flex-col">
         <article className="mx-auto">
           <h2 className={clsx(montserrat.className, 'text-mobile-h2 md:text-desktop-h2')}>
             {' '}

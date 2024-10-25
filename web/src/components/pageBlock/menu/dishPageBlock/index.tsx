@@ -46,7 +46,7 @@ export default async function DishPageBlockComponent() {
                     {(dishes as Dish[])?.map(
                       ({ _key, title, dineInPrice, takeAwayPrice, description, allergy }: Dish) => (
                         <li
-                          className={clsx(styles.subgrid, ' p-4  gap-2 bg-fill/10 mb-40 ')}
+                          className={clsx(styles.subgrid, ' p-4  gap-2 bg-accent/10  ')}
                           key={_key}
                         >
                           <div className="flex flex-col gap-2">
@@ -73,7 +73,7 @@ export default async function DishPageBlockComponent() {
                           </div>
 
                           <div>
-                            <p className=" inline-flex  items-center  py-1 px-2 rounded-md bg-fill/30 ">
+                            <p className=" inline-flex  items-center flex-wrap  py-1 px-2 rounded-md bg-fill/30 ">
                               <IoMdInformationCircleOutline className="mr-1" size={25} />
                               <span className="font-bold mr-2">Inneholder:</span>
                               {allergy?.map((ele, index) => (

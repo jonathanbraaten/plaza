@@ -14,6 +14,7 @@ const config: Config = {
         'text-weak': 'hsl(226,43%, 18%)',
         'stroke-strong': 'hsl(216,65%, 72%)',
         'stroke-weak': 'hsl(221,65%, 84%)',
+        accent: 'hsl(30, 25%, 52%)',
         fill: 'hsl(227,66%,93%)',
       },
       fontSize: {

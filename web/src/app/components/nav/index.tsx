@@ -32,7 +32,7 @@ export default function Nav({ isActive, onClick }: Props) {
       <ul className="flex flex-col md:flex-row gap-6 h-full pt-10 pl-10 md:pt-0 md:pl-0 text-xl md:text-base">
         {navLinks.map(({ id, name, path }) => (
           <li
-            className={clsx('hover:underline', {
+            className={clsx('hover:underline ', {
               underline: pathName === path,
             })}
             key={id}
