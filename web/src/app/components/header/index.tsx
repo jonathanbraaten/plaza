@@ -23,7 +23,7 @@ export default function Header() {
           /> */}
         </div>
         <Nav isActive={isActive} onClick={closeNavigation} />
-        <button className="md:hidden" onClick={openNavigation}>
+        <button data-testid="hamburger-button" className="md:hidden" onClick={openNavigation}>
           <RxHamburgerMenu size={30} />
         </button>
       </Wrapper>
