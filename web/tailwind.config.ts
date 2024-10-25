@@ -10,6 +10,7 @@ const config: Config = {
     extend: {
       colors: {
         primary: 'hsl(205,65%,20%)',
+        secondary: 'hsl(30, 25%, 52%, 0.03)',
         'text-strong': 'hsl(226, 64%, 14%)',
         'text-weak': 'hsl(226,43%, 18%)',
         'stroke-strong': 'hsl(216,65%, 72%)',

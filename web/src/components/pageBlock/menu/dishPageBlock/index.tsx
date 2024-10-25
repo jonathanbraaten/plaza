@@ -73,7 +73,7 @@ export default async function DishPageBlockComponent() {
                           </div>
 
                           <div>
-                            <p className=" inline-flex  items-center flex-wrap  py-1 px-2 rounded-md bg-fill/30 ">
+                            <p className=" inline-flex  items-center flex-wrap  py-1  rounded-md  ">
                               <IoMdInformationCircleOutline className="mr-1" size={25} />
                               <span className="font-bold mr-2">Inneholder:</span>
                               {allergy?.map((ele, index) => (

@@ -22,7 +22,7 @@ export default async function Home() {
   return (
     <>
       <Header />
-      <main className="flex flex-col gap-[10rem]">
+      <main className="flex flex-col gap-[10rem] hsl(30, 25%, 52%)">
         <PageHandler data={data} />
       </main>
       <Footer />
