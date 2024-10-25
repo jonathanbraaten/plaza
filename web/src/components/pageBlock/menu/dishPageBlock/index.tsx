@@ -3,7 +3,7 @@ import { Dishes } from '@/sanity/lib/types/types';
 import { DISH_QUERY } from '@/sanity/queries/dishQuery';
 import { sanityFetch } from '@/sanity/lib/client';
 import Wrapper from '@/app/components/wrapper';
-import Grid from './Grid';
+import DishGrid from './dishGrid';
 import clsx from 'clsx';
 import styles from './styles.module.css';
 import { IoMdInformationCircleOutline } from 'react-icons/io';
@@ -42,7 +42,7 @@ export default async function DishPageBlockComponent() {
               <MenuBanner title={title} image={image} />
               <div>
                 <Wrapper optionalStyle="flex flex-col gap-4 my-10">
-                  <Grid>
+                  <DishGrid>
                     {(dishes as Dish[])?.map(
                       ({ _key, title, dineInPrice, takeAwayPrice, description, allergy }: Dish) => (
                         <li
@@ -87,7 +87,7 @@ export default async function DishPageBlockComponent() {
                         </li>
                       ),
                     )}
-                  </Grid>
+                  </DishGrid>
                 </Wrapper>
               </div>
             </article>
