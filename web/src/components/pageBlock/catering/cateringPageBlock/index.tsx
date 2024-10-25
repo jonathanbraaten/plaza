@@ -12,7 +12,7 @@ export default function CateringPageBlockComponent({ title, cateringInfo, conten
           <h2 className="text-mobile-h2 md:text-desktop-h2">{title}</h2>
           <PortableText value={content as MinimalPortableText} />
         </div>
-        <div className="bg-accent/20 px-10 py-5 max-w-[75ch]">
+        <div className="bg-accent/20 flex flex-col py-5 px-10  max-w-[75ch]">
           <CateringPortableText value={cateringInfo} />
         </div>
       </Wrapper>

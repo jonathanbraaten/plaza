@@ -3,7 +3,7 @@ import { PortableText, PortableTextComponents } from 'next-sanity';
 
 const component: PortableTextComponents = {
   list: {
-    bullet: ({ children }) => <ul className="mt-xl list-disc">{children}</ul>,
+    bullet: ({ children }) => <ul className="list-disc flex flex-col gap-1">{children}</ul>,
   },
 };
 
