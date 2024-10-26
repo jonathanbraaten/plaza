@@ -7,12 +7,12 @@ export const metadata: Metadata = {
   title: 'Plaza Kafe & Spiseri - Kontakt',
   description:
     'Ta kontakt med Plaza Kafe & Spiseri for spørsmål om meny, catering, og bestilling. Vi er her for å hjelpe deg med alle førespurnadar, anten du planlegg eit arrangement eller berre vil reservere eit bord. Du finn oss i Lonevåg sentrum på Osterøy.',
-  keywords: ['Plaza Kafe & Spieri', 'Kontakt', 'Kontakt oss', 'Lonevåg', 'Osterøy'],
+
   openGraph: {
     title: 'Plaza Kafe & Spiseri - Kontakt',
     images: [
       {
-        url: '/open-graph-plaza-logo.png',
+        url: '/plaza-logo-use.png',
         alt: 'Plaza Kafe & Spiseri logo',
         width: 1200,
         height: 630,

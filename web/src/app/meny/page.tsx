@@ -28,7 +28,9 @@ export async function generateMetadata() {
       ? `Plaza Kafe & Spiseri - ${uppercaseHelper(data.title)}`
       : menuMetaHelper.fallbackTitle,
     description: data?.metaDescription ? data.metaDescription : menuMetaHelper.fallbackDescription,
-    image: metaImageBuilder(data.metaImage as SanityImageObject),
+    image: data.metaImage
+      ? metaImageBuilder(data.metaImage as SanityImageObject)
+      : '/plaza-logo-use.png',
     openGraph: {
       title: data?.title
         ? `Plaza Kafe & Spiseri - ${uppercaseHelper(data.title)}`
