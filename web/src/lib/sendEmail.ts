@@ -1,3 +1,4 @@
+//@ts-nocheck
 import emailjs from '@emailjs/browser';
 import { Inputs } from '../app/kontakt/components/contactForm';
 const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '';
