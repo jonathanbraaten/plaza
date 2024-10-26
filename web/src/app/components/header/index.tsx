@@ -23,8 +23,15 @@ export default function Header() {
           /> */}
         </div>
         <Nav isActive={isActive} onClick={closeNavigation} />
-        <button data-testid="hamburger-button" className="md:hidden" onClick={openNavigation}>
-          <RxHamburgerMenu size={30} />
+        <button
+          aria-haspopup="true"
+          aria-expanded={isActive}
+          aria-label="open navigation/åpne navigasjon"
+          data-testid="hamburger-button"
+          className="md:hidden"
+          onClick={openNavigation}
+        >
+          <RxHamburgerMenu aria-hidden="true" size={30} />
         </button>
       </Wrapper>
     </header>
