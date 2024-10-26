@@ -29,7 +29,7 @@ export default function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-3">
+    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-3 ">
       <div className="flex flex-col gap-3 w-full">
         <FormInput
           htmlFor="name"
@@ -74,7 +74,10 @@ export default function ContactForm() {
           msgLength={messageCount}
         />
       </div>
-      <button type="submit" className="self-start bg-primary text-white py-2 px-20 rounded-md">
+      <button
+        type="submit"
+        className="sm:self-start self-stretch bg-primary text-white py-3 px-20 rounded-md"
+      >
         Send
       </button>
     </form>

@@ -26,10 +26,12 @@ export default function Page() {
   return (
     <>
       <Header />
-      <main className="flex justify-center items-center px-20 bg-secondary">
-        <section className="max-w-[45rem] w-full">
-          <Wrapper optionalStyle="text-center">
-            <h1 className="text-mobile-h1 md:text-mobile-h2">Kontakt oss</h1>
+      <main className="flex justify-center items-center  bg-secondary">
+        <section className=" max-w-3xl w-full ">
+          <Wrapper optionalStyle="flex flex-col gap-2 py-10 md:py-20">
+            <h1 className="text-mobile-h1 md:text-mobile-h2 text-center md:text-left">
+              Kontakt oss
+            </h1>
             <ContactForm />
           </Wrapper>
         </section>
