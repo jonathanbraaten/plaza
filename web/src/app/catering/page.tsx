@@ -30,16 +30,16 @@ export async function generateMetadata() {
     description: data?.metaDescription
       ? data.metaDescription
       : cateringMetaHelper.fallbackDescription,
-    image: data.metaImage
-      ? metaImageBuilder(data.metaImage as SanityImageObject)
-      : '/plaza-logo-use.png',
+
     openGraph: {
       title: data?.title
         ? `Plaza Kafe & Spiseri - ${uppercaseHelper(data.title)}`
         : cateringMetaHelper.fallbackTitle,
       images: [
         {
-          url: metaImageBuilder(data.metaImage as SanityImageObject),
+          url: data.metaImage
+            ? metaImageBuilder(data.metaImage as SanityImageObject)
+            : '/plaza-logo-use.png',
           width: 1200,
           height: 630,
           alt: 'Plaza Kafe & Spiseri logo',
