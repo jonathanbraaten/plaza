@@ -25,7 +25,6 @@ export default function FormInput({
   register,
   msgLength,
 }: Props) {
-  /*   console.log(errors, name); */
   {
     switch (type) {
       case 'text':
