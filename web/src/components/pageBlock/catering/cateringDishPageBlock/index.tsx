@@ -22,7 +22,7 @@ export default async function CateringDishPageBlockComponent() {
   const data: unknown = await fetchDishData();
 
   return (
-    <section>
+    <section className="py-10 md:py-20">
       <Wrapper>
         <CateringGrid>
           {(data as CateringDish[]).map(

@@ -24,7 +24,7 @@ export default async function Page() {
   return (
     <>
       <Header />
-      <main className="bg-secondary">
+      <main className="bg-secondary flex flex-col">
         <MenuHandler data={data} />
         <DishPageBlockComponent />
       </main>

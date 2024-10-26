@@ -6,8 +6,8 @@ import Wrapper from '@/app/components/wrapper';
 
 export default function CateringPageBlockComponent({ title, cateringInfo, content }: Catering) {
   return (
-    <section className="py-10">
-      <Wrapper optionalStyle="flex flex-col gap-4">
+    <section className="">
+      <Wrapper optionalStyle="flex flex-col gap-4 py-10 md:py-20">
         <div className="flex flex-col gap-1 max-w-[75ch]">
           <h2 className="text-mobile-h2 md:text-desktop-h2">{title}</h2>
           <PortableText value={content as MinimalPortableText} />
@@ -16,6 +16,7 @@ export default function CateringPageBlockComponent({ title, cateringInfo, conten
           <CateringPortableText value={cateringInfo} />
         </div>
       </Wrapper>
+      <hr className="mt-5" />
     </section>
   );
 }

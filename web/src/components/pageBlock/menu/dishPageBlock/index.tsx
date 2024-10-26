@@ -38,10 +38,10 @@ export default async function DishPageBlockComponent() {
           dishes: unknown;
         }) => {
           return (
-            <article className="flex flex-col" key={_key}>
+            <article className="flex flex-col " key={_key}>
               <MenuBanner title={title} image={image} />
               <div>
-                <Wrapper optionalStyle="flex flex-col gap-4 my-10">
+                <Wrapper optionalStyle="py-20 md:py-40">
                   <DishGrid>
                     {(dishes as Dish[])?.map(
                       ({ _key, title, dineInPrice, takeAwayPrice, description, allergy }: Dish) => (
