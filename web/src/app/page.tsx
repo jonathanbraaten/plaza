@@ -7,6 +7,10 @@ import PageHandler from '@/components/pageBlock/home';
 import { notFound } from 'next/navigation';
 import { pageMetaHelper } from '@/utils/metaDataHelpers';
 import { uppercaseHelper } from '@/utils/uppercaseHelper';
+
+import { SanityImageObject } from '@sanity/image-url/lib/types/types';
+import { metaImageBuilder } from '@/utils/metaImageBuilder';
+
 export async function generateMetadata() {
   const data = await sanityFetch({
     query: PAGE_QUERY,
@@ -25,16 +29,22 @@ export async function generateMetadata() {
       ? `Plaza Kafe & Spiseri - ${uppercaseHelper(data.title)}`
       : pageMetaHelper.fallbackTitle,
     description: data?.metaDescription ? data.metaDescription : pageMetaHelper.fallbackDescription,
-    image: data.metaImage,
-    keywords: ['Plaza Kafe & Spieri', 'Lonevåg', 'Osterøy', 'Heim', 'Catering'],
+
     openGraph: {
       title: data?.title
         ? `Plaza Kafe & Spiseri - ${uppercaseHelper(data.title)}`
         : pageMetaHelper.fallbackTitle,
-      images: {
-        url: '/public/open-graph-plaza-logo.png',
-        alt: 'Plaza Kafe & Spiseri logo',
-      },
+
+      images: [
+        {
+          url: data.metaImage
+            ? metaImageBuilder(data.metaImage as SanityImageObject)
+            : '/plaza-logo-use.png',
+          width: 1200,
+          height: 630,
+          alt: 'Plaza Kafe & Spiseri logo',
+        },
+      ],
       description: data.metaDescription ? data.metaDescription : pageMetaHelper.fallbackDescription,
       type: 'website',
       siteName: 'Plaza Kafe & Spiseri',
