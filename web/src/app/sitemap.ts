@@ -9,14 +9,14 @@ type SanityPage = {
   slug: string;
 };
 type StaticPage = {
-  _updatedAt: string;
-  slug: string;
-};
+  url: string;
+  priority: number;
+}[];
 
-const staticPages = [
+const staticPages: StaticPage = [
   {
     url: '/kontakt',
-    priority: 0.5,
+    priority: 0.7,
   },
 ];
 
@@ -59,17 +59,25 @@ const fetchCateringSitemap = async () => {
   }
 };
 
+const getPriority = (slug: string): number =>
+  ({
+    heim: 1,
+    meny: 0.9,
+    catering: 0.8,
+  })[slug] || 0.1;
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [pages, menus, catering] = await Promise.all([
+  const [page, menus, catering] = await Promise.all([
     fetchPageSitemap(),
     fetchMenuSitemap(),
     fetchCateringSitemap(),
   ]);
 
-  const allPages = [...pages, ...menus, ...catering].filter(
+  const allPages = [...page, ...menus, ...catering].filter(
     (page): page is SanityPage =>
       !!page && typeof page._updatedAt === 'string' && typeof page.slug === 'string',
   );
+  const test = [...allPages];
+  console.log(test);
 
   /*  const domain = process.env.NEXT_PUBLIC_DOMAIN || 'http://localhost:3000'; */
   const domain = 'http://localhost:3000';
@@ -78,7 +86,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     url: `${domain}/${slug}`,
     lastModified: new Date(_updatedAt),
     changeFrequency: 'weekly' as const,
-    priority: 1,
+    priority: getPriority(slug),
   }));
 
   const staticEntries = staticPages.map(({ url, priority }) => ({
