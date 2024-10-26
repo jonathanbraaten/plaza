@@ -25,6 +25,7 @@ export async function generateMetadata() {
       ? `Plaza Kafe & Spiseri - ${uppercaseHelper(data.title)}`
       : pageMetaHelper.fallbackTitle,
     description: data?.metaDescription ? data.metaDescription : pageMetaHelper.fallbackDescription,
+    image: data.metaImage,
     keywords: ['Plaza Kafe & Spieri', 'Lonevåg', 'Osterøy', 'Heim', 'Catering'],
     openGraph: {
       title: data?.title
