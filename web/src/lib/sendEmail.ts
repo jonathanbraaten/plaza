@@ -12,8 +12,8 @@ const data = {
 export default async function sendEmail(formData: Inputs) {
   try {
     const response = await emailjs.send(data.service_id, data.template_id, formData, data.user_id);
-    console.log('Email sent successfully:', response);
+    /*  console.log('Email sent successfully:', response); */
   } catch (error) {
-    console.error('Failed to send email:', error);
+    /* console.error('Failed to send email:', error); */
   }
 }
