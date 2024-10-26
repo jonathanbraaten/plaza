@@ -8,6 +8,8 @@ import { notFound } from 'next/navigation';
 import CateringDishPageBlockComponent from '@/components/pageBlock/catering/cateringDishPageBlock';
 import { cateringMetaHelper } from '@/utils/metaDataHelpers';
 import { uppercaseHelper } from '@/utils/uppercaseHelper';
+import { metaImageBuilder } from '@/utils/metaImageBuilder';
+import { SanityImageObject } from '@sanity/image-url/lib/types/types';
 export async function generateMetadata() {
   const data = await sanityFetch({
     query: CATERING_PAGE_QUERY,
@@ -28,37 +30,26 @@ export async function generateMetadata() {
     description: data?.metaDescription
       ? data.metaDescription
       : cateringMetaHelper.fallbackDescription,
-    keywords: [
-      'Plaza Kafe & Spieri',
-      'Lonevåg',
-      'Osterøy',
-      'Catering',
-      'Konfirmasjon',
-      'Arragement',
-      'Focaccia',
-      'Baguette',
-      'Brie',
-      'Ost og skinke',
-      'Spekeskinke',
-      'Kylling',
-      'Laks',
-      'Eggerøre',
-    ],
+    image: metaImageBuilder(data.metaImage as SanityImageObject),
     openGraph: {
       title: data?.title
         ? `Plaza Kafe & Spiseri - ${uppercaseHelper(data.title)}`
         : cateringMetaHelper.fallbackTitle,
-      images: {
-        url: '/public/open-graph-plaza-logo.png',
-        alt: 'Plaza Kafe & Spiseri logo',
-      },
+      images: [
+        {
+          url: metaImageBuilder(data.metaImage as SanityImageObject),
+          width: 1200,
+          height: 630,
+          alt: 'Plaza Kafe & Spiseri logo',
+        },
+      ],
       description: data.metaDescription
         ? data.metaDescription
         : cateringMetaHelper.fallbackDescription,
       type: 'website',
       siteName: 'Plaza Kafe & Spiseri',
       locale: 'nn_NO',
-      url: 'https://plazakafe.no',
+      url: 'https://plazakafe.no/catering',
     },
   };
 }

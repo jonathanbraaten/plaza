@@ -10,15 +10,19 @@ export const metadata: Metadata = {
   keywords: ['Plaza Kafe & Spieri', 'Kontakt', 'Kontakt oss', 'Lonevåg', 'Osterøy'],
   openGraph: {
     title: 'Plaza Kafe & Spiseri - Kontakt',
-    images: {
-      url: '/public/open-graph-plaza-logo.png',
-      alt: 'Plaza Kafe & Spiseri logo',
-    },
+    images: [
+      {
+        url: '/open-graph-plaza-logo.png',
+        alt: 'Plaza Kafe & Spiseri logo',
+        width: 1200,
+        height: 630,
+      },
+    ],
     description: 'Utforsk vårt breie utval av smakfulle rettar hos Plaza Kafe & Spiseri..',
     type: 'website',
     siteName: 'Plaza Kafe & Spiseri',
     locale: 'nn_NO',
-    url: 'https://plazakafe.no',
+    url: 'https://plazakafe.no/kontakt',
   },
 };
 
