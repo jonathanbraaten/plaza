@@ -13,5 +13,7 @@ export default async function sendEmail(formData: Inputs) {
   try {
     const response = await emailjs.send(data.service_id, data.template_id, formData, data.user_id);
     console.log(response);
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
 }
