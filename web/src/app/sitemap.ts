@@ -18,6 +18,10 @@ const staticPages: StaticPage = [
     url: '/kontakt',
     priority: 0.7,
   },
+  {
+    url: '/om-oss',
+    priority: 0.5,
+  },
 ];
 
 const fetchPageSitemap = async () => {

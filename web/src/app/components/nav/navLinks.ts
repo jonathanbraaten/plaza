@@ -15,4 +15,5 @@ export const navLinks = [
     name: 'Kontakt oss',
     path: '/kontakt',
   },
+  { id: 5, name: 'Om oss', path: '/om-oss' },
 ];
