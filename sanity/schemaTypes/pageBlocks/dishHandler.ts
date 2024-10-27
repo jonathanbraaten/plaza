@@ -15,9 +15,11 @@ export default defineType({
     }),
     defineField({
       name: 'image',
-      title: 'Banner bilde.',
+      /*   title: 'Banner bilde.', */
+      title: 'IKKE LEGG TIL BANNER BILDE',
       type: 'image',
-      description: 'Banner bilde som vises på seksjonen. (påkrevd)',
+      description: 'IKKE LEGG TIL BANNER FØR BILDER ER FASTSATT',
+      /* description: 'Banner bilde som vises på seksjonen. (påkrevd)', */
       options: {
         hotspot: true,
       },
