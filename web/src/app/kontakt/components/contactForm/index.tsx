@@ -80,7 +80,7 @@ export default function ContactForm() {
         />
         <FormInput
           htmlFor="message"
-          labelText="Beskjed"
+          labelText="Melding"
           id="message"
           name="message"
           type="message"
@@ -92,13 +92,13 @@ export default function ContactForm() {
       </div>
 
       {success ? (
-        <SuccessAlert optionalStyle="sm:self-start self-stretch px-20">
-          Melding er sendt.
+        <SuccessAlert optionalStyle="sm:self-start self-stretch  text-green-600 text-lg ">
+          Takk! Vi svarer deg så fort vi kan.
         </SuccessAlert>
       ) : (
         <button
           type="submit"
-          className="sm:self-start self-stretch bg-primary text-white py-3 px-20 rounded-md"
+          className="sm:self-start self-stretch bg-primary transition-opacity hover:opacity-90 focus:opacity-90 duration-150 ease-in-out text-white py-3 px-20 rounded-md"
         >
           Send
         </button>

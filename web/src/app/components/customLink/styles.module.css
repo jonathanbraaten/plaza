@@ -18,3 +18,10 @@
   padding-block: 0.5rem;
   border-radius: 9999px;
 }
+
+.primary:hover,
+.primary_outline:hover,
+.secondary:hover {
+  opacity: 0.9;
+  transition: 150ms ease-in-out;
+}
