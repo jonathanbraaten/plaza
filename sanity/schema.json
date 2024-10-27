@@ -725,6 +725,84 @@
     }
   },
   {
+    "name": "cateringHandler",
+    "type": "type",
+    "value": {
+      "type": "object",
+      "attributes": {
+        "_type": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string",
+            "value": "cateringHandler"
+          }
+        },
+        "catering": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "array",
+            "of": {
+              "type": "object",
+              "attributes": {
+                "title": {
+                  "type": "objectAttribute",
+                  "value": {
+                    "type": "string"
+                  },
+                  "optional": false
+                },
+                "allergy": {
+                  "type": "objectAttribute",
+                  "value": {
+                    "type": "array",
+                    "of": {
+                      "type": "string"
+                    }
+                  },
+                  "optional": false
+                },
+                "description": {
+                  "type": "objectAttribute",
+                  "value": {
+                    "type": "inline",
+                    "name": "fullPortableText"
+                  },
+                  "optional": false
+                },
+                "pricePerPerson": {
+                  "type": "objectAttribute",
+                  "value": {
+                    "type": "number"
+                  },
+                  "optional": false
+                },
+                "_type": {
+                  "type": "objectAttribute",
+                  "value": {
+                    "type": "string",
+                    "value": "cateringDishes"
+                  }
+                }
+              },
+              "rest": {
+                "type": "object",
+                "attributes": {
+                  "_key": {
+                    "type": "objectAttribute",
+                    "value": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "optional": false
+        }
+      }
+    }
+  },
+  {
     "name": "dishHandler",
     "type": "type",
     "value": {
@@ -1786,7 +1864,7 @@
     }
   },
   {
-    "name": "catering",
+    "name": "cateringDish",
     "type": "document",
     "attributes": {
       "_id": {
@@ -1799,7 +1877,73 @@
         "type": "objectAttribute",
         "value": {
           "type": "string",
-          "value": "catering"
+          "value": "cateringDish"
+        }
+      },
+      "_createdAt": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        }
+      },
+      "_updatedAt": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        }
+      },
+      "_rev": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        }
+      },
+      "title": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
+      "dish": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "array",
+          "of": {
+            "type": "object",
+            "attributes": {
+              "_key": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "string"
+                }
+              }
+            },
+            "rest": {
+              "type": "inline",
+              "name": "cateringHandler"
+            }
+          }
+        },
+        "optional": false
+      }
+    }
+  },
+  {
+    "name": "cateringPage",
+    "type": "document",
+    "attributes": {
+      "_id": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        }
+      },
+      "_type": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string",
+          "value": "cateringPage"
         }
       },
       "_createdAt": {
@@ -1840,7 +1984,7 @@
         "value": {
           "type": "string"
         },
-        "optional": true
+        "optional": false
       },
       "metaImage": {
         "type": "objectAttribute",
@@ -1902,7 +2046,7 @@
             }
           }
         },
-        "optional": true
+        "optional": false
       },
       "body": {
         "type": "objectAttribute",
@@ -2094,7 +2238,7 @@
         "value": {
           "type": "string"
         },
-        "optional": true
+        "optional": false
       },
       "metaImage": {
         "type": "objectAttribute",
@@ -2156,7 +2300,7 @@
             }
           }
         },
-        "optional": true
+        "optional": false
       },
       "body": {
         "type": "objectAttribute",
@@ -2348,7 +2492,7 @@
         "value": {
           "type": "string"
         },
-        "optional": true
+        "optional": false
       },
       "metaImage": {
         "type": "objectAttribute",
@@ -2410,7 +2554,7 @@
             }
           }
         },
-        "optional": true
+        "optional": false
       },
       "body": {
         "type": "objectAttribute",

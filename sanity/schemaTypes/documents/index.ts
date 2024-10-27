@@ -5,7 +5,19 @@ import page from './page';
 import allergyIcons from './allergyIcons';
 import dishes from './dishes';
 import dish from './dish';
-import catering from './catering';
+import catering from './cateringPage';
 import cateringDishes from './cateringDishes';
+import cateringDish from './cateringDish';
 
-export default [page, menu, catering, cateringDishes, banner, allergy, allergyIcons, dish, dishes];
+export default [
+  page,
+  menu,
+  catering,
+  cateringDish,
+  cateringDishes,
+  banner,
+  allergy,
+  allergyIcons,
+  dish,
+  dishes,
+];
