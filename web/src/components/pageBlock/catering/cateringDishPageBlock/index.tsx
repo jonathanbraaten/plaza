@@ -9,6 +9,7 @@ import { CateringPortableText } from '../portableTextComponent';
 import { CateringDish } from '@/sanity/lib/types/types';
 import { Allergy, FullPortableText } from '@/sanity/lib/sanity.types';
 import { IoMdInformationCircleOutline } from 'react-icons/io';
+import { montserrat } from '@/ui/fonts';
 async function fetchDishData() {
   const data = await sanityFetch({
     query: CATERING_DISH_QUERY,
@@ -39,10 +40,12 @@ export default async function CateringDishPageBlockComponent() {
               pricePerPerson: number;
               description: FullPortableText;
             }) => (
-              <article key={_id} className={(clsx(styles.subgrid), 'bg-fillFaded p-5')}>
-                <div className="flex flex-col gap-2 mb-4">
-                  <h2 className="text-mobile-h3 md:text-mobile-h3">{title}</h2>
-                  <div className="max-w-[65ch]">
+              <article key={_id} className={(clsx(styles.subgrid), 'bg-fillFaded/10 p-5 ')}>
+                <div className="flex flex-col gap-2 mb-4 ">
+                  <h2 className={clsx(montserrat.className, 'text-mobile-h3 md:text-mobile-h3')}>
+                    {title}
+                  </h2>
+                  <div className="max-w-[75ch]">
                     <CateringPortableText value={description} />
                   </div>
                 </div>
