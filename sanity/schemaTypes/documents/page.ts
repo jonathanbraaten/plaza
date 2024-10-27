@@ -3,7 +3,7 @@ import { defineArrayMember, defineField, defineType } from 'sanity';
 import { IoMdDocument } from 'react-icons/io';
 export default defineType({
   name: 'page',
-  title: 'Forside',
+  title: 'Heim',
   type: 'document',
   icon: IoMdDocument,
   groups: [
