@@ -2,7 +2,7 @@ import { defineArrayMember, defineField, defineType } from 'sanity';
 
 import { IoMdDocument } from 'react-icons/io';
 export default defineType({
-  name: 'catering',
+  name: 'cateringPage',
   title: 'Catering',
   type: 'document',
   icon: IoMdDocument,

@@ -1,7 +1,7 @@
 import { defineQuery } from 'next-sanity';
 
 export const CATERING_PAGE_QUERY = defineQuery(`
-*[_type == 'catering' && slug.current == $slug][0]{
+*[_type == 'cateringPage' && slug.current == $slug][0]{
   title,
   "slug": slug.current,
   metaDescription,

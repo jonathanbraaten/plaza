@@ -4,6 +4,7 @@ import CTAPageBlock from './ctaPageBlock';
 import menuPageBlock from './menuPageBlock';
 import dishHandler from './dishHandler';
 import cateringPageBlock from './cateringPageBlock';
+import cateringHandler from './cateringHandler';
 
 export default [
   allergyBlock,
@@ -12,4 +13,5 @@ export default [
   menuPageBlock,
   cateringPageBlock,
   dishHandler,
+  cateringHandler,
 ];

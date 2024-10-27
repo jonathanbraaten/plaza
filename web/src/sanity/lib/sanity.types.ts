@@ -120,6 +120,18 @@ export type MinimalPortableText = Array<{
   _key: string;
 }>;
 
+export type CateringHandler = {
+  _type: 'cateringHandler';
+  catering: Array<{
+    title: string;
+    allergy: Array<string>;
+    description: FullPortableText;
+    pricePerPerson: number;
+    _type: 'cateringDishes';
+    _key: string;
+  }>;
+};
+
 export type DishHandler = {
   _type: 'dishHandler';
   title: string;
@@ -310,16 +322,30 @@ export type CateringDishes = {
   pricePerPerson: number;
 };
 
-export type Catering = {
+export type CateringDish = {
   _id: string;
-  _type: 'catering';
+  _type: 'cateringDish';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  dish: Array<
+    {
+      _key: string;
+    } & CateringHandler
+  >;
+};
+
+export type CateringPage = {
+  _id: string;
+  _type: 'cateringPage';
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
   title: string;
   slug: Slug;
-  metaDescription?: string;
-  metaImage?: {
+  metaDescription: string;
+  metaImage: {
     asset?: {
       _ref: string;
       _type: 'reference';
@@ -363,8 +389,8 @@ export type Menu = {
   _rev: string;
   title: string;
   slug: Slug;
-  metaDescription?: string;
-  metaImage?: {
+  metaDescription: string;
+  metaImage: {
     asset?: {
       _ref: string;
       _type: 'reference';
@@ -408,8 +434,8 @@ export type Page = {
   _rev: string;
   title: string;
   slug: Slug;
-  metaDescription?: string;
-  metaImage?: {
+  metaDescription: string;
+  metaImage: {
     asset?: {
       _ref: string;
       _type: 'reference';
@@ -522,6 +548,7 @@ export type AllSanitySchemaTypes =
   | Geopoint
   | FullPortableText
   | MinimalPortableText
+  | CateringHandler
   | DishHandler
   | CateringPageBlock
   | MenuPageBlock
@@ -535,7 +562,8 @@ export type AllSanitySchemaTypes =
   | Allergy
   | Banner
   | CateringDishes
-  | Catering
+  | CateringDish
+  | CateringPage
   | Menu
   | Page
   | SanityImageCrop
@@ -546,23 +574,25 @@ export type AllSanitySchemaTypes =
   | Slug;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ../web/src/sanity/queries/cateringDishQuery.ts
-// Variable: cateringDishQuery
-// Query: *[_type == 'cateringDishes']{  _id,  title,  allergy,  description,  pricePerPerson}
-export type CateringDishQueryResult = Array<{
-  _id: string;
+// Variable: CATERING_DISH_QUERY
+// Query: *[_type == 'cateringDish'].dish[0].catering[]{    _key,  _id,  title,  allergy,  pricePerPerson,  description,  _type}
+export type CATERING_DISH_QUERYResult = Array<{
+  _key: string;
+  _id: null;
   title: string;
-  allergy: Allergy;
-  description: FullPortableText;
+  allergy: Array<string>;
   pricePerPerson: number;
-}>;
+  description: FullPortableText;
+  _type: 'cateringDishes';
+} | null>;
 
 // Source: ../web/src/sanity/queries/cateringPageQuery.ts
 // Variable: CATERING_PAGE_QUERY
-// Query: *[_type == 'catering' && slug.current == $slug][0]{  title,  "slug": slug.current,  metaDescription,  metaImage,body[]{  _type,      _type == 'banner' => {      _key,      header,      subHeader,      bannerImage    },    _type == 'cateringPageBlock' => {      _key,     title,        content,        cateringInfo,    },}}
+// Query: *[_type == 'cateringPage' && slug.current == $slug][0]{  title,  "slug": slug.current,  metaDescription,  metaImage,body[]{  _type,      _type == 'banner' => {      _key,      header,      subHeader,      bannerImage    },    _type == 'cateringPageBlock' => {      _key,     title,        content,        cateringInfo,    },}}
 export type CATERING_PAGE_QUERYResult = {
   title: string;
   slug: string;
-  metaDescription: string | null;
+  metaDescription: string;
   metaImage: {
     asset?: {
       _ref: string;
@@ -573,7 +603,7 @@ export type CATERING_PAGE_QUERYResult = {
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     _type: 'image';
-  } | null;
+  };
   body: Array<
     | {
         _type: 'banner';
@@ -638,7 +668,7 @@ export type DISH_QUERYResult = Array<{
 export type MENU_QUERYResult = {
   title: string;
   slug: string;
-  metaDescription: string | null;
+  metaDescription: string;
   metaImage: {
     asset?: {
       _ref: string;
@@ -649,7 +679,7 @@ export type MENU_QUERYResult = {
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     _type: 'image';
-  } | null;
+  };
   body: Array<
     | {
         _type: 'allergyBlock';
@@ -701,7 +731,7 @@ export type MENU_QUERYResult = {
 export type PAGE_QUERYResult = {
   title: string;
   slug: string;
-  metaDescription: string | null;
+  metaDescription: string;
   metaImage: {
     asset?: {
       _ref: string;
@@ -712,7 +742,7 @@ export type PAGE_QUERYResult = {
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     _type: 'image';
-  } | null;
+  };
   body: Array<
     | {
         _type: 'banner';
@@ -785,14 +815,38 @@ export type PAGE_QUERYResult = {
   > | null;
 } | null;
 
+// Source: ../web/src/sanity/queries/sitemapQueries/cateringSitemapQuery.ts
+// Variable: CATERING_SITEMAP_QUERY
+// Query: *[_type == 'catering' && slug.current == $slug][0]{    _updatedAt,    "slug": slug.current,  }
+export type CATERING_SITEMAP_QUERYResult = null;
+
+// Source: ../web/src/sanity/queries/sitemapQueries/menuSitemapQuery.ts
+// Variable: MENU_SITEMAP_QUERY
+// Query: *[_type == 'menu' && slug.current == $slug][0]{    _updatedAt,    "slug": slug.current,  }
+export type MENU_SITEMAP_QUERYResult = {
+  _updatedAt: string;
+  slug: string;
+} | null;
+
+// Source: ../web/src/sanity/queries/sitemapQueries/pageSitemapQuery.ts
+// Variable: PAGE_SITEMAP_QUERY
+// Query: *[_type == 'page' && slug.current == $slug][0]{    _updatedAt,    "slug": slug.current,  }
+export type PAGE_SITEMAP_QUERYResult = {
+  _updatedAt: string;
+  slug: string;
+} | null;
+
 // Query TypeMap
 import '@sanity/client';
 declare module '@sanity/client' {
   interface SanityQueries {
-    "*[_type == 'cateringDishes']{\n  _id,\n  title,\n  allergy,\n  description,\n  pricePerPerson\n\n}": CateringDishQueryResult;
-    "\n*[_type == 'catering' && slug.current == $slug][0]{\n  title,\n  \"slug\": slug.current,\n  metaDescription,\n  metaImage,\nbody[]{\n  _type,\n      _type == 'banner' => {\n      _key,\n      header,\n      subHeader,\n      bannerImage\n    },\n    _type == 'cateringPageBlock' => {\n      _key,\n     title,\n        content,\n        cateringInfo,\n    },\n}\n\n}\n": CATERING_PAGE_QUERYResult;
+    "\n\n  *[_type == 'cateringDish'].dish[0].catering[]{\n    _key,\n  _id,\n  title,\n  allergy,\n  pricePerPerson,\n  description,\n  _type\n}\n  ": CATERING_DISH_QUERYResult;
+    "\n*[_type == 'cateringPage' && slug.current == $slug][0]{\n  title,\n  \"slug\": slug.current,\n  metaDescription,\n  metaImage,\nbody[]{\n  _type,\n      _type == 'banner' => {\n      _key,\n      header,\n      subHeader,\n      bannerImage\n    },\n    _type == 'cateringPageBlock' => {\n      _key,\n     title,\n        content,\n        cateringInfo,\n    },\n}\n\n}\n": CATERING_PAGE_QUERYResult;
     "\n *[_type == 'dish'].dish[]{\n  _key,\n  dishes,\n  image,\n  title,\n\n}\n  ": DISH_QUERYResult;
     "\n*[_type == 'menu' && slug.current == $slug][0] {\n  title,\n  \"slug\":slug.current,\n  metaDescription,\n  metaImage,\n    body[]{\n      _type,\n      _type == 'banner'=> {\n        _key,\n          header,\n        subHeader,\n        bannerImage\n      },\n      _type == 'allergyBlock'=>{\n        _key,\n        title,\n         content,\n          menuAllergy\n      },\n      _type == 'lunchBlock' => {\n        title,\n        _key,\n          \"dishReference\":lunchReference[]->{\n        _id,\n        _type,\n        title,\n        description,\n        dineInPrice,\n        takeawayPrice,\n        allergy[]\n\n      }\n      },\n    },\n\n}\n  ": MENU_QUERYResult;
     "\n*[_type == 'page' && slug.current == $slug][0]{\n  title,\n  \"slug\": slug.current,\n  metaDescription,\n  metaImage,\n  body[]{\n    _type,\n    _type == 'banner' => {\n      _key,\n      header,\n      subHeader,\n      bannerImage\n    },\n    _type == 'featureBlock' => {\n      _key,\n      title,\n      image,\n      content\n    },\n    _type == 'CTAPageBlock' => {\n      _key,\n      title,\n      subtitle,\n      linkEmbed {\n        label,\n        href\n      }\n    },\n    _type == 'introPageBlock' => {\n      _key,\n      title,\n      description,\n      image\n    },\n     _type == 'menuPageBlock' => {\n      _key,\n      title,\n      description,\n      image,\n       linkEmbed {\n        label,\n        href\n      }\n    },\n    _type == 'cateringBlock' => {\n      _key,\n      title,\n      content,\n      linkEmbed {\n        label,\n        href\n      }\n    }\n  }\n}\n": PAGE_QUERYResult;
+    '\n  *[_type == \'catering\' && slug.current == $slug][0]{\n    _updatedAt,\n    "slug": slug.current,\n  }\n  ': CATERING_SITEMAP_QUERYResult;
+    '\n  *[_type == \'menu\' && slug.current == $slug][0]{\n    _updatedAt,\n    "slug": slug.current,\n  }\n  ': MENU_SITEMAP_QUERYResult;
+    '\n  *[_type == \'page\' && slug.current == $slug][0]{\n    _updatedAt,\n    "slug": slug.current,\n  }\n  ': PAGE_SITEMAP_QUERYResult;
   }
 }
