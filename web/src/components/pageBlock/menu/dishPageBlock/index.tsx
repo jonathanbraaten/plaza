@@ -8,8 +8,8 @@ import clsx from 'clsx';
 import styles from './styles.module.css';
 import { IoMdInformationCircleOutline } from 'react-icons/io';
 import React from 'react';
-import { SanityImage } from '@/sanity/lib/types/reusableType';
-import MenuBanner from '@/app/components/menuBanner';
+/* import { SanityImage } from '@/sanity/lib/types/reusableType';
+import MenuBanner from '@/app/components/menuBanner'; */
 import { montserrat } from '@/ui/fonts';
 
 async function fetchDishData() {
@@ -29,19 +29,31 @@ export default async function DishPageBlockComponent() {
         ({
           _key,
           title,
-          image,
+          /*    image, */
           dishes,
         }: {
           _key: string;
           title: string;
-          image: SanityImage;
+          /*  image: SanityImage; */
           dishes: unknown;
         }) => {
           return (
             <article className="flex flex-col " key={_key}>
-              <MenuBanner title={title} image={image} />
+              {/*         <MenuBanner title={title} image={image} /> */}
+
               <div>
-                <Wrapper optionalStyle="py-20 md:py-40">
+                <Wrapper
+                  optionalStyle="py-20 md:py-30 flex flex-col gap-10"
+                  /* optionalStyle="py-20 md:py-40" */
+                >
+                  <h2
+                    className={clsx(
+                      montserrat.className,
+                      'text-mobile-h2 md:text-desktop-h2 text-center ',
+                    )}
+                  >
+                    {title}
+                  </h2>
                   <DishGrid>
                     {(dishes as Dish[])?.map(
                       ({ _key, title, dineInPrice, takeAwayPrice, description, allergy }: Dish) => (
@@ -90,6 +102,7 @@ export default async function DishPageBlockComponent() {
                   </DishGrid>
                 </Wrapper>
               </div>
+              <hr />
             </article>
           );
         },
