@@ -13,7 +13,7 @@ export default defineType({
       type: 'string',
       validation: (Rule) => Rule.required(),
 
-      description: 'Tittelen på catering matretten "Konfirmasjon Spesial. (påkrevd)',
+      description: 'Tittelen på catering catering-rett(påkrevd)',
     }),
     defineField({
       name: 'allergy',

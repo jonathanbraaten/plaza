@@ -18,8 +18,8 @@ export default defineType({
       title: 'Tabell av catering retter',
       type: 'array',
       of: [{ type: 'cateringHandler' }],
-      validation: (Rule) => Rule.required().min(1).max(1),
-      description: 'Her legger du inn ulike catering muligheter. MAKS ETT ELEMENT (påkrevd)',
+      validation: (Rule) => Rule.required().max(1),
+      description: 'Legg til catering. (påkrevd)',
     }),
   ],
 });
