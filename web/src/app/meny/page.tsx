@@ -65,12 +65,14 @@ async function fetchPageData() {
 
 export default async function Page() {
   const data = await fetchPageData();
-  if (!data) notFound(); //TODO FIX THIS
+  if (!data) {
+    notFound();
+  } //TODO FIX THIS
   return (
     <>
       <Header />
       <main className="bg-secondary flex flex-col">
-        <MenuHandler data={data} />
+        {data && <MenuHandler data={data} />}
         <DishPageBlockComponent />
       </main>
       <Footer />
