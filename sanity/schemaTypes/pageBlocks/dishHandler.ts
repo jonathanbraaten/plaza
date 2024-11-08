@@ -18,10 +18,13 @@ export default defineType({
       title: 'Banner bilde.',
       type: 'image',
       description: 'Banner bilde som vises på seksjonen. (påkrevd)',
+      validation: (Rule) =>
+        Rule.custom((value: { asset: any } | undefined) => {
+          return value && value.asset ? true : 'Bilde er påkrevd';
+        }),
       options: {
         hotspot: true,
       },
-      validation: (Rule) => Rule.required(),
       fields: [
         defineField({
           name: 'alt',

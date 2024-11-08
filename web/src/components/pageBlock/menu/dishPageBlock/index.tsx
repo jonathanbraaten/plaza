@@ -36,7 +36,6 @@ export default async function DishPageBlockComponent() {
             <section className="flex flex-col gap-10" key={_key}>
               <MenuBanner title={title} image={image} />
               <Wrapper key={_key} optionalStyle="flex flex-col gap-5">
-                <h2 className="text-mobile-h2 md:text-desktop-h2 text-center">{title}</h2>
                 <DishGrid data={dishes as Dish[]} />
               </Wrapper>
             </section>
