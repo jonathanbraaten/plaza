@@ -10,8 +10,7 @@ export default defineType({
     defineField({
       name: 'title',
       type: 'string',
-      description: 'Hovedtittel for seksjonen. (påkrevd)',
-      validation: (Rule) => Rule.required(),
+      description: 'Hovedtittel for seksjonen. (valgfri)',
     }),
     defineField({
       name: 'content',
@@ -22,8 +21,8 @@ export default defineType({
     defineField({
       name: 'cateringInfo',
       title: 'Informasjonsboks',
-      description: 'Boks som viser infromasjon/betingelser relatert til catering. (påkrevd)',
-      validation: (Rule) => Rule.required(),
+      description: 'Boks som viser informasjon/betingelser relatert til catering. (valgfri)',
+
       type: 'fullPortableText',
     }),
   ],
