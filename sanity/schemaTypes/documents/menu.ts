@@ -50,10 +50,6 @@ export default defineType({
           title: 'Banner bilde',
           type: 'banner',
         }),
-        defineArrayMember({
-          title: 'Informasjon om allergener',
-          type: 'allergyBlock',
-        }),
       ],
       options: {
         insertMenu: {

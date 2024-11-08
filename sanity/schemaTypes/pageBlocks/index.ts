@@ -1,4 +1,3 @@
-import allergyBlock from './allergyBlock';
 import aboutPageBlock from './introPageBlock';
 import CTAPageBlock from './ctaPageBlock';
 import menuPageBlock from './menuPageBlock';
@@ -7,7 +6,6 @@ import cateringPageBlock from './cateringPageBlock';
 import cateringHandler from './cateringHandler';
 
 export default [
-  allergyBlock,
   aboutPageBlock,
   CTAPageBlock,
   menuPageBlock,
