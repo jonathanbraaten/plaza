@@ -15,15 +15,13 @@ export default defineType({
     }),
     defineField({
       name: 'image',
-      /*   title: 'Banner bilde.', */
-      title: 'IKKE LEGG TIL BANNER BILDE',
+      title: 'Banner bilde.',
       type: 'image',
-      description: 'IKKE LEGG TIL BANNER FØR BILDER ER FASTSATT',
-      /* description: 'Banner bilde som vises på seksjonen. (påkrevd)', */
+      description: 'Banner bilde som vises på seksjonen. (påkrevd)',
       options: {
         hotspot: true,
       },
-      /*   validation: (Rule) => Rule.required(), */
+      validation: (Rule) => Rule.required(),
       fields: [
         defineField({
           name: 'alt',
