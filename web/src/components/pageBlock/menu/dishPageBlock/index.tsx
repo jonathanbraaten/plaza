@@ -4,6 +4,8 @@ import { sanityFetch } from '@/sanity/lib/client';
 import DishGrid from './grid/dishGrid';
 import React from 'react';
 import Wrapper from '@/app/components/wrapper';
+import MenuBanner from '@/app/components/menuBanner';
+import { SanityImage } from '@/sanity/lib/types/reusableType';
 
 async function fetchDishData() {
   const data = await sanityFetch({
@@ -22,19 +24,22 @@ export default async function DishPageBlockComponent() {
         ({
           _key,
           title,
-          /*    image, */
+          image,
           dishes,
         }: {
           _key: string;
           title: string;
-          /*       image: SanityImage; */
+          image: SanityImage;
           dishes: unknown;
         }) => {
           return (
-            <Wrapper key={_key} optionalStyle="flex flex-col gap-5">
-              <h2 className="text-mobile-h2 md:text-desktop-h2 text-center">{title}</h2>
-              <DishGrid data={dishes as Dish[]} />
-            </Wrapper>
+            <section className="flex flex-col gap-10" key={_key}>
+              <MenuBanner title={title} image={image} />
+              <Wrapper key={_key} optionalStyle="flex flex-col gap-5">
+                <h2 className="text-mobile-h2 md:text-desktop-h2 text-center">{title}</h2>
+                <DishGrid data={dishes as Dish[]} />
+              </Wrapper>
+            </section>
           );
         },
       )}
