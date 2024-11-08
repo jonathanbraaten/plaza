@@ -33,9 +33,9 @@ export default async function DishPageBlockComponent() {
           dishes: unknown;
         }) => {
           return (
-            <section className="flex flex-col gap-10" key={_key}>
+            <section className="flex flex-col my-20" key={_key}>
               <MenuBanner title={title} image={image} />
-              <Wrapper key={_key} optionalStyle="flex flex-col gap-5">
+              <Wrapper key={_key} optionalStyle="flex flex-col">
                 <DishGrid data={dishes as Dish[]} />
               </Wrapper>
             </section>

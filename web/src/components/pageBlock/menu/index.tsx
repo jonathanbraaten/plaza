@@ -1,5 +1,4 @@
-import { AllergyBlock, MENU_QUERYResult } from '@/sanity/lib/sanity.types';
-import AllergyBlockComponent from '@/components/pageBlock/menu/allergyPageBlock';
+import { MENU_QUERYResult } from '@/sanity/lib/sanity.types';
 import MenuBannerPageBlockComponent from '@/components/pageBlock/menu/menuBannerPageBlock';
 
 export default function MenuPageBlockHandler({ data }: { data: MENU_QUERYResult }) {
@@ -16,8 +15,7 @@ export default function MenuPageBlockHandler({ data }: { data: MENU_QUERYResult 
                 bannerImage={block.bannerImage}
               />
             );
-          case 'allergyBlock':
-            return <AllergyBlockComponent key={block._key} data={block as AllergyBlock} />;
+
           default:
             return null;
         }
