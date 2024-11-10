@@ -255,7 +255,7 @@ export type Dish = {
   _updatedAt: string;
   _rev: string;
   title?: string;
-  dish?: Array<
+  dishTable?: Array<
     {
       _key: string;
     } & DishHandler
@@ -627,32 +627,8 @@ export type CATERING_PAGE_QUERYResult = {
 
 // Source: ../web/src/sanity/queries/dishQuery.ts
 // Variable: DISH_QUERY
-// Query: *[_type == 'dish'].dish[]{  _key,  dishes,  image,  title,}
-export type DISH_QUERYResult = Array<{
-  _key: string;
-  dishes: Array<{
-    title: string;
-    allergy: Array<string>;
-    description: string;
-    dineInPrice: number;
-    takeAwayPrice: number;
-    _type: 'dishes';
-    _key: string;
-  }>;
-  image: {
-    asset?: {
-      _ref: string;
-      _type: 'reference';
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt: string;
-    _type: 'image';
-  } | null;
-  title: string;
-} | null>;
+// Query: *[_type == 'dish']{    "dishes": dish[]{      _key,      title,      image,      dishes    }  }[0].dishes
+export type DISH_QUERYResult = null;
 
 // Source: ../web/src/sanity/queries/footerQuery.ts
 // Variable: FOOTER_QUERY
@@ -827,7 +803,7 @@ declare module '@sanity/client' {
   interface SanityQueries {
     "\n\n  *[_type == 'cateringDish'].dish[0].catering[]{\n    _key,\n  _id,\n  title,\n  allergy,\n  pricePerPerson,\n  description,\n  _type\n}\n  ": CATERING_DISH_QUERYResult;
     "\n*[_type == 'cateringPage' && slug.current == $slug][0]{\n  title,\n  \"slug\": slug.current,\n  metaDescription,\n  metaImage,\nbody[]{\n  _type,\n      _type == 'banner' => {\n      _key,\n      header,\n      subHeader,\n      bannerImage\n    },\n    _type == 'cateringPageBlock' => {\n      _key,\n     title,\n        content,\n        cateringInfo,\n    },\n}\n\n}\n": CATERING_PAGE_QUERYResult;
-    "\n *[_type == 'dish'].dish[]{\n  _key,\n  dishes,\n  image,\n  title,\n}\n  ": DISH_QUERYResult;
+    '\n  *[_type == \'dish\']{\n    "dishes": dish[]{\n      _key,\n      title,\n      image,\n      dishes\n    }\n  }[0].dishes\n': DISH_QUERYResult;
     "\n  *[_type == 'footer'][0]\xA0{\n  openingHours,\n  socialMedia\n}\n  ": FOOTER_QUERYResult;
     "\n*[_type == 'menu' && slug.current == $slug][0] {\n  title,\n  \"slug\":slug.current,\n  metaDescription,\n  metaImage,\n    body[]{\n      _type,\n      _type == 'banner'=> {\n        _key,\n          header,\n        subHeader,\n        bannerImage\n      },\n    },\n\n}\n  ": MENU_QUERYResult;
     "\n*[_type == 'page' && slug.current == $slug][0]{\n  title,\n  \"slug\": slug.current,\n  metaDescription,\n  metaImage,\n  body[]{\n    _type,\n    _type == 'banner' => {\n      _key,\n      header,\n      subHeader,\n      bannerImage\n    },\n    _type == 'featureBlock' => {\n      _key,\n      title,\n      image,\n      content\n    },\n    _type == 'CTAPageBlock' => {\n      _key,\n      title,\n      subtitle,\n      linkEmbed {\n        label,\n        href\n      }\n    },\n    _type == 'introPageBlock' => {\n      _key,\n      title,\n      description,\n      image\n    },\n     _type == 'menuPageBlock' => {\n      _key,\n      title,\n      description,\n      image,\n       linkEmbed {\n        label,\n        href\n      }\n    },\n    _type == 'cateringBlock' => {\n      _key,\n      title,\n      content,\n      linkEmbed {\n        label,\n        href\n      }\n    }\n  }\n}\n": PAGE_QUERYResult;

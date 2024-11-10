@@ -1527,7 +1527,7 @@
         },
         "optional": true
       },
-      "dish": {
+      "dishTable": {
         "type": "objectAttribute",
         "value": {
           "type": "array",
