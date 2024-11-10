@@ -4,39 +4,13 @@ import { IoMdClock, IoMdLocate } from 'react-icons/io';
 export default defineField({
   name: 'footer',
   type: 'document',
+  validation: (Rule) => Rule.required(),
   fields: [
     defineField({
-      name: 'location',
-      title: 'Lokasjon',
-      type: 'array',
-      of: [
-        defineArrayMember({
-          name: 'address',
-          type: 'object',
-          icon: IoMdLocate,
-          fields: [
-            defineField({
-              name: 'place',
-              type: 'string',
-              title: 'Plassering',
-            }),
-            defineField({
-              name: 'postalCode',
-              type: 'string',
-            }),
-            defineField({
-              name: 'streetNumber',
-              type: 'string',
-            }),
-          ],
-        }),
-      ],
-    }),
-
-    defineField({
       name: 'openingHours',
-      title: 'Åpningstider',
+      title: 'Åpningstider (påkrevd)',
       type: 'array',
+      validation: (Rule) => Rule.required(),
       of: [
         defineArrayMember({
           name: 'openingHour',
@@ -58,31 +32,12 @@ export default defineField({
         }),
       ],
     }),
-    defineField({
-      name: 'contact',
-      title: 'Kontakt',
-      type: 'object',
-
-      fields: [
-        defineField({
-          name: 'telephone',
-          type: 'string',
-          title: 'Telefon',
-          validation: (Rule) =>
-            Rule.regex(/^\+?[0-9\s-()]{8,}$/).error('Please enter a valid phone number'),
-        }),
-        defineField({
-          name: 'email',
-          type: 'email',
-          title: 'E-postadresse',
-        }),
-      ],
-    }),
 
     defineField({
       name: 'socialMedia',
       type: 'array',
-      title: 'Sosiale medier',
+      title: 'Sosiale medier (påkrevd)',
+      validation: (Rule) => Rule.required(),
       of: [
         defineArrayMember({
           name: 'socials',
@@ -95,8 +50,8 @@ export default defineField({
               type: 'string',
               options: {
                 list: [
-                  { title: 'Facebook', value: 'facebook' },
-                  { title: 'Instagram', value: 'instagram' },
+                  { title: 'Facebook', value: 'Facebook' },
+                  { title: 'Instagram', value: 'Instagram' },
                 ],
                 layout: 'radio',
               },
