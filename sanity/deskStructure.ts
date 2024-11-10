@@ -25,4 +25,9 @@ export const customStructure: StructureResolver = (S) =>
         .title('Catering')
         .icon(MdDirectionsBike)
         .child(S.documentList().filter('_type == "cateringDish"').id('catering')),
+
+      S.divider(),
+      S.listItem()
+        .title('Footer')
+        .child(S.documentList().filter('_type == "footer" ').id('footer')),
     ]);

@@ -8,6 +8,7 @@ import dish from './dish';
 import catering from './cateringPage';
 import cateringDishes from './cateringDishes';
 import cateringDish from './cateringDish';
+import footer from './footer';
 
 export default [
   page,
@@ -20,4 +21,5 @@ export default [
   allergyIcons,
   dish,
   dishes,
+  footer,
 ];
