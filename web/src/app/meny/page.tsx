@@ -1,5 +1,3 @@
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
 import { sanityFetch } from '@/sanity/lib/client';
 import Header from '../components/header';
 import Footer from '../components/footer';
@@ -57,54 +55,32 @@ export async function generateMetadata() {
 }
 
 async function fetchPageData() {
-  try {
-    const data = await sanityFetch({
-      query: MENU_QUERY,
-      params: { slug: 'meny' },
-      revalidate: 60,
-      tags: ['page', 'meny'],
-    });
+  const data = await sanityFetch({
+    query: MENU_QUERY,
+    params: { slug: 'meny' },
+    revalidate: 60,
+    tags: ['page', 'meny'],
+  });
 
-    return data;
-  } catch (error) {
-    console.error('Error fetching menu data:', error);
-    return null;
-  }
+  return data;
 }
 
 export default async function Page() {
-  try {
-    const data = await fetchPageData();
-    console.log(data);
+  const data = await fetchPageData();
+  console.log(data);
 
-    if (!data) {
-      notFound();
-    }
-
-    return (
-      <>
-        <Header />
-        <main className="bg-secondary flex flex-col">
-          {data && <MenuHandler data={data} />}
-          <Allergies />
-          <DishPageBlockComponent />
-        </main>
-        <Footer />
-      </>
-    );
-  } catch (error) {
-    console.error('Error rendering menu page:', error);
-    return (
-      <>
-        <Header />
-        <main className="bg-secondary flex flex-col p-4">
-          <div className="text-center py-8">
-            <h1 className="text-xl font-bold mb-2">Beklager, noe gikk galt</h1>
-            <p>Vi kunne ikke laste menyen akkurat nå. Vennligst prøv igjen senere.</p>
-          </div>
-        </main>
-        <Footer />
-      </>
-    );
+  if (!data) {
+    notFound();
   }
+  return (
+    <>
+      <Header />
+      <main className="bg-secondary flex flex-col">
+        {data && <MenuHandler data={data} />}
+        <Allergies />
+        <DishPageBlockComponent />
+      </main>
+      <Footer />
+    </>
+  );
 }
