@@ -5,7 +5,7 @@ import { IoMdInformationCircleOutline } from 'react-icons/io';
 import { Dish } from '@/sanity/lib/types/types';
 export default function Grid({ data }: { data: Dish[] }) {
   return (
-    <ul className={clsx(styles.grid)}>
+    <ul className={clsx(styles.grid, 'my-20')}>
       {data.map(({ _key, title, takeAwayPrice, dineInPrice, allergy, description }) => (
         <li key={_key} className={clsx(styles.subgrid, 'p-4 gap-2 bg-fillFaded')}>
           <div className="flex flex-col gap-2">

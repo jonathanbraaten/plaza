@@ -122,7 +122,7 @@ export type MinimalPortableText = Array<{
 
 export type CateringHandler = {
   _type: 'cateringHandler';
-  catering: Array<{
+  catering?: Array<{
     title: string;
     allergy: Array<string>;
     description: FullPortableText;
@@ -135,7 +135,7 @@ export type CateringHandler = {
 export type DishHandler = {
   _type: 'dishHandler';
   title: string;
-  image: {
+  image?: {
     asset?: {
       _ref: string;
       _type: 'reference';
@@ -160,9 +160,9 @@ export type DishHandler = {
 
 export type CateringPageBlock = {
   _type: 'cateringPageBlock';
-  title: string;
+  title?: string;
   content?: MinimalPortableText;
-  cateringInfo: FullPortableText;
+  cateringInfo?: FullPortableText;
 };
 
 export type MenuPageBlock = {
@@ -215,25 +215,22 @@ export type IntroPageBlock = {
   };
 };
 
-export type AllergyBlock = {
-  _type: 'allergyBlock';
-  title: string;
-  content?: MinimalPortableText;
-  menuAllergy?: Array<{
-    allergyName: string;
-    image: {
-      asset?: {
-        _ref: string;
-        _type: 'reference';
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
-      };
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      alt: string;
-      _type: 'image';
-    };
-    _type: 'allergyIcons';
+export type Footer = {
+  _id: string;
+  _type: 'footer';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  openingHours: Array<{
+    day?: string;
+    time?: string;
+    _type: 'openingHour';
+    _key: string;
+  }>;
+  socialMedia: Array<{
+    socialType?: 'Facebook' | 'Instagram';
+    socialLinks: string;
+    _type: 'socials';
     _key: string;
   }>;
 };
@@ -401,29 +398,24 @@ export type Menu = {
     crop?: SanityImageCrop;
     _type: 'image';
   };
-  body?: Array<
-    | {
-        header: string;
-        subHeader?: string;
-        bannerImage: {
-          asset?: {
-            _ref: string;
-            _type: 'reference';
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
-          };
-          hotspot?: SanityImageHotspot;
-          crop?: SanityImageCrop;
-          alt: string;
-          _type: 'image';
-        };
-        _type: 'banner';
-        _key: string;
-      }
-    | ({
-        _key: string;
-      } & AllergyBlock)
-  >;
+  body?: Array<{
+    header: string;
+    subHeader?: string;
+    bannerImage: {
+      asset?: {
+        _ref: string;
+        _type: 'reference';
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+      };
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt: string;
+      _type: 'image';
+    };
+    _type: 'banner';
+    _key: string;
+  }>;
 };
 
 export type Page = {
@@ -555,7 +547,7 @@ export type AllSanitySchemaTypes =
   | CTAPageBlock
   | LinkEmbed
   | IntroPageBlock
-  | AllergyBlock
+  | Footer
   | Dishes
   | Dish
   | AllergyIcons
@@ -626,9 +618,9 @@ export type CATERING_PAGE_QUERYResult = {
     | {
         _type: 'cateringPageBlock';
         _key: string;
-        title: string;
+        title: string | null;
         content: MinimalPortableText | null;
-        cateringInfo: FullPortableText;
+        cateringInfo: FullPortableText | null;
       }
   > | null;
 } | null;
@@ -658,13 +650,31 @@ export type DISH_QUERYResult = Array<{
     crop?: SanityImageCrop;
     alt: string;
     _type: 'image';
-  };
+  } | null;
   title: string;
 } | null>;
 
+// Source: ../web/src/sanity/queries/footerQuery.ts
+// Variable: FOOTER_QUERY
+// Query: *[_type == 'footer'][0] {  openingHours,  socialMedia}
+export type FOOTER_QUERYResult = {
+  openingHours: Array<{
+    day?: string;
+    time?: string;
+    _type: 'openingHour';
+    _key: string;
+  }>;
+  socialMedia: Array<{
+    socialType?: 'Facebook' | 'Instagram';
+    socialLinks: string;
+    _type: 'socials';
+    _key: string;
+  }>;
+} | null;
+
 // Source: ../web/src/sanity/queries/menuQuery.ts
 // Variable: MENU_QUERY
-// Query: *[_type == 'menu' && slug.current == $slug][0] {  title,  "slug":slug.current,  metaDescription,  metaImage,    body[]{      _type,      _type == 'banner'=> {        _key,          header,        subHeader,        bannerImage      },      _type == 'allergyBlock'=>{        _key,        title,         content,          menuAllergy      },      _type == 'lunchBlock' => {        title,        _key,          "dishReference":lunchReference[]->{        _id,        _type,        title,        description,        dineInPrice,        takeawayPrice,        allergy[]      }      },    },}
+// Query: *[_type == 'menu' && slug.current == $slug][0] {  title,  "slug":slug.current,  metaDescription,  metaImage,    body[]{      _type,      _type == 'banner'=> {        _key,          header,        subHeader,        bannerImage      },    },}
 export type MENU_QUERYResult = {
   title: string;
   slug: string;
@@ -680,49 +690,24 @@ export type MENU_QUERYResult = {
     crop?: SanityImageCrop;
     _type: 'image';
   };
-  body: Array<
-    | {
-        _type: 'allergyBlock';
-        _key: string;
-        title: string;
-        content: MinimalPortableText | null;
-        menuAllergy: Array<{
-          allergyName: string;
-          image: {
-            asset?: {
-              _ref: string;
-              _type: 'reference';
-              _weak?: boolean;
-              [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
-            };
-            hotspot?: SanityImageHotspot;
-            crop?: SanityImageCrop;
-            alt: string;
-            _type: 'image';
-          };
-          _type: 'allergyIcons';
-          _key: string;
-        }> | null;
-      }
-    | {
-        _type: 'banner';
-        _key: string;
-        header: string;
-        subHeader: string | null;
-        bannerImage: {
-          asset?: {
-            _ref: string;
-            _type: 'reference';
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
-          };
-          hotspot?: SanityImageHotspot;
-          crop?: SanityImageCrop;
-          alt: string;
-          _type: 'image';
-        };
-      }
-  > | null;
+  body: Array<{
+    _type: 'banner';
+    _key: string;
+    header: string;
+    subHeader: string | null;
+    bannerImage: {
+      asset?: {
+        _ref: string;
+        _type: 'reference';
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+      };
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt: string;
+      _type: 'image';
+    };
+  }> | null;
 } | null;
 
 // Source: ../web/src/sanity/queries/pageQuery.ts
@@ -842,8 +827,9 @@ declare module '@sanity/client' {
   interface SanityQueries {
     "\n\n  *[_type == 'cateringDish'].dish[0].catering[]{\n    _key,\n  _id,\n  title,\n  allergy,\n  pricePerPerson,\n  description,\n  _type\n}\n  ": CATERING_DISH_QUERYResult;
     "\n*[_type == 'cateringPage' && slug.current == $slug][0]{\n  title,\n  \"slug\": slug.current,\n  metaDescription,\n  metaImage,\nbody[]{\n  _type,\n      _type == 'banner' => {\n      _key,\n      header,\n      subHeader,\n      bannerImage\n    },\n    _type == 'cateringPageBlock' => {\n      _key,\n     title,\n        content,\n        cateringInfo,\n    },\n}\n\n}\n": CATERING_PAGE_QUERYResult;
-    "\n *[_type == 'dish'].dish[]{\n  _key,\n  dishes,\n  image,\n  title,\n\n}\n  ": DISH_QUERYResult;
-    "\n*[_type == 'menu' && slug.current == $slug][0] {\n  title,\n  \"slug\":slug.current,\n  metaDescription,\n  metaImage,\n    body[]{\n      _type,\n      _type == 'banner'=> {\n        _key,\n          header,\n        subHeader,\n        bannerImage\n      },\n      _type == 'allergyBlock'=>{\n        _key,\n        title,\n         content,\n          menuAllergy\n      },\n      _type == 'lunchBlock' => {\n        title,\n        _key,\n          \"dishReference\":lunchReference[]->{\n        _id,\n        _type,\n        title,\n        description,\n        dineInPrice,\n        takeawayPrice,\n        allergy[]\n\n      }\n      },\n    },\n\n}\n  ": MENU_QUERYResult;
+    "\n *[_type == 'dish'].dish[]{\n  _key,\n  dishes,\n  image,\n  title,\n}\n  ": DISH_QUERYResult;
+    "\n  *[_type == 'footer'][0]\xA0{\n  openingHours,\n  socialMedia\n}\n  ": FOOTER_QUERYResult;
+    "\n*[_type == 'menu' && slug.current == $slug][0] {\n  title,\n  \"slug\":slug.current,\n  metaDescription,\n  metaImage,\n    body[]{\n      _type,\n      _type == 'banner'=> {\n        _key,\n          header,\n        subHeader,\n        bannerImage\n      },\n    },\n\n}\n  ": MENU_QUERYResult;
     "\n*[_type == 'page' && slug.current == $slug][0]{\n  title,\n  \"slug\": slug.current,\n  metaDescription,\n  metaImage,\n  body[]{\n    _type,\n    _type == 'banner' => {\n      _key,\n      header,\n      subHeader,\n      bannerImage\n    },\n    _type == 'featureBlock' => {\n      _key,\n      title,\n      image,\n      content\n    },\n    _type == 'CTAPageBlock' => {\n      _key,\n      title,\n      subtitle,\n      linkEmbed {\n        label,\n        href\n      }\n    },\n    _type == 'introPageBlock' => {\n      _key,\n      title,\n      description,\n      image\n    },\n     _type == 'menuPageBlock' => {\n      _key,\n      title,\n      description,\n      image,\n       linkEmbed {\n        label,\n        href\n      }\n    },\n    _type == 'cateringBlock' => {\n      _key,\n      title,\n      content,\n      linkEmbed {\n        label,\n        href\n      }\n    }\n  }\n}\n": PAGE_QUERYResult;
     '\n  *[_type == \'catering\' && slug.current == $slug][0]{\n    _updatedAt,\n    "slug": slug.current,\n  }\n  ': CATERING_SITEMAP_QUERYResult;
     '\n  *[_type == \'menu\' && slug.current == $slug][0]{\n    _updatedAt,\n    "slug": slug.current,\n  }\n  ': MENU_SITEMAP_QUERYResult;

@@ -28,12 +28,12 @@ export type Menu = {
 };
 
 export type Catering = {
-  title: string;
+  title?: string;
   content?: MinimalPortableText | null;
-  cateringInfo: FullPortableText;
+  cateringInfo?: FullPortableText;
 };
 export type CateringDish = {
-  _id: string;
+  _key: string;
   _type: 'cateringDishes';
   _createdAt: string;
   _updatedAt: string;

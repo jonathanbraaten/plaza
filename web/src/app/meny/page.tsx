@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import { sanityFetch } from '@/sanity/lib/client';
 import Header from '../components/header';
 import Footer from '../components/footer';
@@ -9,10 +11,12 @@ import { uppercaseHelper } from '@/utils/uppercaseHelper';
 import { menuMetaHelper } from '@/utils/metaDataHelpers';
 import { metaImageBuilder } from '@/utils/metaImageBuilder';
 import { SanityImageObject } from '@sanity/image-url/lib/types/types';
+import Allergies from '../components/allergies';
 
 export async function generateMetadata() {
   const data = await sanityFetch({
     query: MENU_QUERY,
+    revalidate: 3600,
     params: { slug: 'meny' },
   });
 
@@ -56,7 +60,7 @@ async function fetchPageData() {
   const data = await sanityFetch({
     query: MENU_QUERY,
     params: { slug: 'meny' },
-    revalidate: 0,
+    revalidate: 60,
     tags: ['page', 'meny'],
   });
 
@@ -65,12 +69,15 @@ async function fetchPageData() {
 
 export default async function Page() {
   const data = await fetchPageData();
-  if (!data) notFound(); //TODO FIX THIS
+  if (!data) {
+    notFound();
+  } //TODO FIX THIS
   return (
     <>
       <Header />
       <main className="bg-secondary flex flex-col">
-        <MenuHandler data={data} />
+        {data && <MenuHandler data={data} />}
+        <Allergies />
         <DishPageBlockComponent />
       </main>
       <Footer />

@@ -6,6 +6,5 @@ export const DISH_QUERY = defineQuery(`
   dishes,
   image,
   title,
-
 }
   `);

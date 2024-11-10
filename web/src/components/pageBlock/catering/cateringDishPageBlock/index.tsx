@@ -15,7 +15,7 @@ async function fetchDishData() {
 export default async function CateringDishPageBlockComponent() {
   const data: unknown = await fetchDishData();
   return (
-    <section className="flex flex-col gap-10 my-10">
+    <section className="flex flex-col gap-10 my-20">
       <Wrapper>
         <CateringGrid data={data as CateringDish[]} />
       </Wrapper>

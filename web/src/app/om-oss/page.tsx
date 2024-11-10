@@ -33,7 +33,7 @@ export default function Page() {
   return (
     <>
       <Header />
-      <main className="flex justify-center items-center flex-col bg-secondary">
+      <main className="flex flex-col justify-center items-center  bg-secondary min-h-[80vh]">
         <section>
           <Wrapper optionalStyle="flex flex-col gap-4 ">
             <h1 className={clsx(montserrat.className, 'text-mobile-h1 md:text-desktop-h1')}>
