@@ -1,5 +1,3 @@
-export const dynamic = 'force-dynamic';
-
 import { sanityFetch } from '@/sanity/lib/client';
 import Header from '../components/header';
 import Footer from '../components/footer';
