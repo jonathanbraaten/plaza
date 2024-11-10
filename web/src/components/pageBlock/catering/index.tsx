@@ -20,8 +20,8 @@ export default function CateringPageHandler({ data }: { data: CATERING_PAGE_QUER
             return (
               <CateringPageBlockComponent
                 key={block._key}
-                title={block.title}
-                cateringInfo={block.cateringInfo}
+                title={block.title || ''}
+                cateringInfo={block.cateringInfo || []}
                 content={block.content}
               />
             );

@@ -28,9 +28,9 @@ export type Menu = {
 };
 
 export type Catering = {
-  title: string;
+  title?: string;
   content?: MinimalPortableText | null;
-  cateringInfo: FullPortableText;
+  cateringInfo?: FullPortableText;
 };
 export type CateringDish = {
   _key: string;
