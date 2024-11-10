@@ -13,11 +13,19 @@ async function fetchDishData() {
     revalidate: 0,
     tags: [],
   });
+
   return data;
 }
 
 export default async function DishPageBlockComponent() {
   const data: unknown = await fetchDishData();
+  if (!Array.isArray(data)) {
+    return (
+      <section className="py-20">
+        <h2 className="text-mobile-h2 md:text-desktop-h2 text-center">Ingen retter lagt ut.</h2>
+      </section>
+    );
+  }
   return (
     <section className="flex flex-col gap-10 my-10">
       {(data as Dishes).map(
