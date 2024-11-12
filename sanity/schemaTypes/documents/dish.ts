@@ -14,7 +14,7 @@ export default defineType({
       initialValue: 'Meny',
     }),
     defineField({
-      name: 'dishTable',
+      name: 'dish',
       title: 'Tabell av matretter',
       type: 'array',
 
