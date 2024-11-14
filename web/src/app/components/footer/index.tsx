@@ -2,6 +2,7 @@ import { FaFacebookF, FaInstagram } from 'react-icons/fa';
 import { FOOTER_QUERY } from '@/sanity/queries/footerQuery';
 import Wrapper from '../wrapper';
 import { sanityFetch } from '@/sanity/lib/client';
+import Link from 'next/link';
 async function fetchFooterData() {
   const data = await sanityFetch({
     query: FOOTER_QUERY,
@@ -85,6 +86,25 @@ export default async function Footer() {
             </ul>
           </div>
         )}
+      </Wrapper>
+      <hr className="my-4 " />
+      <Wrapper optionalStyle="flex flex-col gap-1">
+        <Link className="underline text-blue-600 text-light text-sm" href={'/personvern'}>
+          Personvern
+        </Link>
+        <p className="text-sm text-gray-700">
+          © {new Date().getFullYear()} Plaza Kafe & Spiseri. Alle rettigheter forbeholdt.
+        </p>
+        <p className="text-xs text-gray-700">
+          <a
+            href="https://www.linkedin.com/in/jonathan-braaten-mj%C3%B8s-900b26255/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-gray-600 transition-colors"
+          >
+            Utviklet av Jonathan Braaten Mjøs
+          </a>
+        </p>
       </Wrapper>
     </footer>
   );
