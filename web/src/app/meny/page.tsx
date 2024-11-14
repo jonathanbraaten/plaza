@@ -10,7 +10,6 @@ import { menuMetaHelper } from '@/utils/metaDataHelpers';
 import { metaImageBuilder } from '@/utils/metaImageBuilder';
 import { SanityImageObject } from '@sanity/image-url/lib/types/types';
 import Allergies from '../components/allergies';
-import Wrapper from '../components/wrapper';
 import SearchWrapper from './components/SearchWrapper';
 import { DISH_QUERY } from '@/sanity/queries/dishQuery';
 

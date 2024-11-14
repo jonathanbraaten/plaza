@@ -56,7 +56,3 @@ export default function MenuNavigation({ data, handleSearchSelect }: Props) {
     </nav>
   );
 }
-
-/* "px-4 py-1
-               bg-white
-                border rounded-md hover:cursor-pointer hover:shadow-md"*/
