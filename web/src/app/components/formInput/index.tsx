@@ -48,7 +48,7 @@ export default function FormInput({
                 {...register(name)}
               />
             </div>
-            <span role="alert" className="min-h-6  text-left text-red-500 font-bold text-sm">
+            <span role="alert" className="min-h-6  text-left  text-red-500 text-sm">
               {errors[name]?.message?.toString()}
             </span>
           </label>
@@ -74,7 +74,7 @@ export default function FormInput({
               id={id}
               {...register(name)}
             ></textarea>
-            <span role="alert" className="min-h-6  text-left  text-red-500 text-sm font-bold">
+            <span role="alert" className="min-h-6  text-left  text-red-500 text-sm">
               {errors[name]?.message?.toString()}
             </span>
           </label>

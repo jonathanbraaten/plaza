@@ -80,8 +80,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     (page): page is SanityPage =>
       !!page && typeof page._updatedAt === 'string' && typeof page.slug === 'string',
   );
-  const test = [...allPages];
-  console.log(test);
 
   /*  const domain = process.env.NEXT_PUBLIC_DOMAIN || 'http://localhost:3000'; */
   const domain = 'http://localhost:3000';

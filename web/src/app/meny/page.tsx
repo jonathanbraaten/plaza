@@ -67,7 +67,6 @@ async function fetchPageData() {
 
 export default async function Page() {
   const data = await fetchPageData();
-  console.log(data);
 
   if (!data) {
     notFound();

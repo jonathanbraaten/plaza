@@ -6,14 +6,19 @@ import { contactSchema } from './contactSchema';
 import sendEmail from '@/lib/sendEmail';
 import { useState } from 'react';
 import SuccessAlert from '@/ui/successAlert';
+import Link from 'next/link';
+
 export type Inputs = {
   name: string;
   email: string;
   telephone: string;
   message: string;
+  consent: boolean;
 };
+
 export default function ContactForm() {
   const [success, setSuccess] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -29,11 +34,14 @@ export default function ContactForm() {
       email: '',
       telephone: '',
       message: '',
+      consent: false,
     },
   });
 
   const message = watch('message');
   const messageCount = message?.length || 0;
+  const consent = watch('consent');
+  console.log(consent);
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     sendEmail(data);
@@ -67,7 +75,6 @@ export default function ContactForm() {
           errors={errors}
           register={register}
         />
-
         <FormInput
           htmlFor="telephone"
           labelText="Telefon"
@@ -89,10 +96,29 @@ export default function ContactForm() {
           register={register}
           msgLength={messageCount}
         />
+
+        <label className="flex flex-col gap-2 mb-4" htmlFor="consent">
+          <div className="flex gap-2">
+            <input
+              type="checkbox"
+              id="consent"
+              {...register('consent', { required: true })}
+              className="h-5 w-5 accent-blue-500"
+            />
+            <p className="text-gray-700 font-light text-sm inline-block">
+              Jeg forstår at min informasjon sendes via EmailJS og samtykker til at opplysningene
+              behandles i henhold til{' '}
+              <Link href="/personvern" className="underline hover:text-gray-900 inline-block">
+                personvernerklæringen
+              </Link>
+            </p>
+          </div>
+          {errors.consent && <span className="text-red-500 text-sm">Samtykke er påkrevd</span>}
+        </label>
       </div>
 
       {success ? (
-        <SuccessAlert optionalStyle="sm:self-start self-stretch  text-green-600 text-lg ">
+        <SuccessAlert optionalStyle="sm:self-start self-stretch text-green-600 text-lg">
           Takk! Vi svarer deg så fort vi kan.
         </SuccessAlert>
       ) : (
