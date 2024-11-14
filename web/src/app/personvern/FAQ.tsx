@@ -13,7 +13,6 @@ export default function FAQ() {
               <li>Navn</li>
               <li>E-post</li>
               <li>Telefonnummer (valgfritt)</li>
-              <li>IP-adresse</li>
             </ul>
           </div>
         </article>

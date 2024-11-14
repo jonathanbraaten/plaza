@@ -14,4 +14,7 @@ export const contactSchema = z.object({
     .string()
     .min(1, { message: 'Melding er påkrevd' })
     .max(500, { message: 'Melding kan ikke være over 500 bokstaver' }),
+  consent: z.boolean().refine((val) => val === true, {
+    message: 'Du må godta personvernerklæringen',
+  }),
 });
