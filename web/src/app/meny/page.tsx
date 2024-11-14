@@ -10,6 +10,8 @@ import { menuMetaHelper } from '@/utils/metaDataHelpers';
 import { metaImageBuilder } from '@/utils/metaImageBuilder';
 import { SanityImageObject } from '@sanity/image-url/lib/types/types';
 import Allergies from '../components/allergies';
+import MenuSearch from './components/MenuSearch';
+import Wrapper from '../components/wrapper';
 
 export async function generateMetadata() {
   const data = await sanityFetch({
@@ -76,7 +78,10 @@ export default async function Page() {
       <Header />
       <main className="bg-secondary flex flex-col">
         {data && <MenuHandler data={data} />}
-        <Allergies />
+        <Wrapper>
+          <Allergies />
+          <MenuSearch />
+        </Wrapper>
         <DishPageBlockComponent />
       </main>
       <Footer />

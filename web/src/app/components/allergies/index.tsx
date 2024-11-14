@@ -92,7 +92,7 @@ const allergener = [
 export default function Allergies() {
   return (
     <section className="my-20">
-      <Wrapper optionalStyle="flex flex-col gap-20">
+      <Wrapper optionalStyle="flex flex-col gap-10">
         <h2 className="text-mobile-h2 md:text-desktop-h2 text-center">Allergener</h2>
         <ul className={clsx(styles.grid)}>
           {allergener.map(({ id, name, icon, alt }) => (
