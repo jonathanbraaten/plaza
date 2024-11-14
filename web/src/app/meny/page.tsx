@@ -88,11 +88,11 @@ export default async function Page() {
       <Header />
       <main className="bg-secondary flex flex-col">
         {data && <MenuHandler data={data} />}
-        <Wrapper>
-          <Allergies />
-        </Wrapper>
-        <SearchWrapper data={dishData || []} />
-        <DishPageBlockComponent data={dishData || []} />
+        <Allergies />
+        <div>
+          <SearchWrapper data={dishData || []} />
+          <DishPageBlockComponent data={dishData || []} />
+        </div>
       </main>
       <Footer />
     </>
