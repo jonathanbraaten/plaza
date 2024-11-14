@@ -1,5 +1,7 @@
 import { FaFacebookF, FaInstagram } from 'react-icons/fa';
-
+import { FOOTER_QUERY } from '@/sanity/queries/footerQuery';
+import Wrapper from '../wrapper';
+import { sanityFetch } from '@/sanity/lib/client';
 async function fetchFooterData() {
   const data = await sanityFetch({
     query: FOOTER_QUERY,
@@ -8,10 +10,6 @@ async function fetchFooterData() {
   });
   return data;
 }
-import { FOOTER_QUERY } from '@/sanity/queries/footerQuery';
-import Wrapper from '../wrapper';
-import { sanityFetch } from '@/sanity/lib/client';
-
 export default async function Footer() {
   const data = await fetchFooterData();
   const openingHours = data?.openingHours || [];
