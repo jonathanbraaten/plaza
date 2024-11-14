@@ -10,6 +10,9 @@ import { menuMetaHelper } from '@/utils/metaDataHelpers';
 import { metaImageBuilder } from '@/utils/metaImageBuilder';
 import { SanityImageObject } from '@sanity/image-url/lib/types/types';
 import Allergies from '../components/allergies';
+import Wrapper from '../components/wrapper';
+import SearchWrapper from './components/SearchWrapper';
+import { DISH_QUERY } from '@/sanity/queries/dishQuery';
 
 export async function generateMetadata() {
   const data = await sanityFetch({
@@ -64,10 +67,19 @@ async function fetchPageData() {
 
   return data;
 }
+async function fetchDishData() {
+  const data = await sanityFetch({
+    query: DISH_QUERY,
+    revalidate: 0,
+    tags: [],
+  });
+
+  return data;
+}
 
 export default async function Page() {
   const data = await fetchPageData();
-
+  const dishData = await fetchDishData();
   if (!data) {
     notFound();
   }
@@ -76,8 +88,11 @@ export default async function Page() {
       <Header />
       <main className="bg-secondary flex flex-col">
         {data && <MenuHandler data={data} />}
-        <Allergies />
-        <DishPageBlockComponent />
+        <Wrapper>
+          <Allergies />
+        </Wrapper>
+        <SearchWrapper data={dishData || []} />
+        <DishPageBlockComponent data={dishData || []} />
       </main>
       <Footer />
     </>
