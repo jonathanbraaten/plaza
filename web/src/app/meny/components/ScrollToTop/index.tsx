@@ -45,7 +45,7 @@ export default function ScrollToTop({ handleSearchReset, searchClicked }: Props)
     showButton && searchClicked ? (
       <button
         onClick={scrollToSearch}
-        className="fixed bottom-8 right-8 bg-fill/70 shadow-md  text-black px-4 py-2 rounded-md
+        className="fixed bottom-2 right-1 text-sm md:text-base  md:bottom-8 md:right-8 bg-fill/70 shadow-md  text-black px-4 py-2 rounded-md
         flex items-center gap-2
         cursor-pointer duration-100
                   transition-colors hover:bg-fill/90 focus:bg-fill/90
@@ -53,7 +53,7 @@ export default function ScrollToTop({ handleSearchReset, searchClicked }: Props)
                  "
         aria-label="Gå til meny-søk"
       >
-        <IoMdArrowUp size={25} />
+        <IoMdArrowUp className="w-5 h-5 md:h-7 md:w-7" />
         <span>Til toppen</span>
       </button>
     ) : null;

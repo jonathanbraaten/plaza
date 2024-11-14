@@ -7,7 +7,7 @@ import { SanityImage } from '@/sanity/lib/types/reusableType';
 
 export default async function DishPageBlockComponent({ data }: { data: Dishes }) {
   return (
-    <section className="flex flex-col gap-10 my-10">
+    <section className="flex flex-col gap-10">
       {(data as Dishes).map(
         ({
           _key,
@@ -21,7 +21,7 @@ export default async function DishPageBlockComponent({ data }: { data: Dishes })
           dishes: unknown;
         }) => {
           return (
-            <section id={_key} className="flex flex-col my-20" key={_key}>
+            <section id={_key} className="flex flex-col" key={_key}>
               <MenuBanner title={title} image={image} />
               <Wrapper key={_key} optionalStyle="flex flex-col">
                 <DishGrid data={dishes as Dish[]} />

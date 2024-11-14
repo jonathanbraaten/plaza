@@ -1,6 +1,8 @@
 'use client';
 import Wrapper from '@/app/components/wrapper';
 import { Dishes } from '@/sanity/lib/types/types';
+import { montserrat } from '@/ui/fonts';
+import clsx from 'clsx';
 
 type Props = {
   data: Dishes;
@@ -34,15 +36,16 @@ export default function MenuNavigation({ data, handleSearchSelect }: Props) {
 
   return (
     <nav id="menu-navigation">
-      <Wrapper optionalStyle="flex gap-5">
+      <Wrapper optionalStyle="flex gap-5  py-20 ">
         <ul className="flex gap-5">
-          {(data as Dishes).map(({ _key, title }) => (
+          {(data as Dishes).slice(1).map(({ _key, title }) => (
             <li key={_key}>
               <button
                 onClick={() => scrollToSection(_key)}
-                className="px-4 py-1
-               bg-white
-                border rounded-md hover:cursor-pointer hover:shadow-md"
+                className={clsx(
+                  montserrat.className,
+                  'px-4 py-1 bg-white text-lg md:text-base border rounded-md hover:cursor-pointer hover:shadow-md focus:shadow-md',
+                )}
               >
                 {title}
               </button>
