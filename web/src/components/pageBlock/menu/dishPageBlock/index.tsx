@@ -9,7 +9,7 @@ import clsx from 'clsx';
 
 export default async function DishPageBlockComponent({ data }: { data: Dishes }) {
   return (
-    <section className="flex flex-col gap-10">
+    <section className="flex flex-col gap-10 py-10">
       {(data as Dishes).map(
         (
           {
