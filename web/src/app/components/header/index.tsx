@@ -4,6 +4,7 @@ import Nav from '../nav';
 import Wrapper from '../wrapper';
 import Image from 'next/image';
 import { RxHamburgerMenu } from 'react-icons/rx';
+import Link from 'next/link';
 export default function Header() {
   const [isActive, setIsActive] = useState(false);
   const openNavigation = () => setIsActive(true);
@@ -13,14 +14,16 @@ export default function Header() {
     <header>
       <Wrapper optionalStyle="flex justify-between items-center  py-4">
         <div>
-          <Image
-            src={'/plaza-logo-removebg-preview 1.png'}
-            width={100}
-            height={100}
-            quality={100}
-            className="max-w-[5rem] w-full"
-            alt="Plaza Kafe & Spiseri logo"
-          />
+          <Link href={'/'}>
+            <Image
+              src={'/plaza-logo-removebg-preview 1.png'}
+              width={100}
+              height={100}
+              quality={100}
+              className="max-w-[5rem] w-full"
+              alt="Plaza Kafe & Spiseri logo"
+            />
+          </Link>
         </div>
         <Nav isActive={isActive} onClick={closeNavigation} />
         <button

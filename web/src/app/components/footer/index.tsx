@@ -87,14 +87,14 @@ export default async function Footer() {
           </div>
         )}
       </Wrapper>
-      <hr className="my-[3rem]" />
-      <Wrapper optionalStyle="flex   gap-5">
-        <p className="text-sm text-gray-700">
-          © {new Date().getFullYear()} Plaza Kafe & Spiseri. Alle rettigheter forbeholdt.
-        </p>
+      <hr className="my-[2rem]" />
+      <Wrapper optionalStyle="flex flex-col   gap-2">
         <Link className="underline text-blue-600 text-light text-sm" href={'/personvern'}>
           Personvern
         </Link>
+        <p className="text-sm text-gray-700">
+          © {new Date().getFullYear()} Plaza Kafe & Spiseri. Alle rettigheter forbeholdt.
+        </p>
       </Wrapper>
     </footer>
   );

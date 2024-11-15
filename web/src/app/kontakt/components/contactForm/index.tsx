@@ -53,7 +53,7 @@ export default function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
+    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col px-2 md:px-0">
       <div className="flex flex-col gap-3 w-full">
         <FormInput
           htmlFor="name"
