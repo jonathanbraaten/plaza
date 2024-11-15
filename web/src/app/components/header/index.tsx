@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import Nav from '../nav';
 import Wrapper from '../wrapper';
-/* import Image from 'next/image'; */
+import Image from 'next/image';
 import { RxHamburgerMenu } from 'react-icons/rx';
 export default function Header() {
   const [isActive, setIsActive] = useState(false);
@@ -12,15 +12,15 @@ export default function Header() {
   return (
     <header>
       <Wrapper optionalStyle="flex justify-between items-center  py-4">
-        <div className="uppercase font-bold h-full">
-          <p>logo</p>
-          {/* <Image
+        <div>
+          <Image
             src={'/plaza-logo-removebg-preview 1.png'}
             width={100}
             height={100}
-            className="max-h-[5rem]"
+            quality={100}
+            className="max-w-[5rem] w-full"
             alt="Plaza kafe logo"
-          /> */}
+          />
         </div>
         <Nav isActive={isActive} onClick={closeNavigation} />
         <button
