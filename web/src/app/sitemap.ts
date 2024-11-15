@@ -22,6 +22,10 @@ const staticPages: StaticPage = [
     url: '/om-oss',
     priority: 0.5,
   },
+  {
+    url: '/personvern',
+    priority: 0.3,
+  },
 ];
 
 const fetchPageSitemap = async () => {

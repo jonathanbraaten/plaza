@@ -3,13 +3,13 @@ import Wrapper from '../components/wrapper';
 export default function FAQ() {
   return (
     <section>
-      <Wrapper optionalStyle="flex flex-col gap-10 px-10">
-        <h1 className="text-mobile-h1 md:text-mobile-h2">Personvernerklæring</h1>
+      <Wrapper optionalStyle="flex flex-col gap-10 px-10 lg:px-20">
+        <h1 className="text-mobile-h1 md:text-mobile-h1">Personvernerklæring</h1>
         <article>
           <h2 className="text-mobile-h2 md:text-mobile-h3">Behandling av personopplysninger</h2>
           <div>
             <p>Når du kontakter oss via kontaktskjemaet, samler vi følgende informasjon:</p>
-            <ul className="list-disc">
+            <ul className="list-disc px-5">
               <li>Navn</li>
               <li>E-post</li>
               <li>Telefonnummer (valgfritt)</li>
@@ -17,7 +17,7 @@ export default function FAQ() {
           </div>
         </article>
         <article>
-          <h2 className="text-mobile-h2 md:text-mobile-h3"> Hvordan vi behandler dataen</h2>
+          <h2 className="text-mobile-h2 md:text-mobile-h2"> Hvordan vi behandler dataen</h2>
           <p className="mb-1">
             Vi bruker tjenesten EmailJS for å motta kontaktskjemaet. Informasjonen sendes som en
             e-post via EmailJS sine systemer. Din melding og informasjon blir lagret på EmailJS sine
@@ -31,10 +31,10 @@ export default function FAQ() {
           </p>
         </article>
         <article>
-          <h2 className="text-mobile-h2 md:text-mobile-h3">Dine rettigheter</h2>
+          <h2 className="text-mobile-h2 md:text-mobile-h2">Dine rettigheter</h2>
           <div>
             <p>Du har rett til å:</p>
-            <ul className="list-disc">
+            <ul className="list-disc px-5">
               <li>Be om innsyn i dine personopplysninger</li>
               <li>Be om sletting av dine personopplysninger (så langt det er teknisk mulig)</li>
               <li>Trekke tilbake ditt samtykke</li>
@@ -42,7 +42,7 @@ export default function FAQ() {
           </div>
         </article>
         <article>
-          <h2 className="text-mobile-h2 md:text-mobile-h3">Kontakt</h2>
+          <h2 className="text-mobile-h2 md:text-mobile-h2">Kontakt</h2>
           <p>For spørsmål om personvern, kontakt oss via plazakafe@hotmail</p>
         </article>
       </Wrapper>
