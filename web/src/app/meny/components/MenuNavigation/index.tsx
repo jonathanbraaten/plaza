@@ -35,8 +35,8 @@ export default function MenuNavigation({ data, handleSearchSelect }: Props) {
   }
   return (
     <nav className={clsx(styles.menu_bg)} id="menu-navigation">
-      <Wrapper optionalStyle="flex flex-wrap gap-5  py-20 ">
-        <ul className="flex gap-5">
+      <Wrapper optionalStyle="flex gap-5  py-20 ">
+        <ul className="flex  flex-wrap gap-5">
           {(data as Dishes).slice(1).map(({ _key, title }) => (
             <li key={_key}>
               <button
