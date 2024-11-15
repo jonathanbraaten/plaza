@@ -4,7 +4,5 @@ type Props = {
   children: React.ReactNode;
 };
 export default function Wrapper({ optionalStyle, children }: Props) {
-  return (
-    <div className={clsx(optionalStyle, 'max-w-7xl w-full mx-auto px-2 lg:px-0')}>{children}</div>
-  );
+  return <div className={clsx(optionalStyle, 'max-w-7xl w-full mx-auto px-2 ')}>{children}</div>;
 }
