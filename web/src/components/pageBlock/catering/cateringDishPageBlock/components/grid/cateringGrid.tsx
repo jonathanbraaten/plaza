@@ -9,7 +9,7 @@ export default function CateringGrid({ data }: { data: CateringDish[] }) {
   return (
     <section className={clsx(styles.grid)}>
       {data.map(({ _key, title, pricePerPerson, description, allergy }) => (
-        <article key={_key} className={(clsx(styles.subgrid), 'bg-fillFaded/10 p-5 ')}>
+        <article key={_key} className={(clsx(styles.subgrid), ' p-5 ')}>
           <div className="flex flex-col gap-2 mb-4 ">
             <h2 className={clsx(montserrat.className, 'text-mobile-h3 md:text-mobile-h3')}>
               {title}

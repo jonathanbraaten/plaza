@@ -1,9 +1,9 @@
 'use client';
 import Wrapper from '@/app/components/wrapper';
 import { Dishes } from '@/sanity/lib/types/types';
-import { montserrat } from '@/ui/fonts';
 import clsx from 'clsx';
-
+import { MdOutlineFastfood } from 'react-icons/md';
+import styles from './styles.module.css';
 type Props = {
   data: Dishes;
   handleSearchSelect: () => void;
@@ -35,7 +35,7 @@ export default function MenuNavigation({ data, handleSearchSelect }: Props) {
   }
 
   return (
-    <nav id="menu-navigation">
+    <nav className={clsx(styles.menu_bg)} id="menu-navigation">
       <Wrapper optionalStyle="flex gap-5  py-20 ">
         <ul className="flex gap-5">
           {(data as Dishes).slice(1).map(({ _key, title }) => (
@@ -43,11 +43,11 @@ export default function MenuNavigation({ data, handleSearchSelect }: Props) {
               <button
                 onClick={() => scrollToSection(_key)}
                 className={clsx(
-                  montserrat.className,
-                  'px-4 py-1 bg-white text-lg md:text-base border rounded-md hover:cursor-pointer hover:shadow-md focus:shadow-md',
+                  'flex items-center gap-5  px-4 py-2  bg-white text-lg md:text-base border rounded-md hover:cursor-pointer hover:shadow-md focus:shadow-md hover:border-black focus:border-black transition-colors duration-75',
                 )}
               >
-                {title}
+                <MdOutlineFastfood size={20} />
+                <span> {title}</span>
               </button>
             </li>
           ))}

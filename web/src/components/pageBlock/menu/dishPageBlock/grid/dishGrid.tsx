@@ -7,7 +7,7 @@ export default function Grid({ data }: { data: Dish[] }) {
   return (
     <ul className={clsx(styles.grid, 'my-20')}>
       {data.map(({ _key, title, takeAwayPrice, dineInPrice, allergy, description }) => (
-        <li key={_key} className={clsx(styles.subgrid, 'p-4 gap-2 bg-fillFaded')}>
+        <li key={_key} className={clsx(styles.subgrid, 'p-4 gap-2 ')}>
           <div className="flex flex-col gap-2">
             <h3 className={clsx(montserrat.className, 'text-mobile-h3 md:text-desktop-h3')}>
               {title}

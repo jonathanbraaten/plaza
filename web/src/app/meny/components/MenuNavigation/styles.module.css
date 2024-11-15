@@ -1,0 +1,9 @@
+.menu_bg {
+  background-color: #ffffff;
+  background-image: radial-gradient(#000000 0.25px, transparent 0.25px),
+    radial-gradient(#000000 0.25px, #ffffff 0.25px);
+  background-size: 10px 10px;
+  background-position:
+    0 0,
+    5px 5px;
+}
