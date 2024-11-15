@@ -20,7 +20,7 @@ const allergener = [
 
 export default function Allergies() {
   return (
-    <section className="py-24 flex flex-col  justify-center gap-10 bg-secondary">
+    <section className="py-20 flex flex-col  justify-center gap-10 bg-secondary">
       <h2 className="text-mobile-h2 md:text-desktop-h2 text-center ">Allergener</h2>
       <Wrapper>
         <ul className={clsx(styles.grid)}>

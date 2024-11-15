@@ -9,7 +9,7 @@ import CustomLink from '@/app/components/customLink';
 export default function MenuPageBlockComponent({ title, description, image, linkEmbed }: Menu) {
   return (
     <section className="mb-20">
-      <Wrapper optionalStyle="flex flex-col-reverse md:flex-row md:justify-between  gap-5">
+      <Wrapper optionalStyle="flex flex-col-reverse  md:flex-row md:justify-between  gap-5">
         <div className="flex flex-col gap-2 max-w-[50ch] md:max-w-[45ch] lg:max-w-[60ch] pl-0 md:pl-4">
           <div>
             <h2 className={clsx(montserrat.className, 'text-mobile-h2 lg:text-desktop-h2')}>

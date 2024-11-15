@@ -12,16 +12,16 @@ export default function CustomLink({ variant, href, children, position }: Props)
   switch (position) {
     case 'self-start':
       return (
-        <Link className={clsx('self-start', styles[variant])} href={href}>
+        <Link className={clsx('self-start mt-2', styles[variant])} href={href}>
           {children}
         </Link>
       );
     case 'self-center':
-      <Link className={clsx('self-center', styles[variant])} href={href}>
+      <Link className={clsx('self-center mt-2', styles[variant])} href={href}>
         {children}
       </Link>;
     case 'self-end':
-      <Link className={clsx('self-end ', styles[variant])} href={href}>
+      <Link className={clsx('self-end mt-2', styles[variant])} href={href}>
         {children}
       </Link>;
     default:
