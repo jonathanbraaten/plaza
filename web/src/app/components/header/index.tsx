@@ -19,7 +19,7 @@ export default function Header() {
             height={100}
             quality={100}
             className="max-w-[5rem] w-full"
-            alt="Plaza kafe logo"
+            alt="Plaza Kafe & Spiseri logo"
           />
         </div>
         <Nav isActive={isActive} onClick={closeNavigation} />
