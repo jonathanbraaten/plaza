@@ -2,7 +2,6 @@ import { Dish, Dishes } from '@/sanity/lib/types/types';
 import DishGrid from './grid/dishGrid';
 import React from 'react';
 import Wrapper from '@/app/components/wrapper';
-/* import MenuBanner from '@/app/components/menuBanner'; */
 import { SanityImage } from '@/sanity/lib/types/reusableType';
 import { montserrat } from '@/ui/fonts';
 import clsx from 'clsx';
