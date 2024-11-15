@@ -10,7 +10,6 @@ import { cateringMetaHelper } from '@/utils/metaDataHelpers';
 import { uppercaseHelper } from '@/utils/uppercaseHelper';
 import { metaImageBuilder } from '@/utils/metaImageBuilder';
 import { SanityImageObject } from '@sanity/image-url/lib/types/types';
-import Allergies from '../components/allergies';
 export async function generateMetadata() {
   const data = await sanityFetch({
     query: CATERING_PAGE_QUERY,
@@ -76,8 +75,6 @@ export default async function Page() {
       <Header />
       <main className="bg-secondary">
         <CateringPageHandler data={data} />
-        <Allergies />
-
         <CateringDishPageBlockComponent />
       </main>
       <Footer />

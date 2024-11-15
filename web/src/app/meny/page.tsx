@@ -9,7 +9,6 @@ import { uppercaseHelper } from '@/utils/uppercaseHelper';
 import { menuMetaHelper } from '@/utils/metaDataHelpers';
 import { metaImageBuilder } from '@/utils/metaImageBuilder';
 import { SanityImageObject } from '@sanity/image-url/lib/types/types';
-import Allergies from '../components/allergies';
 import SearchWrapper from './components/SearchWrapper';
 import { DISH_QUERY } from '@/sanity/queries/dishQuery';
 
@@ -87,9 +86,10 @@ export default async function Page() {
       <Header />
       <main className="bg-secondary flex flex-col">
         {data && <MenuHandler data={data} />}
-        <Allergies />
         <div>
-          <SearchWrapper data={dishData || []} />
+          <div>
+            <SearchWrapper data={dishData || []} />
+          </div>
           <DishPageBlockComponent data={dishData || []} />
         </div>
       </main>
