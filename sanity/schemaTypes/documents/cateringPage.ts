@@ -48,12 +48,7 @@ export default defineType({
     defineField({
       name: 'body',
       type: 'array',
-      of: [
-        defineArrayMember({ type: 'banner' }),
-        defineArrayMember({
-          type: 'cateringPageBlock',
-        }),
-      ],
+      of: [defineArrayMember({ type: 'banner' })],
 
       options: {
         insertMenu: {
