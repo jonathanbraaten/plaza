@@ -87,15 +87,22 @@ export default async function Footer() {
           </div>
         )}
       </Wrapper>
-      <hr className="my-4 " />
-      <Wrapper optionalStyle="flex flex-col gap-1">
-        <Link className="underline text-blue-600 text-light text-sm" href={'/personvern'}>
-          Personvern
-        </Link>
+      <hr className="my-[3rem]" />
+      <Wrapper optionalStyle="flex   gap-5">
         <p className="text-sm text-gray-700">
           © {new Date().getFullYear()} Plaza Kafe & Spiseri. Alle rettigheter forbeholdt.
         </p>
-        <p className="text-xs text-gray-700">
+        <Link className="underline text-blue-600 text-light text-sm" href={'/personvern'}>
+          Personvern
+        </Link>
+      </Wrapper>
+    </footer>
+  );
+}
+
+/*
+
+   <p className="text-xs text-gray-700">
           <a
             href="https://www.linkedin.com/in/jonathan-braaten-mj%C3%B8s-900b26255/"
             target="_blank"
@@ -105,7 +112,4 @@ export default async function Footer() {
             Utviklet av Jonathan Braaten Mjøs
           </a>
         </p>
-      </Wrapper>
-    </footer>
-  );
-}
+*/
