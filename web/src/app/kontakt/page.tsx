@@ -32,8 +32,8 @@ export default function Page() {
       <Header />
       <main className="flex justify-center items-center  bg-secondary">
         <section className=" max-w-3xl w-full ">
-          <Wrapper optionalStyle="flex flex-col gap-5 py-10 md:py-20">
-            <h1 className="text-mobile-h1 md:text-desktop-h1 text-center md:text-left">
+          <Wrapper optionalStyle="flex flex-col gap-5 py-20">
+            <h1 className="text-mobile-h1 md:text-desktop-h1 text-center sm:text-left">
               Kontakt oss
             </h1>
             <ContactForm />
