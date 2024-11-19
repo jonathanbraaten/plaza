@@ -70,7 +70,7 @@ export default async function Home() {
   return (
     <>
       <Header />
-      <main className="flex flex-col gap-[10rem] bg-secondary">
+      <main className="flex flex-col gap-[10rem] bg-secondary pb-10">
         <PageHandler data={data} />
       </main>
       <Footer />
