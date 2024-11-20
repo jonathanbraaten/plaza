@@ -6,14 +6,13 @@ import { MdOutlineFastfood } from 'react-icons/md';
 import styles from './styles.module.css';
 type Props = {
   data: Dishes;
-  handleSearchSelect: () => void;
 };
 
-export default function MenuNavigation({ data, handleSearchSelect }: Props) {
+export default function MenuNavigation({ data }: Props) {
   const scrollToSection = (_key: string) => {
     const element = document.getElementById(_key);
     if (element) {
-      const headerOffset = 0;
+      const headerOffset = 100;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.scrollY - headerOffset;
 
@@ -22,7 +21,6 @@ export default function MenuNavigation({ data, handleSearchSelect }: Props) {
         behavior: 'smooth',
       });
 
-      handleSearchSelect();
       const focusTarget = element.querySelector('h2, button, [tabindex="0"]');
       if (focusTarget instanceof HTMLElement) {
         focusTarget.focus();
