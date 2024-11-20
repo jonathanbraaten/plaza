@@ -40,8 +40,6 @@ export default function ContactForm() {
 
   const message = watch('message');
   const messageCount = message?.length || 0;
-  const consent = watch('consent');
-  console.log(consent);
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     sendEmail(data);

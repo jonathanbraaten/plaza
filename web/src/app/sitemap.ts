@@ -85,8 +85,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       !!page && typeof page._updatedAt === 'string' && typeof page.slug === 'string',
   );
 
-  /*  const domain = process.env.NEXT_PUBLIC_DOMAIN || 'http://localhost:3000'; */
-  const domain = 'http://localhost:3000';
+  const domain = process.env.NEXT_PUBLIC_DOMAIN || 'http://localhost:3000';
 
   const dynamicPages = allPages.map(({ _updatedAt, slug }) => ({
     url: `${domain}/${slug}`,

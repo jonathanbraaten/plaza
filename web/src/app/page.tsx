@@ -14,6 +14,7 @@ import { metaImageBuilder } from '@/utils/metaImageBuilder';
 export async function generateMetadata() {
   const data = await sanityFetch({
     query: PAGE_QUERY,
+    revalidate: 86400,
     params: { slug: 'heim' },
   });
 
@@ -58,7 +59,7 @@ async function fetchPageData(): Promise<PAGE_QUERYResult> {
   const data = await sanityFetch({
     query: PAGE_QUERY,
     params: { slug: 'heim' },
-    revalidate: 0,
+    revalidate: 3600,
     tags: ['page', 'heim'],
   });
 

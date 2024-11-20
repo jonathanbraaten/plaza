@@ -13,6 +13,7 @@ import { SanityImageObject } from '@sanity/image-url/lib/types/types';
 export async function generateMetadata() {
   const data = await sanityFetch({
     query: CATERING_PAGE_QUERY,
+    revalidate: 86400,
     params: { slug: 'catering' },
   });
 
@@ -60,7 +61,7 @@ async function fetchPageData() {
   const data = await sanityFetch({
     query: CATERING_PAGE_QUERY,
     params: { slug: 'catering' },
-    revalidate: 0,
+    revalidate: 3600,
     tags: ['page', 'catering'],
   });
 

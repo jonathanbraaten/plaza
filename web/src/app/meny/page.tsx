@@ -15,7 +15,7 @@ import { DISH_QUERY } from '@/sanity/queries/dishQuery';
 export async function generateMetadata() {
   const data = await sanityFetch({
     query: MENU_QUERY,
-    revalidate: 3600,
+    revalidate: 86400,
     params: { slug: 'meny' },
   });
 
@@ -59,7 +59,7 @@ async function fetchPageData() {
   const data = await sanityFetch({
     query: MENU_QUERY,
     params: { slug: 'meny' },
-    revalidate: 60,
+    revalidate: 3600,
     tags: ['page', 'meny'],
   });
 

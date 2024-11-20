@@ -6,7 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: `http://localhost:3000/sitemap.xml`,
-    //add new prod domain
+    sitemap: `https://plazakafe.no`,
   };
 }
