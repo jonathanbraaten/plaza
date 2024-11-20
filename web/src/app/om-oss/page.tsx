@@ -40,8 +40,9 @@ export default function Page() {
               Om oss
             </h1>
             <p className="max-w-[75ch]">
-              Paza kafe og spiseri ligg i sentrum av Lonevåg på Osterøy. Staden vart opna 21.april
-              2021 av kokken, Fabio Franza, men drives nå av Gabrielle Kallekleiv Dos Santos.
+              Plaza Kafe & Spiseri ligg i sentrum av Lonevåg på Osterøy. Staden vart opna 21. april
+              2021 av kokken Fabio Franza. I 2024 tok Gabrielle Kallekleiv Dos Santos over drifta av
+              Plaza Kafe & Spiseri.
             </p>
           </Wrapper>
         </section>
