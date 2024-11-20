@@ -40,15 +40,8 @@ export default function Page() {
               Om oss
             </h1>
             <p className="max-w-[75ch]">
-              Mer informasjon kommer.
-              {/*    Plaza kafe og spiseri ligg i sentrum av Lonevåg på Osterøy. Staden vart opna 21.april
-              2021 av kokken, Fabio Franza. Me får levert bakevarer frå Hjelle bakeri som du kan
-              nyte til ein kopp kaffi i eit koseleg lokale. Om du vil, kan du bestille brød og heile
-              kaker frå Hjelle via oss. Fabio lagar heimelaga retter både til lunsj og middag , og
-              til dessert kan du få tiramisu, panacotta eller kake. Me har også skjenkeløyve for øl
-              og vin. Det er mogleg å ta mat med heim. På bestilling leverer me tapas, snittar eller
-              møtepakke og du kan ta kontakt om du ynskjer bestille middag til konfirmasjon, bryllup
-              eller liknande. */}
+              Paza kafe og spiseri ligg i sentrum av Lonevåg på Osterøy. Staden vart opna 21.april
+              2021 av kokken, Fabio Franza, men drives nå av Gabrielle Kallekleiv Dos Santos.
             </p>
           </Wrapper>
         </section>
