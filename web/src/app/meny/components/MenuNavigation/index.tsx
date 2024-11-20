@@ -32,7 +32,7 @@ export default function MenuNavigation({ data }: Props) {
     return null;
   }
   return (
-    <nav className={clsx(styles.menu_bg)} id="menu-navigation">
+    <nav className={clsx(styles.menu_bg)} id="menu-nav">
       <Wrapper optionalStyle="flex flex-col gap-5  py-20 md:py-32 ">
         <ul className="flex  flex-wrap gap-5">
           {(data as Dishes).slice(1).map(({ _key, title }) => (
