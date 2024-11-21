@@ -43,7 +43,7 @@ export default function FAQ() {
         </article>
         <article>
           <h2 className="text-mobile-h2 md:text-mobile-h2">Kontakt</h2>
-          <p>For spørsmål om personvern, kontakt oss via plazakafe@hotmail</p>
+          <p>For spørsmål om personvern, kontakt oss via plazakafe@hotmail.com</p>
         </article>
       </Wrapper>
     </section>
