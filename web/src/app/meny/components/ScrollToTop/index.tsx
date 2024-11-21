@@ -39,7 +39,7 @@ export default function ScrollToTop() {
   const content = showButton ? (
     <button
       onClick={scrollToTop}
-      className="fixed bottom-2 rounded-full right-1 text-sm md:text-base md:bottom-8 md:right-8 bg-black shadow-md text-white px-2 py-2
+      className="fixed bottom-2 rounded-full right-3 text-sm md:text-base md:bottom-8 md:right-8 bg-black shadow-md text-white px-2 py-2
         flex items-center gap-2
         cursor-pointer duration-100
         transition-colors hover:bg-black/90 focus:bg-black/90 "
