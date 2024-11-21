@@ -51,7 +51,7 @@ export default async function Footer() {
           <p className="font-bold mb-1">Kontakt</p>
           <ul className="self-start">
             <li>
-              <a href="tel:56392500" className="flex gap-2">
+              <a href="tel:97348745" className="flex gap-2">
                 <span>Telefon:</span>
                 <span className="underline">97348745</span>
               </a>
