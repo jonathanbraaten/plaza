@@ -78,7 +78,7 @@ export default async function Footer() {
                   >
                     <span>
                       {socialType === 'Facebook' ? (
-                        <FaFacebookF className=" p-1 rounded-full" size={25} />
+                        <FaFacebookF size={20} />
                       ) : (
                         <FaInstagram size={20} />
                       )}
