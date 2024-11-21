@@ -53,7 +53,7 @@ export default async function Footer() {
             <li>
               <a href="tel:56392500" className="flex gap-2">
                 <span>Telefon:</span>
-                <span className="underline">56392500</span>
+                <span className="underline">97348745</span>
               </a>
             </li>
             <li>
@@ -69,11 +69,16 @@ export default async function Footer() {
             <p className="font-bold mb-1">Sosiale medier</p>
             <ul className="self-start">
               {socialMedia.map(({ _key, socialType, socialLinks }) => (
-                <li className="self-start" key={_key}>
-                  <a className="flex items-center gap-2" href={socialLinks}>
+                <li className="self-start hover:underline" key={_key}>
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2"
+                    href={socialLinks}
+                  >
                     <span>
                       {socialType === 'Facebook' ? (
-                        <FaFacebookF size={20} />
+                        <FaFacebookF className=" p-1 rounded-full" size={25} />
                       ) : (
                         <FaInstagram size={20} />
                       )}
