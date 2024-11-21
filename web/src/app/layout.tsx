@@ -1,6 +1,8 @@
 import clsx from 'clsx';
 import './globals.css';
 import { abeezee } from '@/ui/fonts';
+import { SpeedInsights } from '@vercel/speed-insights/next';
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -17,7 +19,10 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
       </head>
-      <body className={clsx(abeezee.className, 'antialiased')}>{children}</body>
+      <body className={clsx(abeezee.className, 'antialiased')}>
+        <SpeedInsights />
+        {children}
+      </body>
     </html>
   );
 }
